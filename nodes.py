@@ -61,19 +61,19 @@ class Operator(Node):
     def outputxml(self):
         pass
 
-class NoSibOperator(Node): # some operators eg sup won't have more than a child ?
-    def __init__(self, name, child, attributes):
-        super().__init__(name, attributes)
-        self.child = child
-
-    def get_name(self):
-        return self.name
-
-    def get_child(self):
-        return self.child
-
-    def outputxml(self):
-        pass
+# class NoSibOperator(Node): # some operators eg sup won't have more than a child ?
+#     def __init__(self, name, child, attributes):
+#         super().__init__(name, attributes)
+#         self.child = child
+# 
+#     def get_name(self):
+#         return self.name
+# 
+#     def get_child(self):
+#         return self.child
+# 
+#     def outputxml(self):
+#         pass
 
 class Identifier(Node):
     def __init__(self, name, sibling, attributes):
