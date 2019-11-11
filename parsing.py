@@ -89,7 +89,7 @@ def make_tree(file_location): #parses the file and converts to internal tree str
 
 def check_node(element, siblings):
     ignore = ["math", "mrow"]
-    consider = ["mfrac"]
+    consider = ["mfrac", "msqrt", "msup"]
     leaf = ["mn","mi"]
 
     #the element has no siblings so all we need to check is the current element
@@ -102,7 +102,14 @@ def check_node(element, siblings):
         if get_tag(element) in consider:
             '''will need to change when other tags get included'''
             #currently only does mfrac
-            return make_node("frac_op" , element ,siblings, "/" )
+            if get_tag(element) == "mfrac":
+                return make_node("2arynode" , element ,siblings, "/" )
+            if get_tag(element) == "msup":
+                return make_node("2arynode" , element ,siblings, "power" )
+            if get_tag(element) == "msqrt":
+                return make_node("narynode" , element ,siblings, "sqrt" )
+
+
         #is the current element a leaf?
         if get_tag(element) in leaf:
             return make_node(get_tag(element), element,siblings, element.text)
@@ -110,55 +117,70 @@ def check_node(element, siblings):
     #the current element has only one sibling
     if len(siblings) == 1:
         if get_tag(element) == "mo":
-            return make_node("op", element,siblings, element.text)
+            return make_node("1op", element,siblings, element.text)
         if get_tag(element) in leaf:
             return make_node(get_tag(element), element,siblings, element.text)
 
+        if get_tag(element) in ignore:
+            return check_node(element[0], child_list(element) )
         else:
-            print( "something unexpected happened, code needs additions!")
-    '''add for when operstor added and has two mn children for example 
-    ie neither the element or the single sibling is an operator '''
+            print( "something unexpected happened, code needs additions!" + get_tag(element))
+    '''add for when operator added and has two mn children for example 
+    ie neither the element or the single sibling is an operator - no, the 
+    other will be a sibling of the operators child'''
 
     #len(siblings) >1
     # consider the first two
     '''i expect that either the element or its first sibling will be an operator'''
     if len(siblings)>1:
-        if get_tag(element) == "mo":
-            return make_node("op", element,siblings, element.text)
-        if get_tag(siblings[0]) == "mo":
-            return make_node("op", element,siblings, siblings[0].text)#get_tag(siblings[0]))
+        if get_tag(element) == "mo": # operator is first, things get complex...
+            # if for example -b+c, we want to make '+' first
+            # vs ( b+c ), we make the brackets then continue with the n children within brackets
+            # () + () should be mrow mo mrow which is okay
+            #return make_node("op", element,siblings, element.text)
+            print("operator was first of multiple children, help!")
+        if get_tag(siblings[0]) == "mo": # operator is second
+            return make_node("2op", element,siblings, siblings[0].text)
 
 
 
 def make_node(type, element, siblings, name):
     '''This method will actually return the nodes that 'check_node' deems should be kept'''
-    if type == "frac_op":
-        return Operator(name, check_node(element[0], child_list(element)) , element.attrib)
+    if type == "2arynode":
+        print("making: " + name)
+        return Operator(name, check_node(element[0], []), check_node(element[1],[]) , element.attrib)
 
-    if type == "op":
-        return Operator(name, check_node(element, siblings[1:]) , siblings[0].attrib)
-    
+    if type == "narynode": # an operator that isnt "op" tag
+        print("making: " + name)
+        return NoSibOperator(name, check_node(element[0], child_list(element)), element.attrib)
+
+    if type == "1op":
+        # op was first child
+        if len(siblings) == 1:
+            newsibs = []
+        if len(siblings)>1:
+            newsibs = siblings[1:]
+        print("making: " + name)
+        return NoSibOperator(name, check_node(siblings[0],newsibs  ) , element.attrib)
+    if type == "2op":
+        #the operator was second child, remove
+        # can only currently get here if the current element has at least 2 siblings
+        if len(siblings) ==2 :
+            newsibs = []
+        else:
+            newsibs = siblings[2:]
+        print("making: " + name)
+        return Operator(name, check_node(element, []), check_node(siblings[1], newsibs), siblings[0].attrib)
+
     #make a value node
     if type == "mn":
-        if siblings == []:
-            sibling = None
-        if len(siblings) == 1:
-            sibling = check_node(siblings[0], [])
-        if len(siblings)>1:
-            sibling = check_node(siblings[0], siblings[1:])
+        sibling = check_for_siblings(siblings)
+        print("making: " + name)
         return Value(name, sibling, element.attrib)  # keeps any attribs from mn
-        # if type == "mn":
-        #     return Value(name, sibling , element.attrib) # keeps any attribs from mn
-        # if type == "mi":
-        #     return Identifier(name, sibling, element.attrib) # keeeps any attribs from mi
     #make a value node
     if type == "mi":
-        if siblings == []:
-            sibling = None
-        if len(siblings) == 1:
-            sibling = check_node(siblings[0], [])
-        if len(siblings)>1:
-            sibling = check_node(siblings[0], siblings[1:])
+        sibling = check_for_siblings(siblings)
+        print("making: " + name)
         return Identifier(name, sibling, element.attrib) # keeeps any attribs from mi
     else:
         print("Tag = " + get_tag(element) + "needs logic implementing" )
@@ -184,3 +206,13 @@ def make_node(type, element, siblings, name):
 #         sibling = make_nodes(siblings[0], siblings[1:])
 #
 #     return Value(get_tag(element), child, sibling, attributes )
+
+def check_for_siblings(siblings):
+    # returns value for siblings
+    if siblings == []:
+        sibling = None
+    if len(siblings) == 1:
+        sibling = check_node(siblings[0], [])
+    if len(siblings) > 1:
+        sibling = check_node(siblings[0], siblings[1:])
+    return sibling
