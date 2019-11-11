@@ -127,7 +127,9 @@ def check_node(element, siblings):
             print( "something unexpected happened, code needs additions!" + get_tag(element))
     '''add for when operator added and has two mn children for example 
     ie neither the element or the single sibling is an operator - no, the 
-    other will be a sibling of the operators child'''
+    other will be a sibling of the operators child
+    
+    fix this!'''
 
     #len(siblings) >1
     # consider the first two
@@ -152,7 +154,8 @@ def make_node(type, element, siblings, name):
 
     if type == "narynode": # an operator that isnt "op" tag
         print("making: " + name)
-        return NoSibOperator(name, check_node(element[0], child_list(element)), element.attrib)
+        #do they not have siblings always?
+        return Operator(name, check_node(element[0], child_list(element)), None , element.attrib)
 
     if type == "1op":
         # op was first child
@@ -161,7 +164,8 @@ def make_node(type, element, siblings, name):
         if len(siblings)>1:
             newsibs = siblings[1:]
         print("making: " + name)
-        return NoSibOperator(name, check_node(siblings[0],newsibs  ) , element.attrib)
+        #do they always not have siblings?
+        return Operator(name, check_node(siblings[0],newsibs  ) , None,  element.attrib)
     if type == "2op":
         #the operator was second child, remove
         # can only currently get here if the current element has at least 2 siblings
@@ -171,6 +175,13 @@ def make_node(type, element, siblings, name):
             newsibs = siblings[2:]
         print("making: " + name)
         return Operator(name, check_node(element, []), check_node(siblings[1], newsibs), siblings[0].attrib)
+        
+        
+        '''
+        check_node(siblings[1], newsibs)
+        THIS IS WRONG BUT IDK WHAT IS RIGHT
+        
+        '''
 
     #make a value node
     if type == "mn":
