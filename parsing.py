@@ -158,14 +158,17 @@ def check_node(element, siblings):
 
 def make_node(type, element, siblings, name):
     '''This method will actually return the nodes that 'check_node' deems should be kept'''
-    if type == "2arynode":
+
+    if type == "2arynode": # an operator that isnt "op" tag that always has 2 children eg sup, frac
         print("making: " + name)
         return Operator(name, check_node(element[0], []), check_node(element[1],[]) , element.attrib)
 
-    if type == "narynode": # an operator that isnt "op" tag
+    if type == "narynode": # an operator that isnt "op" tag that may have 1 or 2 children eg sqrt, usually 1 though?
         print("making: " + name)
         #do they not have siblings always?
         return Operator(name, check_node(element[0], child_list(element)), None , element.attrib)
+
+    '''COME BACK TO SQRT'''
 
     if type == "1op":
         # op was first child
@@ -173,17 +176,24 @@ def make_node(type, element, siblings, name):
             newsibs = []
         if len(siblings)>1:
             newsibs = siblings[1:]
-        print("making: " + name)
+        print("making 1op: " + name)
         #do they always not have siblings?
         return Operator(name, check_node(siblings[0],newsibs  ) , None,  element.attrib)
     if type == "2op":
         #the operator was second child, remove
         # can only currently get here if the current element has at least 2 siblings
 
-        print("making: " + name)
-        return Operator(name, check_node(element,siblings[1:] ), None, siblings[0].attrib)
-        
-        
+        # print("making: " + name)
+        # return Operator(name, check_node(element,siblings[1:] ), None, siblings[0].attrib)
+
+        if len(siblings) == 2:
+            newsibs = []
+        else: # ie len sibs > 2
+            newsibs = siblings[2:]
+        print("making 2op: " + name)
+        return Operator(name, check_node(element, []), check_node(siblings[1], newsibs), siblings[0].attrib)
+
+
         '''
         check_node(siblings[1], newsibs) = operator sibling
         THIS IS WRONG BUT IDK WHAT IS RIGHT
@@ -193,12 +203,12 @@ def make_node(type, element, siblings, name):
     #make a value node
     if type == "mn":
         sibling = check_for_siblings(siblings)
-        print("making: " + name)
+        print("making mn: " + name)
         return Value(name, sibling, element.attrib)  # keeps any attribs from mn
     #make a value node
     if type == "mi":
         sibling = check_for_siblings(siblings)
-        print("making: " + name)
+        print("making mi: " + name)
         return Identifier(name, sibling, element.attrib) # keeps any attribs from mi
     else:
         print("Tag = " + get_tag(element) + "needs logic implementing" )
