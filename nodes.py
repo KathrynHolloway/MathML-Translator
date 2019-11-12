@@ -36,44 +36,30 @@ class Value(Node):
     # def get_child(self):
     #     return self.child
 
-    def get_sibling(self):
+    def get_nextchild(self):
         return self.sibling
 
     def outputxml(self):
         pass
     
 class Operator(Node):
-    def __init__(self, name, child, sibling, attributes):
+    def __init__(self, name, child0, child1, attributes):
         super().__init__(name, attributes)
-        self.child = child
-        self.sibling = sibling
+        self.child0 = child0
+        self.child1 = child1
 
     def get_name(self):
         return self.name
 
     def get_child(self):
-        return self.child
+        return self.child0
 
-    def get_sibling(self):
-        return self.sibling
+    def get_nextchild(self):
+        return self.child1
     # operators can have siblings
 
     def outputxml(self):
         pass
-
-# class NoSibOperator(Node): # some operators eg sup won't have more than a child ?
-#     def __init__(self, name, child, attributes):
-#         super().__init__(name, attributes)
-#         self.child = child
-# 
-#     def get_name(self):
-#         return self.name
-# 
-#     def get_child(self):
-#         return self.child
-# 
-#     def outputxml(self):
-#         pass
 
 class Identifier(Node):
     def __init__(self, name, sibling, attributes):
@@ -87,7 +73,7 @@ class Identifier(Node):
     #     return self.child
     #is a leaf so by definition cannot have a child
 
-    def get_sibling(self):
+    def get_nextchild(self):
         return self.sibling
 
     def outputxml(self):
