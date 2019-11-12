@@ -79,13 +79,7 @@ def make_tree(file_location): #parses the file and converts to internal tree str
     '''todo'''
 
     return tree
-        #get_tag(root), root[0].tag, etree._Element.getnext(root))
-    # print( tree.tag ,  tree.child, tree.sibling)
-    # print(get_tag(root), root.attrib, root.text)
-    # for child in root:
-    #     print_child(child)
-    #     get_children(child)
-    #
+
 
 def check_node(element, siblings):
     ignore = ["math", "mrow"]
@@ -98,7 +92,7 @@ def check_node(element, siblings):
         if get_tag(element) in ignore:
             '''may need to add consideration for no children in future'''
             return check_node(element[0], child_list(element) )
-        #is the cuurent element one we must not make a node of, but consider?
+        #is the curent element one we must consider?
         if get_tag(element) in consider:
             '''will need to change when other tags get included'''
             #currently only does mfrac
@@ -121,6 +115,17 @@ def check_node(element, siblings):
         if get_tag(element) in leaf:
             return make_node(get_tag(element), element,siblings, element.text)
 
+        # is the curent element one we must consider?
+        if get_tag(element) in consider:
+            '''will need to change when other tags get included'''
+            # currently only does mfrac
+            if get_tag(element) == "mfrac":
+                return make_node("2arynode", element, siblings, "/")
+            if get_tag(element) == "msup":
+                return make_node("2arynode", element, siblings, "power")
+            if get_tag(element) == "msqrt":
+                return make_node("narynode", element, siblings, "sqrt")
+
         if get_tag(element) in ignore:
             return check_node(element[0], child_list(element) )
         else:
@@ -131,13 +136,18 @@ def check_node(element, siblings):
     
     fix this!'''
 
-    #len(siblings) >1
+    #len(siblings) >1  ie min of 3 tags to consider incl. the current element
     # consider the first two
     '''i expect that either the element or its first sibling will be an operator'''
     if len(siblings)>1:
         if get_tag(element) == "mo": # operator is first, things get complex...
+            '''instance: op1 mn op2 mn
+            - element is an operator 
+            - siblings[1] is also an operator
+            make siblings[1] with a child of make_node(element, siblings[0])'''
             # if for example -b+c, we want to make '+' first
             # vs ( b+c ), we make the brackets then continue with the n children within brackets
+
             # () + () should be mrow mo mrow which is okay
             #return make_node("op", element,siblings, element.text)
             print("operator was first of multiple children, help!")
@@ -169,16 +179,13 @@ def make_node(type, element, siblings, name):
     if type == "2op":
         #the operator was second child, remove
         # can only currently get here if the current element has at least 2 siblings
-        if len(siblings) ==2 :
-            newsibs = []
-        else:
-            newsibs = siblings[2:]
+
         print("making: " + name)
-        return Operator(name, check_node(element, []), check_node(siblings[1], newsibs), siblings[0].attrib)
+        return Operator(name, check_node(element,siblings[1:] ), None, siblings[0].attrib)
         
         
         '''
-        check_node(siblings[1], newsibs)
+        check_node(siblings[1], newsibs) = operator sibling
         THIS IS WRONG BUT IDK WHAT IS RIGHT
         
         '''
@@ -192,11 +199,21 @@ def make_node(type, element, siblings, name):
     if type == "mi":
         sibling = check_for_siblings(siblings)
         print("making: " + name)
-        return Identifier(name, sibling, element.attrib) # keeeps any attribs from mi
+        return Identifier(name, sibling, element.attrib) # keeps any attribs from mi
     else:
         print("Tag = " + get_tag(element) + "needs logic implementing" )
 
 '''below didn't make a simple enough internal tree structure, needs to be more math focused, remove the XML'''
+
+def check_for_siblings(siblings):
+    # returns value for siblings
+    if siblings == []:
+        sibling = None
+    if len(siblings) == 1:
+        sibling = check_node(siblings[0], [])
+    if len(siblings) > 1:
+        sibling = check_node(siblings[0], siblings[1:])
+    return sibling
 
 # def make_nodes(element, siblings): # creates individual nodes but calls itself for those nodes with children/siblings which are themselves nodes
 #     attributes = element.attrib
@@ -218,12 +235,3 @@ def make_node(type, element, siblings, name):
 #
 #     return Value(get_tag(element), child, sibling, attributes )
 
-def check_for_siblings(siblings):
-    # returns value for siblings
-    if siblings == []:
-        sibling = None
-    if len(siblings) == 1:
-        sibling = check_node(siblings[0], [])
-    if len(siblings) > 1:
-        sibling = check_node(siblings[0], siblings[1:])
-    return sibling

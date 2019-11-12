@@ -25,10 +25,12 @@ print(tree.get_name()) #=
 print(tree.get_child().get_name()) # x
 print(tree.get_child().get_sibling().get_name()) #/
 print( tree.get_child().get_sibling().get_child().get_name()) #+-
+#print( tree.get_child().get_sibling().get_child().get_sibling().get_name()) # *
+
 print( tree.get_child().get_sibling().get_child().get_child().get_name()) #-
 print( tree.get_child().get_sibling().get_child().get_child().get_child().get_name()) #b
 
-print( tree.get_child().get_sibling().get_child().get_child().get_sibling().get_name()) # sqrt
+#print( tree.get_child().get_sibling().get_child().get_child().get_sibling().get_name()) # sqrt
 
 
 # print(os.getcwd())
