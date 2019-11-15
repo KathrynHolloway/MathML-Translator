@@ -75,7 +75,8 @@ def make_tree(file_location): #parses the file and converts to internal tree str
 
     root = doc.getroot()
 
-    tree  = check_node(root, []) # differenetiate between pres tree and cont tree based on command line input
+    tree  = check_node(root, [])
+    # differenetiate between pres tree and cont tree based on command line input
     '''todo'''
 
     return tree
@@ -130,17 +131,41 @@ def check_node(element, siblings):
             return check_node(element[0], child_list(element) )
         else:
             print( "something unexpected happened, code needs additions!" + get_tag(element))
-    '''add for when operator added and has two mn children for example 
-    ie neither the element or the single sibling is an operator - no, the 
-    other will be a sibling of the operators child
-    
-    fix this!'''
 
     #len(siblings) >1  ie min of 3 tags to consider incl. the current element
     # consider the first two
     '''i expect that either the element or its first sibling will be an operator'''
     if len(siblings)>1:
         if get_tag(element) == "mo": # operator is first, things get complex...
+            #element is an operator and so is the sibling[1]
+            #ie op elmnt op etc
+            bracket2loc = 0
+            if element.text.strip() in ["(", "[", "{"]: # is a bracket
+                #find closing bracket
+                i=0
+                while (i < len(siblings)):
+                    print(siblings[i].text)
+                    if get_tag(siblings[i]) =="mo":
+                        if siblings[i].text.strip() in [")", "]", "}"]:
+                            break
+                    bracket2loc += 1
+                    i+=1
+
+                try:
+                    nextsib = siblings[bracket2loc+1]
+                    #if this exists it should be an operator 
+                    if get_tag(nextsib) == "mo":
+                        print("in try bracket loc = " , bracket2loc)
+                        make_bracket_node("opafter", element, siblings, bracket2loc)
+                except IndexError:
+                    print("in except")
+                    make_bracket_node("justbrackets", element, siblings, bracket2loc)
+
+            else: #not a bracket
+                print("help, idk what to do!")
+
+
+
             '''instance: op1 mn op2 mn
             - element is an operator 
             - siblings[1] is also an operator
@@ -151,8 +176,10 @@ def check_node(element, siblings):
             # () + () should be mrow mo mrow which is okay
             #return make_node("op", element,siblings, element.text)
             print("operator was first of multiple children, help!")
-        if get_tag(siblings[0]) == "mo": # operator is second
+        elif get_tag(siblings[0]) == "mo": # operator is second
             return make_node("2op", element,siblings, siblings[0].text)
+        else:
+            print("got stuck in multiple sibings logic")
 
 
 
@@ -206,7 +233,28 @@ def make_node(type, element, siblings, name):
     else:
         print("Tag = " + get_tag(element) + "needs logic implementing" )
 
-'''below didn't make a simple enough internal tree structure, needs to be more math focused, remove the XML'''
+#made this for help with complicated brackets scenarios
+def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc is element
+    if type == "opafter":
+        print(bracket2loc)
+        print("element text" , element.text)
+        print("second bracket: ", siblings[bracket2loc].text)
+        #the brackets
+        #firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_siblings(siblings[:bracket2loc]),None, element.attrib)
+        #secondchild = check_for_siblings(siblings[bracket2loc+2:])
+        #the operator after the brackets
+        print("op after bracket: ", siblings[bracket2loc +1].text)
+
+        return Operator(siblings[bracket2loc +1].text, check_node(element, siblings[:bracket2loc ]), check_for_siblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
+    if type == "justbrackets":
+        print(bracket2loc)
+        name = element.text.strip() + siblings[bracket2loc].text.strip()
+        return Operator(name, check_for_siblings(siblings[:bracket2loc]),
+                                                   None,
+                                                   element.attrib)
+
+
+
 
 def check_for_siblings(siblings):
     # returns value for siblings
@@ -217,6 +265,11 @@ def check_for_siblings(siblings):
     if len(siblings) > 1:
         sibling = check_node(siblings[0], siblings[1:])
     return sibling
+
+
+'''below didn't make a simple enough internal tree structure, needs to be more math focused, remove the XML'''
+
+
 
 # def make_nodes(element, siblings): # creates individual nodes but calls itself for those nodes with children/siblings which are themselves nodes
 #     attributes = element.attrib
