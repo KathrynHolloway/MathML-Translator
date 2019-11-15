@@ -97,7 +97,7 @@ def check_node(element, siblings):
             '''will need to change when other tags get included'''
             #currently only does mfrac
             if get_tag(element) == "mfrac":
-                return make_node("2arynode" , element ,siblings, "/" )
+                return make_node("2arynode" , element ,siblings, "frac" )
             if get_tag(element) == "msup":
                 return make_node("2arynode" , element ,siblings, "power" )
             if get_tag(element) == "msqrt":
@@ -177,7 +177,7 @@ def make_node(type, element, siblings, name):
         if len(siblings)>1:
             newsibs = siblings[1:]
         print("making 1op: " + name)
-        #do they always not have siblings?
+        #do they always not have siblings ?
         return Operator(name, check_node(siblings[0],newsibs  ) , None,  element.attrib)
     if type == "2op":
         #the operator was second child, remove
@@ -192,13 +192,6 @@ def make_node(type, element, siblings, name):
             newsibs = siblings[2:]
         print("making 2op: " + name)
         return Operator(name, check_node(element, []), check_node(siblings[1], newsibs), siblings[0].attrib)
-
-
-        '''
-        check_node(siblings[1], newsibs) = operator sibling
-        THIS IS WRONG BUT IDK WHAT IS RIGHT
-        
-        '''
 
     #make a value node
     if type == "mn":
