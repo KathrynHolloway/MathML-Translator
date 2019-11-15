@@ -29,23 +29,26 @@ tree = make_tree(file_location)
 # print(tree.get_nextchild().get_name()) #2
 
 '''testing quadformpres4.xml'''
-print(tree.get_name()) #=
-print(tree.get_child().get_name()) # x
-print(tree.get_nextchild().get_name()) #/
-print( tree.get_nextchild().get_child().get_name()) #+-
-print( tree.get_nextchild().get_nextchild().get_name()) # *
-
-print( tree.get_nextchild().get_child().get_child().get_name()) #-
-print( tree.get_nextchild().get_child().get_child().get_child().get_name()) #b
-
-print( tree.get_nextchild().get_child().get_nextchild().get_name()) # sqrt
+# print(tree.get_name()) #=
+# print(tree.get_child().get_name()) # x
+# print(tree.get_nextchild().get_name()) #/
+# print( tree.get_nextchild().get_child().get_name()) #+-
+# print( tree.get_nextchild().get_nextchild().get_name()) # *
+#
+# print( tree.get_nextchild().get_child().get_child().get_name()) #-
+# print( tree.get_nextchild().get_child().get_child().get_child().get_name()) #b
+#
+# print( tree.get_nextchild().get_child().get_nextchild().get_name()) # sqrt
+# print( type(tree.get_nextchild().get_child().get_nextchild().get_name())) # str
+# print( type(tree)) # operator
 
 
 # print(os.getcwd())
 # print(tree.child.child.sibling.sibling.child.sibling.sibling.attributes.items() )
 # '''dictionary of attributes'''
 #
-'''print(xmlout(tree))'''
+'''print out the xml tree'''
+print(xmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
