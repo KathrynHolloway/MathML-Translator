@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import xmlout
 import os
-file_location = 'quadformpres4.xml'#"pres_token_elements_1.xml"#input("Please enter the location of your file: ")
+file_location = 'brackets1.xml'#"pres_token_elements_1.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -42,13 +42,22 @@ tree = make_tree(file_location)
 # print( type(tree.get_nextchild().get_child().get_nextchild().get_name())) # str
 # print( type(tree)) # operator
 
+'''testing brackets1.xml'''
+# print(tree.get_name()) #+
+# print(tree.get_child().get_name()) # ()
+# print(tree.get_nextchild().get_name()) #2
+# print( tree.get_child().get_child().get_name()) #+
+# print( tree.get_child().get_child().get_child().get_name()) # x
+# print( tree.get_child().get_child().get_nextchild().get_name()) # 2
+
+
 
 # print(os.getcwd())
 # print(tree.child.child.sibling.sibling.child.sibling.sibling.attributes.items() )
 # '''dictionary of attributes'''
 #
 '''print out the xml tree'''
-print(xmlout(tree))
+# print(xmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
