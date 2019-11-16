@@ -156,10 +156,10 @@ def check_node(element, siblings):
                     next_sib = siblings[bracket2loc +1]
                     #if this exists it should be an operator 
                     if get_tag(next_sib) == "mo":
-                        print("in try bracket loc = " , bracket2loc)
+                        print("in try bracket clause, loc = " , bracket2loc)
                         make_bracket_node("opafter", element, siblings, bracket2loc)
                 except IndexError:
-                    print("location, except")
+                    print("location: except")
                     make_bracket_node("justbrackets", element, siblings, bracket2loc)
 
             else: #not a bracket
@@ -239,7 +239,7 @@ def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc
         # secondchild = check_for_siblings(siblings[bracket2loc+2:])
         #the operator after the brackets
         # print("op after bracket: ", siblings[bracket2loc +1].text)
-
+        print("making op after: " + siblings[bracket2loc +1].text)
         return Operator(siblings[bracket2loc +1].text, check_node(element, siblings[:bracket2loc +1]), check_for_siblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
         # return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
 
