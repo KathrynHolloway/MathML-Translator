@@ -244,10 +244,10 @@ def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc
         # return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
 
     if type == "justbrackets":
-        name = element.text.strip() + siblings[bracket2loc].text.strip()
-        print("making justbrackets: " + name)
+        print("brac loc : " , bracket2loc)
+        print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
         # return Operator(name, check_for_siblings(siblings[:bracket2loc]), None, element.attrib)
-        return Operator(name, check_for_siblings(siblings[:bracket2loc]), None, element.attrib)
+        return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(), check_for_siblings(siblings[:bracket2loc]), element.attrib)
 
 
     else:
