@@ -118,6 +118,32 @@ class Operator(Node):
             #third output the xml for child1
             self.get_nextchild().outputpresxml(parent)
 
+class Brackets(Node):
+    def __init__(self, name , closebracket, child0, attributes): #name is open bracket
+        super().__init__(name, attributes)
+        # self.openbracket = openbracket
+        self.closebracket = closebracket
+        self.child0 = child0
+
+    def get_name(self):
+        return self.name
+
+    def get_closebrac(self):
+        return self.closebracket
+
+    def get_child(self):
+        return self.child0
+
+    def outputpresxml(self, parent):
+        mrow = etree.SubElement(parent, "mrow")
+        moopen = etree.SubElement(mrow, "mo")
+        moopen.text = self.get_openbrac()
+        # output the xml for only child
+        self.get_child().outputpresxml(mrow)
+        moclose = etree.SubElement( mrow, "mo")
+        moclose.text = self.get_closebrac()
+
+
 
 class Identifier(Node):
     def __init__(self, name, sibling, attributes):
