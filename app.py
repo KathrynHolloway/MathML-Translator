@@ -43,13 +43,12 @@ tree = make_tree(file_location)
 # print( type(tree)) # operator
 
 '''testing brackets1.xml'''
-# print(tree.get_name()) #+
+print(tree) #-
 # print(tree.get_child().get_name()) # ()
-# print(tree.get_nextchild().get_name()) #2
+# print(tree.get_nextchild().get_name()) #7
 # print( tree.get_child().get_child().get_name()) #+
 # print( tree.get_child().get_child().get_child().get_name()) # x
 # print( tree.get_child().get_child().get_nextchild().get_name()) # 2
-
 
 
 # print(os.getcwd())
