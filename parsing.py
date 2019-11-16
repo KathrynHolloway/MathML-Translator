@@ -140,7 +140,8 @@ def check_node(element, siblings):
             #element is an operator and so is the sibling[1]
             #ie op elmnt op etc
             bracket2loc = 0
-            if element.text.strip() in ["(", "[", "{"]: # is a bracket
+            # is a bracket
+            if element.text.strip() in ["(", "[", "{"]:
                 #find closing bracket
                 i=0
                 while (i < len(siblings)):
@@ -152,13 +153,13 @@ def check_node(element, siblings):
                     i+=1
 
                 try:
-                    nextsib = siblings[bracket2loc+1]
+                    next_sib = siblings[bracket2loc +1]
                     #if this exists it should be an operator 
-                    if get_tag(nextsib) == "mo":
+                    if get_tag(next_sib) == "mo":
                         print("in try bracket loc = " , bracket2loc)
                         make_bracket_node("opafter", element, siblings, bracket2loc)
                 except IndexError:
-                    print("in except")
+                    print("location, except")
                     make_bracket_node("justbrackets", element, siblings, bracket2loc)
 
             else: #not a bracket
@@ -175,7 +176,8 @@ def check_node(element, siblings):
 
             # () + () should be mrow mo mrow which is okay
             #return make_node("op", element,siblings, element.text)
-            print("operator was first of multiple children, help!")
+
+            #print("operator was first of multiple children, help! " , element.text )
         elif get_tag(siblings[0]) == "mo": # operator is second
             return make_node("2op", element,siblings, siblings[0].text)
         else:
@@ -209,10 +211,6 @@ def make_node(type, element, siblings, name):
     if type == "2op":
         #the operator was second child, remove
         # can only currently get here if the current element has at least 2 siblings
-
-        # print("making: " + name)
-        # return Operator(name, check_node(element,siblings[1:] ), None, siblings[0].attrib)
-
         if len(siblings) == 2:
             newsibs = []
         else: # ie len sibs > 2
@@ -233,25 +231,27 @@ def make_node(type, element, siblings, name):
     else:
         print("Tag = " + get_tag(element) + "needs logic implementing" )
 
-#made this for help with complicated brackets scenarios
+#made this for help with more complex bracket scenarios
 def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc is element
     if type == "opafter":
-        print(bracket2loc)
-        print("element text" , element.text)
-        print("second bracket: ", siblings[bracket2loc].text)
         #the brackets
-        #firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_siblings(siblings[:bracket2loc]),None, element.attrib)
-        #secondchild = check_for_siblings(siblings[bracket2loc+2:])
+        # firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_siblings(siblings[:bracket2loc]),None, element.attrib)
+        # secondchild = check_for_siblings(siblings[bracket2loc+2:])
         #the operator after the brackets
-        print("op after bracket: ", siblings[bracket2loc +1].text)
+        # print("op after bracket: ", siblings[bracket2loc +1].text)
 
-        return Operator(siblings[bracket2loc +1].text, check_node(element, siblings[:bracket2loc ]), check_for_siblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
+        return Operator(siblings[bracket2loc +1].text, check_node(element, siblings[:bracket2loc +1]), check_for_siblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
+        # return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
+
     if type == "justbrackets":
-        print(bracket2loc)
         name = element.text.strip() + siblings[bracket2loc].text.strip()
-        return Operator(name, check_for_siblings(siblings[:bracket2loc]),
-                                                   None,
-                                                   element.attrib)
+        print("making justbrackets: " + name)
+        # return Operator(name, check_for_siblings(siblings[:bracket2loc]), None, element.attrib)
+        return Operator(name, check_for_siblings(siblings[:bracket2loc]), None, element.attrib)
+
+
+    else:
+        print("Tag = " + get_tag(element) + "needs logic implementing")
 
 
 
