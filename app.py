@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import xmlout
 import os
-file_location = 'brackets1.xml'#"pres_token_elements_1.xml"#input("Please enter the location of your file: ")
+file_location = "addcont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -23,12 +23,12 @@ tree = make_tree(file_location)
 # print(tree.child.sibling.name) #2
 # print(tree.attributes)
 
-'''testing x=2pres.xml'''
+'''testing x=2pres.xml''' '''pass'''
 # print(tree.get_name()) #=
 # print(tree.get_child().get_name()) # x
 # print(tree.get_nextchild().get_name()) #2
 
-'''testing quadformpres4.xml'''
+'''testing quadformpres4.xml''' '''pass'''
 # print(tree.get_name()) #=
 # print(tree.get_child().get_name()) # x
 # print(tree.get_nextchild().get_name()) #/
@@ -42,13 +42,20 @@ tree = make_tree(file_location)
 # print( type(tree.get_nextchild().get_child().get_nextchild().get_name())) # str
 # print( type(tree)) # operator
 
-'''testing brackets1.xml'''
-print(tree) #-
+'''testing brackets1.xml''' '''NOTE: This doesn't work yet'''
+# print(tree.get_child()) #-
 # print(tree.get_child().get_name()) # ()
 # print(tree.get_nextchild().get_name()) #7
 # print( tree.get_child().get_child().get_name()) #+
 # print( tree.get_child().get_child().get_child().get_name()) # x
 # print( tree.get_child().get_child().get_nextchild().get_name()) # 2
+
+'''Testing addcont.xml''' '''pass'''
+# print(tree.get_name()) # +
+# print(tree.get_child().get_name()) # x
+# print(tree.get_nextchild().get_name()) #+
+# print( tree.get_nextchild().get_child().get_name()) #y
+# print( tree.get_nextchild().get_nextchild().get_name()) #z
 
 
 # print(os.getcwd())
