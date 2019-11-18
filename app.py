@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import xmlout
 import os
-file_location = "addcont.xml"#input("Please enter the location of your file: ")
+file_location = "multiaddcont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -56,6 +56,10 @@ tree = make_tree(file_location)
 # print(tree.get_nextchild().get_name()) #+
 # print( tree.get_nextchild().get_child().get_name()) #y
 # print( tree.get_nextchild().get_nextchild().get_name()) #z
+
+'''Testing sinxcont.xml ''' '''pass'''
+print(tree.get_name()) #sin
+print( tree.get_child().get_name()) #x
 
 
 # print(os.getcwd())
