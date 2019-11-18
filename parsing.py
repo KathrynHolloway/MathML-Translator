@@ -268,8 +268,8 @@ def check_for_psiblings(siblings):
 
 def check_cnode(element, siblings):
     ignore = ["math" ,"apply", "reln"]
-    consider = ["plus", "minus", "times", "divide"]
-    consider_node_name = ["+", "-", "*", "/"]
+    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan"]
+    consider_node_name = ["+", "-", "*", "/", "eq", "sin", "cos", "tan"]
     leaf = ["cn", "ci"]
 
     # the element is the only xml node available for consideration
