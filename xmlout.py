@@ -2,7 +2,7 @@ from lxml import etree
 
 '''for now, print the xml as a string instead of writing to an actual file?'''
 
-def xmlout(tree):
+def presxmlout(tree):
     # with open("output.xml", 'w') as output_file:
     #     output_file.write('some info here. great')
     '''above: if the file exists it writes to (and over) that file
@@ -23,6 +23,41 @@ def xmlout(tree):
     # root.append(etree.Element(child.get_name()))
 
     return etree.tostring(root)
+
+
+def contxmlout(tree):
+    # with open("output.xml", 'w') as output_file:
+    #     output_file.write('some info here. great')
+    '''above: if the file exists it writes to (and over) that file
+             should create a file if one with that name doesn't exist, then write'''
+    '''next: want to walk the tree and make my personal structure back into and etree'''
+
+    root = etree.Element("math")
+
+
+    # make the other nodes from the internal tree structure
+
+    tree.outputcontxml(root)
+
+    # child = tree.get_child()
+    # root.append(etree.Element(child.get_name()))
+
+    return etree.tostring(root)
+
+''' +, - , etc aren't valid content tag names so they need changing'''
+def translatename(nodename):
+    if nodename == "=":
+        newname = "eq"
+    if nodename == "+":
+        newname = "plus"
+    if nodename == "-":
+        newname = "minus"
+    if nodename == "*":
+        newname = "times"
+    if nodename == "/":
+        newname = "divide"
+
+    return newname
 
 # def makechildren(treenodeparent, xmlparent):
 #     #print(treenodeparent)
