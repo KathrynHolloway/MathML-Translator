@@ -8,7 +8,6 @@ def docparse(file_location):
     parser = etree.XMLParser(load_dtd=True, no_network=False)
     doc = etree.parse(file_location, parser=parser)
 
-    #"quadformpres4.xml" use this xml doc for testing
     # this gets the xml version from the doc - doc.docinfo.xml_version
     # and the doc type doc.docinfo.doctype
 
@@ -268,8 +267,8 @@ def check_for_psiblings(siblings):
 
 def check_cnode(element, siblings):
     ignore = ["math" ,"apply", "reln"]
-    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan"]
-    consider_node_name = ["+", "-", "*", "/", "eq", "sin", "cos", "tan"]
+    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power"]
+    consider_node_name = ["+", "-", "*", "/", "=", "sin", "cos", "tan","sqrt","power"]
     leaf = ["cn", "ci"]
 
     # the element is the only xml node available for consideration
