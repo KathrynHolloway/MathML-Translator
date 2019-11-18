@@ -1,8 +1,8 @@
 from parsing import *
 from nodes import Node
-from xmlout import xmlout
+from xmlout import *
 import os
-file_location = "multiaddcont.xml"#input("Please enter the location of your file: ")
+file_location = "addcont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -43,6 +43,7 @@ tree = make_tree(file_location)
 # print( type(tree)) # operator
 
 '''testing brackets1.xml''' '''NOTE: This doesn't work yet'''
+# print(tree) # not none type
 # print(tree.get_child()) #-
 # print(tree.get_child().get_name()) # ()
 # print(tree.get_nextchild().get_name()) #7
@@ -58,16 +59,45 @@ tree = make_tree(file_location)
 # print( tree.get_nextchild().get_nextchild().get_name()) #z
 
 '''Testing sinxcont.xml ''' '''pass'''
-print(tree.get_name()) #sin
-print( tree.get_child().get_name()) #x
+# print(tree.get_name()) #sin
+# print( tree.get_child().get_name()) #x
+
+'''Testing quadformcont.xml''' '''Pass'''
+# print(tree.get_name()) #=
+# print(tree.get_child().get_name()) # x
+# print(tree.get_nextchild().get_name()) #/
+# print( tree.get_nextchild().get_child().get_name()) #+-
+# print( tree.get_nextchild().get_nextchild().get_name()) # *
+#
+# print( tree.get_nextchild().get_child().get_child().get_name()) #-
+# print( tree.get_nextchild().get_child().get_child().get_child().get_name()) #b
+#
+# print( tree.get_nextchild().get_child().get_nextchild().get_name()) # sqrt
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_name()) # -
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_child().get_name()) # power
+#
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_child().get_child().get_name()) # b
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_child().get_nextchild().get_name()) # 2
+#
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_name()) # *
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_child().get_name()) # 4
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_nextchild().get_name()) # *
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_nextchild().get_child().get_name()) # a
+# print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_nextchild().get_nextchild().get_name()) # c
+#
+
+
 
 
 # print(os.getcwd())
 # print(tree.child.child.sibling.sibling.child.sibling.sibling.attributes.items() )
 # '''dictionary of attributes'''
 #
-'''print out the xml tree'''
-# print(xmlout(tree))
+'''print out the presentation xml tree'''
+# print(presxmlout(tree))
+
+'''print out the content xml tree'''
+print(contxmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
