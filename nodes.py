@@ -1,14 +1,10 @@
 from abc import ABC, abstractmethod #note that the later is a decorator
 from lxml import etree
+from xmlout import translatename
 
 class Node(ABC):
-    def __init__(self, name, attributes):
-        self.name = name
+    def __init__(self, attributes):
         self.attributes = attributes
-
-    @abstractmethod
-    def get_name(self):
-        return self.name
 
     # @abstractmethod
     # def get_child(self):
@@ -28,7 +24,8 @@ class Node(ABC):
 class Value(Node):
     #values are numbers and leaves so by definition, no children
     def __init__(self, name, sibling, attributes):
-        super().__init__(name, attributes)
+        super().__init__(attributes)
+        self.name = name
         self.sibling = sibling
 
     def get_name(self):
@@ -45,9 +42,15 @@ class Value(Node):
         mn = etree.SubElement(parent, "mn")
         mn.text = self.get_name()
 
+    def outputcontxml(self,parent):
+        # output the xml for this element
+        cn = etree.SubElement(parent, "cn")
+        cn.text = self.get_name()
+
 class Operator(Node):
     def __init__(self, name, child0, child1, attributes):
-        super().__init__(name, attributes)
+        super().__init__(attributes)
+        self.name = name
         self.child0 = child0
         self.child1 = child1
 
@@ -118,15 +121,36 @@ class Operator(Node):
             #third output the xml for child1
             self.get_nextchild().outputpresxml(parent)
 
+    def outputcontxml(self,parent):
+        apply = etree.SubElement(parent, "apply")
+        op = etree.SubElement(apply, translatename(self.get_name()))
+        self.get_child().outputcontxml(apply)
+
+        if self.get_nextchild().get_name() == self.get_name():
+            self.get_nextchild().outputnextcontxml(apply, self.get_name())
+        else:
+            self.get_nextchild().outputcontxml(apply)
+
+    def outputnextcontxml(self, parent, prevop):
+        #mamke the lhs child
+        self.get_child().outputcontxml(parent)
+        #check the rhs child
+        if self.get_nextchild().get_name() == prevop :
+            self.get_nextchild().outputnextcontxml(parent, prevop)
+
+        else:
+            # make last rhs child
+            self.get_nextchild().outputcontxml(parent)
+
 class Brackets(Node):
-    def __init__(self, name , closebracket, child0, attributes): #name is open bracket
-        super().__init__(name, attributes)
-        # self.openbracket = openbracket
+    def __init__(self, openbracket , closebracket, child0, attributes): #name is open bracket
+        super().__init__(attributes)
+        self.openbracket = openbracket
         self.closebracket = closebracket
         self.child0 = child0
 
-    def get_name(self):
-        return self.name
+    def get_openbrac(self):
+        return self.openbracket
 
     def get_closebrac(self):
         return self.closebracket
@@ -143,11 +167,15 @@ class Brackets(Node):
         moclose = etree.SubElement( mrow, "mo")
         moclose.text = self.get_closebrac()
 
+    def outputcontxml(self,parent):
+        print("implement")
+
 
 
 class Identifier(Node):
     def __init__(self, name, sibling, attributes):
-        super().__init__(name, attributes)
+        super().__init__(attributes)
+        self.name = name
         self.sibling = sibling
 
     def get_name(self):
@@ -164,3 +192,8 @@ class Identifier(Node):
         # output the xml for this element
         mi = etree.SubElement(parent, "mi")
         mi.text = self.get_name()
+
+    def outputcontxml(self,parent):
+        # output the xml for this element
+        ci = etree.SubElement(parent, "ci")
+        ci.text = self.get_name()
