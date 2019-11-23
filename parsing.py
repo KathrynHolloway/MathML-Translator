@@ -141,19 +141,13 @@ def check_pnode(element, siblings):
         if get_tag(element) == "mo": # operator is first, things get complex...
             #element is an operator and so is the sibling[1]
             #ie op elmnt op etc
-            bracket2loc = 0
+
             # is a bracket
             if element.text.strip() in ["(", "[", "{"]:
                 #find closing bracket
-                i=0
-                while (i < len(siblings)):
-                    print(siblings[i].text)
-                    if get_tag(siblings[i]) =="mo":
-                        if siblings[i].text.strip() in [")", "]", "}"]:
-                            break
-                    bracket2loc += 1
-                    i+=1
+                bracket2loc = find_other_bracket(siblings)
 
+                #check if there is an operator after the closing bracket
                 try:
                     next_sib = siblings[bracket2loc +1]
                     #if this exists it should be an operator 
@@ -168,13 +162,27 @@ def check_pnode(element, siblings):
                 if get_tag(siblings[1]) == "mo":
                     make_pnode("3op", element, siblings, siblings[1].text)
 
-
         elif get_tag(siblings[0]) == "mo": # operator is second
-            return make_pnode("2op", element,siblings, siblings[0].text)
+            # check if the operator is a function application, it require different tree structure
+            if element.text.strip() in ["sin", "cos" , "tan"]:
+                #this assumes that a function application is applied to the sin, cos etc and its contents
+                make_pnode("1op", element, siblings[1:], element.text.strip())
+            else:
+                return make_pnode("2op", element,siblings, siblings[0].text)
         else:
             print("got stuck in multiple sibings logic")
 
-
+def find_other_bracket(siblings):
+    bracket2loc = 0
+    i = 0
+    while (i < len(siblings)):
+        print(siblings[i].text)
+        if get_tag(siblings[i]) == "mo":
+            if siblings[i].text.strip() in [")", "]", "}"]:
+                break
+        bracket2loc += 1
+        i += 1
+    return bracket2loc
 
 def make_pnode(type, element, siblings, name):
     '''This method will actually return the nodes that 'check_pnode' deems should be kept'''
@@ -198,6 +206,7 @@ def make_pnode(type, element, siblings, name):
             newsibs = siblings[1:]
         print("making 1op: " + name)
         #do they always not have siblings ?
+        print("type", Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib).get_name())
         return Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib)
     if type == "2op":
         #the operator was second child, remove
@@ -267,8 +276,8 @@ def check_for_psiblings(siblings):
 
 def check_cnode(element, siblings):
     ignore = ["math" ,"apply", "reln"]
-    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power"]
-    consider_node_name = ["+", "-", "*", "/", "=", "sin", "cos", "tan","sqrt","power"]
+    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power", "factorial"]
+    consider_node_name = ["+", "-", "*", "/", "=", "sin", "cos", "tan","sqrt","power", "!"]
     leaf = ["cn", "ci"]
 
     # the element is the only xml node available for consideration
