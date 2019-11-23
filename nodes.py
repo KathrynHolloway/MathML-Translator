@@ -65,12 +65,12 @@ class Operator(Node):
     # operators can have siblings
 
     def outputpresxml(self, parent):
-        if self.get_name() in ["frac", "power"]:
+        if self.get_name() in ["/", "power"]:
             #output the xml for the operator
             if self.get_name() == "power":
                 mo = etree.SubElement(parent, "msup")
             else:
-                mo = etree.SubElement(parent, "m" + self.get_name())
+                mo = etree.SubElement(parent, "mfrac")
 
             #output the xml for the first child
             #should make sure no unecessary mrow are made but doesn't work? does now

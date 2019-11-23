@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import *
 import os
-file_location = "sinxcont.xml"#input("Please enter the location of your file: ")
+file_location = "quadformcont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -17,11 +17,6 @@ file_location = "sinxcont.xml"#input("Please enter the location of your file: ")
 
 '''make the internal tree representation'''
 tree = make_tree(file_location)
-
-# print(tree.name) #=
-# print(tree.child.name) # x
-# print(tree.child.sibling.name) #2
-# print(tree.attributes)
 
 '''testing x=2pres.xml''' '''pass'''
 # print(tree.get_name()) #=
@@ -101,10 +96,10 @@ tree = make_tree(file_location)
 # '''dictionary of attributes'''
 #
 '''print out the presentation xml tree'''
-print(presxmlout(tree))
+# print(presxmlout(tree))
 
 '''print out the content xml tree'''
-# print(contxmlout(tree))
+print(contxmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
