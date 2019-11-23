@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import *
 import os
-file_location = "addcont.xml"#input("Please enter the location of your file: ")
+file_location = "sinxcont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -86,7 +86,14 @@ tree = make_tree(file_location)
 # print( tree.get_nextchild().get_child().get_nextchild().get_child().get_nextchild().get_nextchild().get_nextchild().get_name()) # c
 #
 
+'''Testing factorialcont.xml and factorialpres.xml'''
+# print(tree.get_name()) #!
+# print(tree.get_child().get_name()) #3 or 7
 
+'''Testing sinpres.xml''' '''NONE TYPE MADE'''
+# print("TOP LEVEL NODE TYPE = " , tree) #None
+# print(tree.get_name()) #sin
+# print(tree.get_child().get_name()) # x
 
 
 # print(os.getcwd())
@@ -94,10 +101,10 @@ tree = make_tree(file_location)
 # '''dictionary of attributes'''
 #
 '''print out the presentation xml tree'''
-# print(presxmlout(tree))
+print(presxmlout(tree))
 
 '''print out the content xml tree'''
-print(contxmlout(tree))
+# print(contxmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
