@@ -82,7 +82,7 @@ def make_tree(file_location): #parses the file and converts to internal tree str
 
     return tree
 
-'''Parsing presentation ML into the internal tree structure'''
+'''Parsing presentation ML into the internal tree structure''' '''BEGINNING'''
 
 def check_pnode(element, siblings):
     ignore = ["math", "mrow"]
@@ -100,34 +100,34 @@ def check_pnode(element, siblings):
             '''will need to change when other tags get included'''
             #currently only does mfrac
             if get_tag(element) == "mfrac":
-                return make_pnode("2arynode" , element ,siblings, "frac" )
+                return make2childopnode( element ,siblings, "/" )
             if get_tag(element) == "msup":
-                return make_pnode("2arynode" , element ,siblings, "power" )
+                return make2childopnode(element ,siblings, "power" )
             if get_tag(element) == "msqrt":
-                return make_pnode("narynode" , element ,siblings, "sqrt" )
+                return make1childopnode(element ,siblings, "sqrt" )
 
 
         #is the current element a leaf?
         if get_tag(element) in leaf:
-            return make_pnode(get_tag(element), element,siblings, element.text)
+            return leafnode(get_tag(element), element,siblings, element.text)
 
     #the current element has only one sibling
     if len(siblings) == 1:
         if get_tag(element) == "mo":
-            return make_pnode("1op", element,siblings, element.text)
+            return opfirst(element,siblings, element.text)
         if get_tag(element) in leaf:
-            return make_pnode(get_tag(element), element,siblings, element.text)
+            return leafnode(get_tag(element), element,siblings, element.text)
 
         # is the curent element one we must consider?
         if get_tag(element) in consider:
             '''will need to change when other tags get included'''
             # currently only does mfrac
             if get_tag(element) == "mfrac":
-                return make_pnode("2arynode", element, siblings, "/")
+                return make2childopnode( element, siblings, "/")
             if get_tag(element) == "msup":
-                return make_pnode("2arynode", element, siblings, "power")
+                return make2childopnode(element, siblings, "power")
             if get_tag(element) == "msqrt":
-                return make_pnode("narynode", element, siblings, "sqrt")
+                return make1childopnode(element, siblings, "sqrt")
         #necessary?
         if get_tag(element) in ignore:
             return check_pnode(element[0], child_list(element) )
@@ -160,15 +160,15 @@ def check_pnode(element, siblings):
 
             else: #not a bracket
                 if get_tag(siblings[1]) == "mo":
-                    make_pnode("3op", element, siblings, siblings[1].text)
+                    opthird( element, siblings, siblings[1].text)
 
         elif get_tag(siblings[0]) == "mo": # operator is second
             # check if the operator is a function application, it require different tree structure
             if element.text.strip() in ["sin", "cos" , "tan"]:
                 #this assumes that a function application is applied to the sin, cos etc and its contents
-                make_pnode("1op", element, siblings[1:], element.text.strip())
+                opfirst(element, siblings[1:], element.text.strip())
             else:
-                return make_pnode("2op", element,siblings, siblings[0].text)
+                return opsecond(element,siblings, siblings[0].text)
         else:
             print("got stuck in multiple sibings logic")
 
@@ -184,69 +184,120 @@ def find_other_bracket(siblings):
         i += 1
     return bracket2loc
 
-def make_pnode(type, element, siblings, name):
-    '''This method will actually return the nodes that 'check_pnode' deems should be kept'''
+# def make_pnode(type, element, siblings, name):
+#     '''This method will actually return the nodes that 'check_pnode' deems should be kept'''
 
-    if type == "2arynode": # an operator that isnt "op" tag that always has 2 children eg sup, frac
-        print("making: " + name)
-        return Operator(name, check_pnode(element[0], []), check_pnode(element[1],[]) , element.attrib)
+    # if type == "2arynode": # an operator that isnt "op" tag that always has 2 children eg sup, frac
+    #     print("making: " + name)
+    #     return Operator(name, check_pnode(element[0], []), check_pnode(element[1],[]) , element.attrib)
 
-    if type == "narynode": # an operator that isnt "op" tag that may have 1 or 2 children eg sqrt, usually 1 though?
-        print("making: " + name)
-        #do they not have siblings always?
-        return Operator(name, check_pnode(element[0], child_list(element)), None , element.attrib)
+    # if type == "narynode": # an operator that isnt "op" tag that may have 1 or 2 children eg sqrt, usually 1 though?
+        # print("making: " + name)
+        # #do they not have siblings always?
+        # return Operator(name, check_pnode(element[0], child_list(element)), None , element.attrib)
 
-    '''COME BACK TO SQRT'''
+    # '''COME BACK TO SQRT'''
 
-    if type == "1op":
-        # op was first child
-        if len(siblings) == 1:
-            newsibs = []
-        if len(siblings)>1:
-            newsibs = siblings[1:]
-        print("making 1op: " + name)
-        #do they always not have siblings ?
-        print("type", Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib).get_name())
-        return Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib)
-    if type == "2op":
-        #the operator was second child, remove
-        # can only currently get here if the current element has at least 2 siblings
-        if len(siblings) == 2:
-            newsibs = []
-        else: # ie len sibs > 2
-            newsibs = siblings[2:]
-        print("making 2op: " + name)
-        return Operator(name, check_pnode(element, []), check_pnode(siblings[1], newsibs), siblings[0].attrib)
+    # if type == "1op":
+        # # op was first child
+        # if len(siblings) == 1:
+        #     newsibs = []
+        # if len(siblings)>1:
+        #     newsibs = siblings[1:]
+        # print("making 1op: " + name)
+        # #do they always not have siblings ?
+        # print("type", Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib).get_name())
+        # return Operator(name, check_pnode(siblings[0],newsibs  ) , None,  element.attrib)
+    # if type == "2op":
+        # #the operator was first sibling, make and remove
+        # # can only currently get here if the current element has at least 2 siblings
+        # if len(siblings) == 2:
+        #     newsibs = []
+        # else: # ie len sibs > 2
+        #     newsibs = siblings[2:]
+        # print("making 2op: " + name)
+        # return Operator(name, check_pnode(element, []), check_pnode(siblings[1], newsibs), siblings[0].attrib)
 
-    if type == "3op":
-        print("making 3op: " + name)
-        # return Operator(name, check_pnode(element, siblings[0]), check_for_psiblings(siblings[2:]), siblings[1].attrib)
-        return Operator(name, make_pnode("mi", siblings[0], [], siblings[0].text), check_for_psiblings(siblings[2:]), siblings[1].attrib)
+    # if type == "3op":
+    #     print("making 3op: " + name)
+    #     # return Operator(name, check_pnode(element, siblings[0]), check_for_psiblings(siblings[2:]), siblings[1].attrib)
+    #     return Operator(name, make_pnode("mi", siblings[0], [], siblings[0].text), check_for_psiblings(siblings[2:]), siblings[1].attrib)
 
     #make a value node
-    if type == "mn":
+    # if type == "mn":
+    #     sibling = check_for_psiblings(siblings)
+    #     print("making mn: " + name)
+    #     return Value(name, sibling, element.attrib)  # keeps any attribs from mn
+    # #make a value node
+    # if type == "mi":
+    #     sibling = check_for_psiblings(siblings)
+    #     print("making mi: " + name)
+    #     return Identifier(name, sibling, element.attrib) # keeps any attribs from mi
+    # else:
+    #     print("Tag = " + get_tag(element) + "needs logic implementing" )
+
+def make2childopnode(element, siblings, name):
+    #for nodes such as power, fractions etc which always have 2 children
+    print("making: " + name)
+    return Operator(name, check_pnode(element[0], []), check_pnode(element[1], []), element.attrib)
+
+def make1childopnode(element, siblings, name):
+    print("making: " + name)
+    #sqrt
+    # do they not have siblings always?
+    return Operator(name, check_pnode(element[0], child_list(element)), None, element.attrib)
+
+def opfirst(element, siblings, name):
+    # op was first child
+    if len(siblings) == 1:
+        newsibs = []
+    if len(siblings) > 1:
+        newsibs = siblings[1:]
+    print("making 1op: " + name)
+    # do they always not have siblings ?
+    # print("type", Operator(name, check_pnode(siblings[0], newsibs), None, element.attrib).get_name())
+    return Operator(name, check_pnode(siblings[0], newsibs), None, element.attrib)
+
+def opsecond(element, siblings, name):
+    # the operator was first sibling, make and remove
+    # can only currently get here if the current element has at least 2 siblings
+    if len(siblings) == 2:
+        newsibs = []
+    else:  # ie len sibs > 2
+        newsibs = siblings[2:]
+    print("making 2op: " + name)
+    return Operator(name, check_pnode(element, []), check_pnode(siblings[1], newsibs), siblings[0].attrib)
+
+def opthird(element, siblings, name):
+    print("making 3op: " + name)
+    return Operator(name, check_pnode(element, siblings[0]), check_for_psiblings(siblings[2:]), siblings[1].attrib)
+    # return Operator(name, make_pnode("mi", siblings[0], [], siblings[0].text), check_for_psiblings(siblings[2:]),
+    #                 siblings[1].attrib)
+
+def leafnode(type, element, siblings, name):
+       if type == "mn":
+        # make a value node
         sibling = check_for_psiblings(siblings)
         print("making mn: " + name)
         return Value(name, sibling, element.attrib)  # keeps any attribs from mn
-    #make a value node
-    if type == "mi":
-        sibling = check_for_psiblings(siblings)
-        print("making mi: " + name)
-        return Identifier(name, sibling, element.attrib) # keeps any attribs from mi
-    else:
-        print("Tag = " + get_tag(element) + "needs logic implementing" )
+       if type == "mi":
+           #make identifier node
+           sibling = check_for_psiblings(siblings)
+           print("making mi: " + name)
+           return Identifier(name, sibling, element.attrib)  # keeps any attribs from mi
+       else:
+           pass
 
 #made this for help with more complex bracket scenarios
 def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc is element
     if type == "opafter":
         #the brackets
-        # firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]),None, element.attrib)
-        # secondchild = check_for_psiblings(siblings[bracket2loc+2:])
+        firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]),None, element.attrib)
+        secondchild = check_for_psiblings(siblings[bracket2loc+2:])
         #the operator after the brackets
-        # print("op after bracket: ", siblings[bracket2loc +1].text)
-        print("making op after: " + siblings[bracket2loc +1].text)
-        return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
-        # return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
+        print("making op after bracket: " + siblings[bracket2loc +1].text)
+        # return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
+        return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
 
     if type == "justbrackets":
         print("brac loc : " , bracket2loc)
@@ -256,8 +307,8 @@ def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc
 
 
     else:
-        print("Tag = " + get_tag(element) + "needs logic implementing")
-
+        pass
+        # print("Tag = " + get_tag(element) + "needs logic implementing")
 
 
 #helper method, considers how many siblings there are and uses that to return what the sibling of a presentation node should be
@@ -271,13 +322,14 @@ def check_for_psiblings(siblings):
         sibling = check_pnode(siblings[0], siblings[1:])
     return sibling
 
+'''END OF PRES ML'''
 
 '''Parsing content ML into the internal tree structure'''
 
 def check_cnode(element, siblings):
     ignore = ["math" ,"apply", "reln"]
     consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power", "factorial"]
-    consider_node_name = ["+", "-", "*", "/", "=", "sin", "cos", "tan","sqrt","power", "!"]
+    consider_node_name = ["+", "-", "&#8290;", "/", "=", "sin", "cos", "tan","sqrt","power", "!"]
     leaf = ["cn", "ci"]
 
     # the element is the only xml node available for consideration
