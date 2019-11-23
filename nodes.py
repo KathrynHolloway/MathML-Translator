@@ -75,7 +75,6 @@ class Operator(Node):
             #output the xml for the first child
             #should make sure no unecessary mrow are made but doesn't work? does now
             if type(self.get_child()) is Operator:
-                print("here")
                 mrow1 = etree.SubElement(mo, "mrow")
                 self.get_child().outputpresxml(mrow1)
             else:
@@ -89,8 +88,23 @@ class Operator(Node):
                 self.get_nextchild().outputpresxml(mrow2)
             else:
                 self.get_nextchild().outputpresxml(mo)
-            # mrow2 = etree.SubElement(mo, "mrow")
-            # self.get_nextchild().outputpresxml(mrow2)
+        elif self.get_name() in ["sin", "cos", "tan"]:
+            #these have been represented using operators but are actually identifiers in pres ML
+            # output the xml for this element
+            mi = etree.SubElement(parent, "mi")
+            mi.text = self.get_name()
+
+            mo = etree.SubElement(parent, "mo")
+            mo.text = "&#8289;"
+
+            #output the child
+            self.get_child().outputpresxml(parent)
+
+
+
+
+
+
 
 
         elif self.get_nextchild() == None : # eg sqrt, -b where op needs to be made first
@@ -115,8 +129,6 @@ class Operator(Node):
             #second output the xml for the operator
             mo = etree.SubElement(parent,"mo")
             mo.text = self.get_name()
-            ''' TO DO
-            Add logic for tags such as mfrac or msqrt'''
 
             #third output the xml for child1
             self.get_nextchild().outputpresxml(parent)
@@ -126,10 +138,14 @@ class Operator(Node):
         op = etree.SubElement(apply, translatename(self.get_name()))
         self.get_child().outputcontxml(apply)
 
-        if self.get_nextchild().get_name() == self.get_name():
-            self.get_nextchild().outputnextcontxml(apply, self.get_name())
-        else:
-            self.get_nextchild().outputcontxml(apply)
+        try:
+            if self.get_nextchild().get_name() == self.get_name():
+                self.get_nextchild().outputnextcontxml(apply, self.get_name())
+            else:
+                self.get_nextchild().outputcontxml(apply)
+        except AttributeError:
+            pass
+
 
     def outputnextcontxml(self, parent, prevop):
         #mamke the lhs child
