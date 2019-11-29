@@ -75,8 +75,8 @@ def make_tree(file_location): #parses the file and converts to internal tree str
     root = doc.getroot()
 
     '''temporary pres/cont distinction'''
-    # tree  = check_pnode(root, [])
-    tree  = check_cnode(root, [])
+    tree  = check_pnode(root, [])
+    # tree  = check_cnode(root, [])
     # differenetiate between pres tree and cont tree based on command line input
     '''todo'''
 
@@ -94,6 +94,12 @@ def check_pnode(element, siblings):
         #can this element be ignored? if so move onto its children
         if get_tag(element) in ignore:
             '''may need to add consideration for no children in future'''
+            print("element 0 = ", element[0])
+            print("child list(element) = ", child_list(element) )
+
+            # retval = check_pnode(element[0], child_list(element) )
+            # print("retval = ", retval)
+            # print("child = ", element[0])
             return check_pnode(element[0], child_list(element) )
         #is the curent element one we must consider?
         if get_tag(element) in consider:
@@ -152,7 +158,8 @@ def check_pnode(element, siblings):
                     next_sib = siblings[bracket2loc +1]
                     #if this exists it should be an operator 
                     if get_tag(next_sib) == "mo":
-                        print("in try bracket clause, loc = " , bracket2loc)
+                        # print("in try bracket clause, loc = " , bracket2loc)
+                        print("element, siblings, bracket loc:", element, siblings, bracket2loc)
                         make_bracket_node("opafter", element, siblings, bracket2loc)
                 except IndexError:
                     print("location: except")
@@ -176,7 +183,7 @@ def find_other_bracket(siblings):
     bracket2loc = 0
     i = 0
     while (i < len(siblings)):
-        print(siblings[i].text)
+        # print(siblings[i].text)
         if get_tag(siblings[i]) == "mo":
             if siblings[i].text.strip() in [")", "]", "}"]:
                 break
@@ -292,17 +299,24 @@ def leafnode(type, element, siblings, name):
 def make_bracket_node(type, element, siblings, bracket2loc ): #note, bracket1loc is element
     if type == "opafter":
         #the brackets
-        firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]),None, element.attrib)
-        secondchild = check_for_psiblings(siblings[bracket2loc+2:])
+        # firstchild = Operator( element.text.strip() + siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]),None, element.attrib)
+        # secondchild = check_for_psiblings(siblings[bracket2loc+2:])
         #the operator after the brackets
-        print("making op after bracket: " + siblings[bracket2loc +1].text)
-        # return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
-        return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
+        print("making op after bracket: " + siblings[bracket2loc +1].text) #correct
+        print("child 0: " , check_pnode(element, siblings[:bracket2loc +1])) #gives None??
+        # print("element: " , element) # correct
+        # print("siblings: " , siblings[:bracket2loc +1])  #correct
+        # print("siblings: " , siblings[:bracket2loc +1]) #correct
+        # print("child 1: " , check_for_psiblings(siblings[bracket2loc +2:]))#correct
+        return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
+        # return Operator(siblings[bracket2loc +1].text, firstchild, secondchild, siblings[bracket2loc +1].attrib)
 
     if type == "justbrackets":
-        print("brac loc : " , bracket2loc)
+        # print("brac loc : " , bracket2loc) #correct
         print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
         # return Operator(name, check_for_psiblings(siblings[:bracket2loc]), None, element.attrib)
+        # print("child of brackets:" , check_for_psiblings(siblings[:bracket2loc]).get_nextchild()) #correct
+
         return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]), element.attrib)
 
 

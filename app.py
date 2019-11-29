@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import *
 import os
-file_location = "quadformcont.xml"#input("Please enter the location of your file: ")
+file_location = "brackets1.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -95,11 +95,11 @@ tree = make_tree(file_location)
 # print(tree.child.child.sibling.sibling.child.sibling.sibling.attributes.items() )
 # '''dictionary of attributes'''
 #
-'''print out the presentation xml tree'''
+# '''print out the presentation xml tree'''
 # print(presxmlout(tree))
 
 '''print out the content xml tree'''
-print(contxmlout(tree))
+# print(contxmlout(tree))
 #
 # print(tree.child.child.name) # mi
 #
