@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import *
 import os
-file_location = "brackets1.xml"#input("Please enter the location of your file: ")
+file_location = "(a)pres.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -16,7 +16,11 @@ file_location = "brackets1.xml"#input("Please enter the location of your file: "
 # print( tree.sibling)
 
 '''make the internal tree representation'''
-tree = make_tree(file_location)
+try:
+    tree = make_tree(file_location)
+except OSError:
+    print("Couldn't find that file, please try again.")
+
 
 '''testing x=2pres.xml''' '''pass'''
 # print(tree.get_name()) #=
@@ -37,14 +41,19 @@ tree = make_tree(file_location)
 # print( type(tree.get_nextchild().get_child().get_nextchild().get_name())) # str
 # print( type(tree)) # operator
 
-'''testing brackets1.xml''' '''NOTE: This doesn't work yet'''
-# print(tree) # not none type
-# print(tree.get_child()) #-
-# print(tree.get_child().get_name()) # ()
+'''testing brackets1.xml''' '''PASSS'''
+# print(tree.get_name()) # not none type
+# print(tree.get_child().get_openbrac()) # (
+# print(tree.get_child().get_closebrac()) #)
 # print(tree.get_nextchild().get_name()) #7
 # print( tree.get_child().get_child().get_name()) #+
 # print( tree.get_child().get_child().get_child().get_name()) # x
 # print( tree.get_child().get_child().get_nextchild().get_name()) # 2
+
+'''testing (a)pres.xml''' '''PASS'''
+# print(tree.get_openbrac()) # (
+# print(tree.get_closebrac()) # )
+# print(tree.get_child().get_name()) #a
 
 '''Testing addcont.xml''' '''pass'''
 # print(tree.get_name()) # +
@@ -85,10 +94,10 @@ tree = make_tree(file_location)
 # print(tree.get_name()) #!
 # print(tree.get_child().get_name()) #3 or 7
 
-'''Testing sinpres.xml''' '''NONE TYPE MADE'''
+'''Testing sinpres.xml''' '''PASS'''
 # print("TOP LEVEL NODE TYPE = " , tree) #None
 # print(tree.get_name()) #sin
-# print(tree.get_child().get_name()) # x
+# print(tree.get_child().get_name()) # x\
 
 
 # print(os.getcwd())
@@ -96,7 +105,7 @@ tree = make_tree(file_location)
 # '''dictionary of attributes'''
 #
 # '''print out the presentation xml tree'''
-# print(presxmlout(tree))
+print(presxmlout(tree))
 
 '''print out the content xml tree'''
 # print(contxmlout(tree))
