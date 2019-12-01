@@ -65,59 +65,62 @@ def make_tree(file_location): #parses the file and converts to internal tree str
 
 def check_pnode(element, siblings):
     ignore = ["math", "mrow"]
-    consider = ["mfrac", "msqrt", "msup"]
+    consider = ["mfrac", "msqrt", "msup","mfenced"]
     leaf = ["mn","mi"]
+    tag = get_tag(element)
 
     #the element has no siblings so all we need to check is the current element
     if siblings == []:
         #can this element be ignored? if so move onto its children
-        if get_tag(element) in ignore:
+        if tag in ignore:
             '''may need to add consideration for no children in future'''
             return check_pnode(element[0], child_list(element) )
         #is the curent element one we must consider?
-        if get_tag(element) in consider:
+        if tag in consider:
             '''will need to change when other tags get included'''
             #currently only does mfrac
-            if get_tag(element) == "mfrac":
+            if tag == "mfrac":
                 return make2childopnode( element ,siblings, "/" )
-            if get_tag(element) == "msup":
+            if tag == "msup":
                 return make2childopnode(element ,siblings, "power" )
-            if get_tag(element) == "msqrt":
+            if tag == "msqrt":
                 return make1childopnode(element ,siblings, "sqrt" )
+            
+
 
 
         #is the current element a leaf?
-        if get_tag(element) in leaf:
-            return leafnode(get_tag(element), element,siblings, element.text)
+        if tag in leaf:
+            return leafnode(tag, element,siblings, element.text)
 
     #the current element has only one sibling
     if len(siblings) == 1:
-        if get_tag(element) == "mo":
+        if tag == "mo":
             return opfirst(element,siblings, element.text)
-        if get_tag(element) in leaf:
-            return leafnode(get_tag(element), element,siblings, element.text)
+        if tag in leaf:
+            return leafnode(tag, element,siblings, element.text)
 
         # is the curent element one we must consider?
-        if get_tag(element) in consider:
+        if tag in consider:
             '''will need to change when other tags get included'''
             # currently only does mfrac
-            if get_tag(element) == "mfrac":
+            if tag == "mfrac":
                 return make2childopnode( element, siblings, "/")
-            if get_tag(element) == "msup":
+            if tag == "msup":
                 return make2childopnode(element, siblings, "power")
-            if get_tag(element) == "msqrt":
+            if tag == "msqrt":
                 return make1childopnode(element, siblings, "sqrt")
         #necessary?
-        if get_tag(element) in ignore:
+        if tag in ignore:
             return check_pnode(element[0], child_list(element) )
         else:
-            print( "something unexpected happened, code needs additions!" + get_tag(element))
+            print( "something unexpected happened, code needs additions!" + tag)
 
     #len(siblings) >1  ie min of 3 tags to consider incl. the current element
     # consider the first two
     '''i expect that either the element or its first sibling will be an operator'''
     if len(siblings)>1:
-        if get_tag(element) == "mo": # operator is first, things get complex...
+        if tag == "mo": # operator is first, things get complex...
             #element is an operator and so is the sibling[1]
             #ie op elmnt op etc
 
