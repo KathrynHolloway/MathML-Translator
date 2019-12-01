@@ -159,7 +159,7 @@ class Operator(Node):
             self.get_nextchild().outputcontxml(parent)
 
 class Brackets(Node):
-    def __init__(self, openbracket , closebracket, child0, attributes): #name is open bracket
+    def __init__(self, openbracket , closebracket, child0, attributes):
         super().__init__(attributes)
         self.openbracket = openbracket
         self.closebracket = closebracket
