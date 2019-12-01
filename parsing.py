@@ -272,7 +272,7 @@ def handle_mfenced(element,siblings, separators):
     print("HANDLING MFENCED")
 
     if siblings == []:
-        return leafnode(get_tag(element),element, siblings, element.text)
+        return check_pnode(element,siblings)
     if len(siblings) == 1:
         return Operator(separators[0],check_pnode(element,[]), check_pnode(siblings[0],[]),{"separator":"true"})
     if len(siblings)>1:
