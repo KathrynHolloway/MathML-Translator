@@ -85,7 +85,8 @@ def check_pnode(element, siblings):
                 return make2childopnode(element ,siblings, "power" )
             if tag == "msqrt":
                 return make1childopnode(element ,siblings, "sqrt" )
-            
+            if tag == "mfenced":
+                return make_bracket_node(tag,element, siblings, None)
 
 
 
@@ -229,8 +230,26 @@ def make_bracket_node(type, element, siblings, bracket2loc ):
 
     if type == "justbrackets":
         print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
-
         return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]), element.attrib)
+
+    if type == "mfenced":
+        openbrac = element.attrib.get("open")
+        closebrac = element.attrib.get("close")
+        separators = element.attrib.get("separators")
+        defaults = ["(", ")", ","]
+        #if no values are found then allocate the defaults
+        if openbrac == None:
+            openbrac = defaults[0]
+        if closebrac == None:
+            closebrac = defaults[1]
+        if separators == None:
+            separators = defaults[2]
+        # print("open, close, seps: ", openbrac, closebrac, separators)
+        #mfenced can have 0 children
+        try:
+            return Brackets(openbrac , closebrac, handle_mfenced(element[0], child_list(element), separators), element.attrib)
+        except IndexError:
+            return Brackets(openbrac,closebrac, None , element.attrib)
 
 
     else:
@@ -247,6 +266,25 @@ def check_for_psiblings(siblings):
     if len(siblings) > 1:
         sibling = check_pnode(siblings[0], siblings[1:])
     return sibling
+
+def handle_mfenced(element,siblings, separators):
+    #the children of 'mfenced' are whats passed to this method
+    print("HANDLING MFENCED")
+
+    if siblings == []:
+        return leafnode(get_tag(element),element, siblings, element.text)
+    if len(siblings) == 1:
+        return Operator(separators[0],check_pnode(element,[]), check_pnode(siblings[0],[]),{"separator":"true"})
+    if len(siblings)>1:
+        return mfenced_multichildren(element,siblings,separators)
+
+def mfenced_multichildren(element,siblings , separators):
+    if len(separators)>1:
+        separators = separators[1:]
+    else:
+        pass
+    return Operator(separators[0],check_pnode(element,[]), handle_mfenced(siblings[0], siblings[1:],separators),{"separator" :"true"})
+
 
 '''END OF PRES ML'''
 
