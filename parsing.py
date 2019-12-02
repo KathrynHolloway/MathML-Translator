@@ -54,8 +54,8 @@ def make_tree(file_location): #parses the file and converts to internal tree str
     root = doc.getroot()
 
     '''temporary pres/cont distinction'''
-    tree  = check_pnode(root, [])
-    # tree  = check_cnode(root, [])
+    # tree  = check_pnode(root, [])
+    tree  = check_cnode(root, [])
     # differenetiate between pres tree and cont tree based on command line input
     '''todo'''
 
@@ -295,37 +295,38 @@ def check_cnode(element, siblings):
     consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power", "factorial"]
     consider_node_name = ["+", "-", "&#8290;", "/", "=", "sin", "cos", "tan","sqrt","power", "!"]
     leaf = ["cn", "ci"]
+    tag = get_tag(element)
 
     # the element is the only xml node available for consideration
     if len(siblings) == 0:
-        if get_tag(element) in ignore:
+        if tag in ignore:
             return check_cnode(element[0], child_list(element))
-        if get_tag(element) in leaf:
-            if get_tag(element) == leaf[0]: #cn
+        if tag in leaf:
+            if tag == leaf[0]: #cn
                 return make_cnode("cn", element, siblings, element.text)
-            if get_tag(element) == leaf[1]:
+            if tag == leaf[1]:
                 return make_cnode("ci", element, siblings, element.text)
+        if tag == "interval":
+            return make_interval_node(element,siblings)
         #won't be in consider, can't apply an operator to nothing?
 
     #the element and one sibling xml node are what is available for consideration
     if len(siblings) == 1:
-        if get_tag(element) in ignore:
+        if tag in ignore:
             print("add some logic here")
-        if get_tag(element) in consider:
+        if tag in consider:
             i = 0
             while i <= len(consider):
-                if get_tag(element) == consider[i]:
+                if tag == consider[i]:
                     return make_cnode("operator", element, siblings, consider_node_name[i])
                 i += 1
     if len(siblings) >1:
-        if get_tag(element) in consider:
+        if tag in consider:
             i=0
             while i <= len(consider):
-                if get_tag(element) == consider[i]:
+                if tag == consider[i]:
                     return make_cnode("operator", element, siblings, consider_node_name[i])
                 i+=1
-
-
         else:
             print("len(siblings) >1 logic needs adding")
 
@@ -348,7 +349,28 @@ def make_cnode(type, element, siblings, name):
         print("making op: " + name)
         return Operator(name, check_cnode(siblings[0], []), check_op_siblingsc(element, siblings), element.attrib  )
 
-'''helper method for checking what the sibling for an operator node'''
+def make_interval_node(element, siblings):
+    intervaltype = element.attrib.get("closure")
+
+    # because the default value is closed []
+    openbrac = "["
+    closebrac = "]"
+    separator = ","
+
+    if intervaltype == "open":
+        openbrac = "("
+        closebrac = ")"
+    if intervaltype == "open-closed":
+        openbrac = "("
+    if intervaltype == "closed-open":
+        closebrac = ")"
+    separatornode = Operator(separator, check_cnode(element[0], []), check_cnode(element[1],[]), {"separator": "true"})
+    print("Making interval node")
+    return Interval(openbrac, closebrac, separatornode,element.attrib)
+
+
+
+'''helper method for checking what the sibling for an operator node is'''
 def check_op_siblingsc(element, siblings):
     # returns value for siblings
     if len(siblings) == 1:
