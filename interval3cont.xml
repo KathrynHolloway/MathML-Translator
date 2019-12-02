@@ -1,7 +1,7 @@
 <!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
 <math>
     <interval closure="open-closed">
-        <ci>0</ci>
+        <cn>0</cn>
         <cn>1</cn>
     </interval>
 </math>
