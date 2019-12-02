@@ -2,7 +2,7 @@ from parsing import *
 from nodes import Node
 from xmlout import *
 import os
-file_location = "(a)pres.xml"#input("Please enter the location of your file: ")
+file_location = "interval3cont.xml"#input("Please enter the location of your file: ")
 
 # docparse(file_location)
 # 
@@ -99,13 +99,26 @@ except OSError:
 # print(tree.get_name()) #sin
 # print(tree.get_child().get_name()) # x\
 
+''''Testing mfenced1pres.xml''' '''pass'''
+# print(tree.get_openbrac()) #(
+# print(tree.get_closebrac()) #)
+# print(tree.get_child().get_name()) #,
+# print(tree.get_child().get_child().get_name()) #x
+# print(tree.get_child().get_nextchild().get_name()) #y
+
+'''Testing interval1cont.xml''' '''pass'''
+print(tree.get_openbrac()) #[
+print(tree.get_closebrac()) #]
+print(tree.get_child().get_name()) #,
+print(tree.get_child().get_child().get_name()) #x
+print(tree.get_child().get_nextchild().get_name()) #x
 
 # print(os.getcwd())
 # print(tree.child.child.sibling.sibling.child.sibling.sibling.attributes.items() )
 # '''dictionary of attributes'''
 #
 # '''print out the presentation xml tree'''
-print(presxmlout(tree))
+# print(presxmlout(tree))
 
 '''print out the content xml tree'''
 # print(contxmlout(tree))
