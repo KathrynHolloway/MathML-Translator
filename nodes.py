@@ -16,6 +16,8 @@ class Node(ABC):
     #     pass
     #     return self.sibling
     '''add get attributes?'''
+    def get_attributes(self):
+        return  self.attributes
 
     @abstractmethod
     def outputpresxml(self):
@@ -185,6 +187,44 @@ class Brackets(Node):
 
     def outputcontxml(self,parent):
         print("implement")
+
+class Interval(Node):
+    def __init__(self, openbracket, closebracket , child, attributes):
+        super().__init__(attributes)
+        self.openbracket = openbracket
+        self.closebracket = closebracket
+        self.child= child
+
+    def get_openbrac(self):
+        return self.openbracket
+    def get_closebrac(self):
+        return self.closebracket
+    def get_child(self):
+        return self.child
+
+    def outputpresxml(self,parent):
+        mrow = etree.SubElement(parent, "mrow")
+        moopen = etree.SubElement(mrow, "mo")
+        moopen.text = self.get_openbrac()
+        # output the xml for only child
+        self.get_child().outputpresxml(mrow)
+        moclose = etree.SubElement(mrow, "mo")
+        moclose.text = self.get_closebrac()
+
+    def outputcontxml(self,parent):
+        apply = etree.SubElement(parent, "apply")
+        # try:
+        #     closuretype = self.get_attributes().get("closure")
+        # except TypeError:
+        #     closuretype = "closed"
+        # interval = etree.SubElement(apply, "interval", closure = closuretype)
+        try:
+            interval = etree.SubElement(apply, "interval", closure=self.get_attributes().get("closure"))
+        except TypeError:
+            interval = etree.SubElement(apply, "interval", closure="closed")
+        self.get_child().get_child().outputcontxml(apply)
+        self.get_child().get_nextchild().outputcontxml(apply)
+
 
 
 
