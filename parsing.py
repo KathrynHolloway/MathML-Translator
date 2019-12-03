@@ -1,25 +1,25 @@
 from lxml import etree
 from nodes import *
-
-def docparse(file_location):
-
-    # read in the contentML from file
-    # produces an ElementTree
-    parser = etree.XMLParser(load_dtd=True, no_network=False)
-    doc = etree.parse(file_location, parser=parser)
-
-    # this gets the xml version from the doc - doc.docinfo.xml_version
-    # and the doc type doc.docinfo.doctype
-
-    doc.docinfo.public_id = '-//W3C//ENTITIES HTML MathML Set//EN//XML'
-    doc.docinfo.system_url = 'http://www.w3.org/2003/entities/2007/htmlmathml-f.ent'
-
-    root = doc.getroot()
-
-    print(get_tag(root), root.attrib, root.text)
-    for child in root:
-        print_child(child)
-        get_children(child)
+#
+# def docparse(file_location):
+#
+#     # read in the contentML from file
+#     # produces an ElementTree
+#     parser = etree.XMLParser(load_dtd=True, no_network=False)
+#     doc = etree.parse(file_location, parser=parser)
+#
+#     # this gets the xml version from the doc - doc.docinfo.xml_version
+#     # and the doc type doc.docinfo.doctype
+#
+#     doc.docinfo.public_id = '-//W3C//ENTITIES HTML MathML Set//EN//XML'
+#     doc.docinfo.system_url = 'http://www.w3.org/2003/entities/2007/htmlmathml-f.ent'
+#
+#     root = doc.getroot()
+#
+#     print(get_tag(root), root.attrib, root.text)
+#     for child in root:
+#         print_child(child)
+#         get_children(child)
 
 
 def get_tag(element):
@@ -27,10 +27,10 @@ def get_tag(element):
         return element.tag[element.tag.index("}") + 1:]
     else:
         return element.tag
-def get_children(child): #m this is for printing and visualising code
-    for i in child:
-        print_child(i)
-        get_children(i)
+# def get_children(child): #m this is for printing and visualising code
+#     for i in child:
+#         print_child(i)
+#         get_children(i)
 
 def child_list(element):
     # gets a list of an elements children for use in check_node, excluding first to represent siblings
@@ -42,24 +42,28 @@ def child_list(element):
     else:
         return list[1:]
 
-def print_child(child):
-    print(get_tag(child), child.attrib, child.text ,get_tag(child.getparent()))
+# def print_child(child):
+#     print(get_tag(child), child.attrib, child.text ,get_tag(child.getparent()))
 
-def make_tree(file_location): #parses the file and converts to internal tree structure
+def doc_parse(input_file_location):
     parser = etree.XMLParser(load_dtd=True, no_network=False)
-    doc = etree.parse(file_location, parser=parser)
-    #doc.docinfo.public_id = '-//W3C//ENTITIES HTML MathML Set//EN//XML'
-    #doc.docinfo.system_url = 'http://www.w3.org/2003/entities/2007/htmlmathml-f.ent'
+    parsed_doc = etree.parse(input_file_location, parser=parser)
+    # doc.docinfo.public_id = '-//W3C//ENTITIES HTML MathML Set//EN//XML'
+    # doc.docinfo.system_url = 'http://www.w3.org/2003/entities/2007/htmlmathml-f.ent'
+    return parsed_doc
 
-    root = doc.getroot()
-
-    '''temporary pres/cont distinction'''
-    # tree  = check_pnode(root, [])
+def make_contentml_tree(parsed_doc): #takes parsed content ml file and converts to internal tree structure
+    root = parsed_doc.getroot()
     tree  = check_cnode(root, [])
-    # differenetiate between pres tree and cont tree based on command line input
-    '''todo'''
 
     return tree
+
+def make_presml_tree(parsed_doc):  # takes parsed content ml file and converts to internal tree structure
+    root = parsed_doc.getroot()
+    tree = check_pnode(root, [])
+
+    return tree
+
 
 '''Parsing presentation ML into the internal tree structure''' '''BEGINNING'''
 
