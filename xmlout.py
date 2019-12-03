@@ -2,8 +2,8 @@ from lxml import etree
 
 '''for now, print the xml as a string instead of writing to an actual file?'''
 
-def presxmlout(tree):
-    # with open("output.xml", 'w') as output_file:
+def presxmlout(tree, output_file_loc):
+    # with open(output_file_loc, 'w') as output_file:
     #     output_file.write('some info here. great')
     '''above: if the file exists it writes to (and over) that file
              should create a file if one with that name doesn't exist, then write'''
@@ -18,13 +18,13 @@ def presxmlout(tree):
 
     tree.outputpresxml(mrow)
 
-    write_to_file(str(etree.tostring(root)))
+    write_to_file(str(etree.tostring(root)),output_file_loc)
 
-    return etree.tostring(root)
+    # return etree.tostring(root)
 
 
-def contxmlout(tree):
-    # with open("output.xml", 'w') as output_file:
+def contxmlout(tree, output_file_loc):
+    # with open(output_file_loc , 'w') as output_file:
     #     output_file.write('some info here. great')
     '''above: if the file exists it writes to (and over) that file
              should create a file if one with that name doesn't exist, then write'''
@@ -36,19 +36,21 @@ def contxmlout(tree):
 
     tree.outputcontxml(root)
 
-    write_to_file(str(etree.tostring(root)))
+    write_to_file(str(etree.tostring(root)), output_file_loc)
 
-    return etree.tostring(root)
+    # return etree.tostring(root)
 
 ''' +, - , etc aren't valid content tag names so they need changing'''
 def translatename(nodename):
+    #this removes any unnecessary whitespace which would prevent this method from working correctly
+    nodename = nodename.strip()
     if nodename == "=":
         newname = "eq"
     if nodename == "+":
         newname = "plus"
     if nodename == "-":
         newname = "minus"
-    if nodename == "*":
+    if nodename == "&#8290;":
         newname = "times"
     if nodename == "/":
         newname = "divide"
@@ -61,10 +63,10 @@ def translatename(nodename):
         newname = nodename
     return newname
 
-def write_to_file(treestring):
-    with open("output.xml", "w") as output_file:
+def write_to_file(treestring, output_file_loc):
+    with open(str(output_file_loc), "w") as output_file:
         output_file.write("<!DOCTYPE math PUBLIC "+ "\"-//W3C//DTD MathML 3.0//EN\"" +" \"http://www.w3.org/Math/DTD/mathml3/mathml3.dtd\"" +"> \n")
-    with open("output.xml", 'a') as output_file:
+    with open(str(output_file_loc), 'a') as output_file:
         output_file.write(treestring[2:-1])
     '''above: if the file exists it writes to (and over) that file
              should create a file if one with that name doesn't exist, then write'''
