@@ -41,7 +41,7 @@ def contxmlout(tree, output_file_loc):
     # return etree.tostring(root)
 
 ''' +, - , etc aren't valid content tag names so they need changing'''
-def translatename(nodename):
+def translatecname(nodename):
     #this removes any unnecessary whitespace which would prevent this method from working correctly
     nodename = nodename.strip()
     if nodename == "=":
@@ -61,6 +61,18 @@ def translatename(nodename):
     remain = ["power", "sin", "cos", "tan"]
     if nodename in remain:
         newname = nodename
+    return newname
+
+def translatepname(nodename):
+    separators = [":", ";", ",","|"]
+    if nodename in ["+", "-", "=", "!", "&#8290;"] or separators: #these don't change
+        newname = nodename
+    if nodename == "sqrt":
+        newname = "msqrt"
+    if nodename == "/" or nodename == "divide" :
+        newname = "mfrac"
+    if nodename == "power":
+        newname = "msup"
     return newname
 
 def write_to_file(treestring, output_file_loc):
