@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod #note that the later is a decorator
 from lxml import etree
-from xmlout import translatename
+from xmlout import translatecname, translatepname
 
 class Node(ABC):
     def __init__(self, attributes):
@@ -67,12 +67,12 @@ class Operator(Node):
     # operators can have siblings
 
     def outputpresxml(self, parent):
-        if self.get_name() in ["/", "power"]:
+        #make the op first, has 2 children?
+        if self.get_name().strip() in ["/", "power"]:
             #output the xml for the operator
-            if self.get_name() == "power":
-                mo = etree.SubElement(parent, "msup")
-            else:
-                mo = etree.SubElement(parent, "mfrac")
+            mo = etree.SubElement(parent, translatepname(self.get_name().strip()))
+
+
 
             #output the xml for the first child
             #should make sure no unecessary mrow are made but doesn't work? does now
@@ -81,8 +81,6 @@ class Operator(Node):
                 self.get_child().outputpresxml(mrow1)
             else:
                 self.get_child().outputpresxml(mo)
-            # mrow1 = etree.SubElement(mo, "mrow")
-            # self.get_child().outputpresxml(mrow1)
 
             # output the xml for the second child
             if type(self.get_nextchild()) is Operator:
@@ -90,37 +88,37 @@ class Operator(Node):
                 self.get_nextchild().outputpresxml(mrow2)
             else:
                 self.get_nextchild().outputpresxml(mo)
-        elif self.get_name() in ["sin", "cos", "tan"]:
+        elif self.get_name().strip() in ["sin", "cos", "tan"]:
             #these have been represented using operators but are actually identifiers in pres ML
             # output the xml for this element
             mi = etree.SubElement(parent, "mi")
             mi.text = self.get_name()
 
             mo = etree.SubElement(parent, "mo")
-            mo.text = "&#8289;"
+            mo.text = "&#8289;" #function application
 
             #output the child
             self.get_child().outputpresxml(parent)
 
 
-
-
-
-
-
-
-        elif self.get_nextchild() == None : # eg sqrt, -b where op needs to be made first
-            # output the xml for the operator
-
-            if self.get_name() in ["sqrt"]:
-                mo = etree.SubElement(parent, "msqrt")
-                mrow = etree.SubElement(mo, "mrow")
-                # first output the xml for only child
+        elif self.get_nextchild() == None : # eg sqrt, -b and other unary operators
+            #output xml for it's first and only child then the operator
+            if self.get_name().strip() in ["!"]:
+                mrow = etree.SubElement(parent, "mrow")
                 self.get_child().outputpresxml(mrow)
+                mo = etree.SubElement(mrow, "mo")
+                mo.text = translatepname(self.get_name().strip())
+            #special operator first eg sqrt, then its first and only child
+            if self.get_name().strip() in ["sqrt"]:
+                mrow = etree.SubElement(parent, "mrow")
+                mo = etree.SubElement(mrow, translatepname(self.get_name().strip()))
+                # output the xml for only child
+                self.get_child().outputpresxml(mo)
+            #operator first, then its first and only child
             else:
                 mrow = etree.SubElement(parent, "mrow")
                 mo = etree.SubElement(mrow, "mo")
-                mo.text = self.get_name()
+                mo.text = translatepname(self.get_name().strip())
                 #output the xml for only child
                 self.get_child().outputpresxml(mrow)
 
@@ -130,19 +128,19 @@ class Operator(Node):
 
             #second output the xml for the operator
             mo = etree.SubElement(parent,"mo")
-            mo.text = self.get_name()
+            mo.text = translatepname(self.get_name().strip())
 
             #third output the xml for child1
             self.get_nextchild().outputpresxml(parent)
 
     def outputcontxml(self,parent):
         apply = etree.SubElement(parent, "apply")
-        op = etree.SubElement(apply, translatename(self.get_name()))
+        op = etree.SubElement(apply, translatecname(self.get_name().strip()))
         self.get_child().outputcontxml(apply)
 
         try:
-            if self.get_nextchild().get_name() == self.get_name():
-                self.get_nextchild().outputnextcontxml(apply, self.get_name())
+            if self.get_nextchild().get_name().strip() == self.get_name().strip():
+                self.get_nextchild().outputnextcontxml(apply, self.get_name().strip())
             else:
                 self.get_nextchild().outputcontxml(apply)
         except AttributeError:
@@ -153,7 +151,7 @@ class Operator(Node):
         #mamke the lhs child
         self.get_child().outputcontxml(parent)
         #check the rhs child
-        if self.get_nextchild().get_name() == prevop :
+        if self.get_nextchild().get_name().strip() == prevop :
             self.get_nextchild().outputnextcontxml(parent, prevop)
 
         else:
