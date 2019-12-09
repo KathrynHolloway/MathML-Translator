@@ -10,6 +10,7 @@
 
 """Usage:
 app.py translate (cont2cont | pres2pres | cont2pres | pres2cont) <filein> <fileout>
+app.py parse (cont|pres) <filein> <fileout>
 app.py -h | --help
 
 
@@ -63,10 +64,28 @@ def translate(arguments):
     else:
         print("I didn't do anything useful, sorry")
 
+def parse(arguments):
+    # file locations
+    input_file_loc = arguments.get("<filein>")
+    output_file_loc = arguments.get("<fileout>")
+    # parse the input file
+    parsed_doc = doc_parse(input_file_loc)
+
+    if arguments.get("cont")== True:
+        tree = make_contentml_tree(parsed_doc)
+        contxmlout(tree,output_file_loc )
+
+    if arguments.get("pres")== True:
+        tree = make_presml_tree(parsed_doc)
+        presxmlout(tree,output_file_loc )
+
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.1.1rc2')
     print(arguments)
-    translate(arguments)
+    if arguments.get("translate") == True:
+        translate(arguments)
+    if arguments.get("parse")== True:
+        parse(arguments)
 
 
 
