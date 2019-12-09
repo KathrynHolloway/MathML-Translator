@@ -102,11 +102,14 @@ def check_pnode(element, siblings):
     if len(siblings) == 1:
         if tag == "mo":
             return opfirst(element,siblings, element.text)
-        if tag in leaf:
+        if get_tag(siblings[0]) == "mo":
+            return opsecond(element,siblings, siblings[0].text)
+            #example case is factorial (!)
+        elif tag in leaf:
             return leafnode(tag, element,siblings, element.text)
 
         # is the curent element one we must consider?
-        if tag in consider:
+        elif tag in consider:
             '''will need to change when other tags get included'''
             # currently only does mfrac
             if tag == "mfrac":
@@ -116,7 +119,7 @@ def check_pnode(element, siblings):
             if tag == "msqrt":
                 return make1childopnode(element, siblings, "sqrt")
         #necessary?
-        if tag in ignore:
+        elif tag in ignore:
             return check_pnode(element[0], child_list(element) )
         else:
             print( "something unexpected happened, code needs additions!" + tag)
@@ -194,13 +197,16 @@ def opfirst(element, siblings, name):
 
 def opsecond(element, siblings, name):
     # the operator was first sibling, make and remove
-    # can only currently get here if the current element has at least 2 siblings
-    if len(siblings) == 2:
-        newsibs = []
-    else:  # ie len sibs > 2
-        newsibs = siblings[2:]
+    # can only currently get here if the current element has at least 1 sibling
+    #could condense this to reduce repeats but this makes the intentions easier to read
+    if len(siblings)==1:
+        child1 = None
+    elif len(siblings) == 2:
+        child1 = check_pnode(siblings[1], [])
+    else:  # ie len sibs > :
+        child1 = check_pnode(siblings[1], siblings[2:])
     print("making 2op: " + name)
-    return Operator(name, check_pnode(element, []), check_pnode(siblings[1], newsibs), siblings[0].attrib)
+    return Operator(name, check_pnode(element, []), child1 , siblings[0].attrib)
 
 def opthird(element, siblings, name):
     print("making 3op: " + name)
@@ -384,28 +390,3 @@ def check_op_siblingsc(element, siblings):
     if len(siblings) > 2:
         opsibling = check_cnode(element, siblings[1:])
     return opsibling
-
-
-
-'''below didn't make a simple enough internal tree structure, needs to be more math focused, remove the XML'''
-
-# def make_nodes(element, siblings): # creates individual nodes but calls itself for those nodes with children/siblings which are themselves nodes
-#     attributes = element.attrib
-#     try:
-#         child = get_tag(element[0])
-#         child = make_nodes(element[0],child_list(element))
-#     except IndexError:
-#         try:
-#             text = element.text
-#             child =  Value(text, None, None, None) # 'None' for sibling makes the assumption that leafs cannot have siblings, children or attribs
-#         except AttributeError:
-#             child = None
-#     if siblings == []:
-#         sibling = None
-#     elif len(siblings)== 1:
-#         sibling = make_nodes(siblings[0],[])
-#     else:
-#         sibling = make_nodes(siblings[0], siblings[1:])
-#
-#     return Value(get_tag(element), child, sibling, attributes )
-
