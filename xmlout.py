@@ -11,7 +11,7 @@ def presxmlout(tree, output_file_loc):
     
     # root = etree.Element(tree.get_name())
     # makechildren(tree, root)
-    root = etree.Element("math")
+    root = etree.Element("math", xmlns="http://www.w3.org/1998/Math/MathML")
     mrow = etree.SubElement(root, "mrow")
 
     #make the other nodes from the internal tree structure
@@ -30,7 +30,7 @@ def contxmlout(tree, output_file_loc):
              should create a file if one with that name doesn't exist, then write'''
     '''next: want to walk the tree and make my personal structure back into and etree'''
 
-    root = etree.Element("math")
+    root = etree.Element("math", xmlns="http://www.w3.org/1998/Math/MathML")
 
     # make the other nodes from the internal tree structure
 
