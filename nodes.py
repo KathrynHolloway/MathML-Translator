@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod #note that the later is a decorator
 from lxml import etree
 from xmlout import translatecname, translatepname
+import html
 
 class Node(ABC):
     def __init__(self, attributes):
@@ -42,7 +43,7 @@ class Value(Node):
     def outputpresxml(self, parent):
         # output the xml for this element
         mn = etree.SubElement(parent, "mn")
-        mn.text = self.get_name()
+        mn.text = html.unescape(self.get_name())
 
     def outputcontxml(self,parent):
         # output the xml for this element
@@ -95,7 +96,7 @@ class Operator(Node):
             mi.text = self.get_name()
 
             mo = etree.SubElement(parent, "mo")
-            mo.text = "&#8289;" #function application
+            mo.text = html.unescape("&#8289;") #function application
 
             #output the child
             self.get_child().outputpresxml(parent)
@@ -118,7 +119,7 @@ class Operator(Node):
             else:
                 mrow = etree.SubElement(parent, "mrow")
                 mo = etree.SubElement(mrow, "mo")
-                mo.text = translatepname(self.get_name().strip())
+                mo.text = html.unescape(translatepname(self.get_name().strip()))
                 #output the xml for only child
                 self.get_child().outputpresxml(mrow)
 
@@ -128,7 +129,7 @@ class Operator(Node):
 
             #second output the xml for the operator
             mo = etree.SubElement(parent,"mo")
-            mo.text = translatepname(self.get_name().strip())
+            mo.text = html.unescape(translatepname(self.get_name().strip()))
 
             #third output the xml for child1
             self.get_nextchild().outputpresxml(parent)
@@ -177,11 +178,11 @@ class Brackets(Node):
     def outputpresxml(self, parent):
         mrow = etree.SubElement(parent, "mrow")
         moopen = etree.SubElement(mrow, "mo")
-        moopen.text = self.get_openbrac()
+        moopen.text = html.unescape(self.get_openbrac())
         # output the xml for only child
         self.get_child().outputpresxml(mrow)
         moclose = etree.SubElement( mrow, "mo")
-        moclose.text = self.get_closebrac()
+        moclose.text = html.unescape(self.get_closebrac())
 
     def outputcontxml(self,parent):
         print("implement")
@@ -203,11 +204,11 @@ class Interval(Node):
     def outputpresxml(self,parent):
         mrow = etree.SubElement(parent, "mrow")
         moopen = etree.SubElement(mrow, "mo")
-        moopen.text = self.get_openbrac()
+        moopen.text = html.unescape(self.get_openbrac())
         # output the xml for only child
         self.get_child().outputpresxml(mrow)
         moclose = etree.SubElement(mrow, "mo")
-        moclose.text = self.get_closebrac()
+        moclose.text = html.unescape(self.get_closebrac())
 
     def outputcontxml(self,parent):
         apply = etree.SubElement(parent, "apply")
@@ -245,7 +246,7 @@ class Identifier(Node):
     def outputpresxml(self, parent):
         # output the xml for this element
         mi = etree.SubElement(parent, "mi")
-        mi.text = self.get_name()
+        mi.text = html.unescape(self.get_name())
 
     def outputcontxml(self,parent):
         # output the xml for this element
