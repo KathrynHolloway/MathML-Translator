@@ -44,35 +44,71 @@ def contxmlout(tree, output_file_loc):
 def translatecname(nodename):
     #this removes any unnecessary whitespace which would prevent this method from working correctly
     nodename = nodename.strip()
-    if nodename == "=":
-        newname = "eq"
-    if nodename == "+":
-        newname = "plus"
-    if nodename == "-":
-        newname = "minus"
-    if nodename == "&#8290;":
-        newname = "times"
-    if nodename == "/":
-        newname = "divide"
-    if nodename == "!":
-        newname = "factorial"
-    if nodename == "sqrt":
-        newname = "root"
-    remain = ["power", "sin", "cos", "tan"]
-    if nodename in remain:
-        newname = nodename
+    contnamedict = {
+        "=" : "eq",
+        "+": "plus",
+        "-": "minus",
+        "&#8290;":"times",
+        "/":"divide",
+        "!":"factorial",
+        "sqrt": "root",
+        "&#8776;":"approx",
+        "&#8801;":"equivalent",
+        "&#172;":"not",
+        "&#xFF5C;":"factorof",
+        "power": "power",
+        "sin": "sin",
+        "cos": "cos",
+        "tan":"tan"
+    }
+    newname = contnamedict.get(nodename)
+    # if nodename == "=":
+    #     newname = "eq"
+    # if nodename == "+":
+    #     newname = "plus"
+    # if nodename == "-":
+    #     newname = "minus"
+    # if nodename == "&#8290;":
+    #     newname = "times"
+    # if nodename == "/":
+    #     newname = "divide"
+    # if nodename == "!":
+    #     newname = "factorial"
+    # if nodename == "sqrt":
+    #     newname = "root"
+    # if nodename == "&#8776;":
+    #     newname = "approx"
+    # if nodename == "&#8801;":
+    #     newname = "equivalent"
+    # if nodename == "&#172;":
+    #     newname = "not"
+    # if nodename == "&#xFF5C;":
+    #     newname = "factorof"
+    # remain = ["power", "sin", "cos", "tan"]
+    # if nodename in remain:
+    #     newname = nodename
     return newname
 
 def translatepname(nodename):
+    nodename = nodename.strip()
+    presnamedict = {
+        "sqrt": "msqrt",
+        "/": "mfrac",
+        "divide": "mfrac",
+        "power": "msup"
+    }
     separators = [":", ";", ",","|"]
     if nodename in ["+", "-", "=", "!", "&#8290;"] or separators: #these don't change
         newname = nodename
-    if nodename == "sqrt":
-        newname = "msqrt"
-    if nodename == "/" or nodename == "divide" :
-        newname = "mfrac"
-    if nodename == "power":
-        newname = "msup"
+    else:
+        newname = presnamedict.get(nodename)
+
+    # if nodename == "sqrt":
+    #     newname = "msqrt"
+    # if nodename == "/" or nodename == "divide" :
+    #     newname = "mfrac"
+    # if nodename == "power":
+    #     newname = "msup"
     return newname
 
 def write_to_file(treestring, output_file_loc):
