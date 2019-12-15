@@ -1,5 +1,6 @@
 from lxml import etree
 from nodes import *
+import html
 #
 # def docparse(file_location):
 #
@@ -302,8 +303,31 @@ def mfenced_multichildren(element,siblings , separators):
 
 def check_cnode(element, siblings):
     ignore = ["math" ,"apply", "reln"]
-    consider = ["plus", "minus", "times", "divide", "eq" ,"sin", "cos", "tan","root","power", "factorial"]
-    consider_node_name = ["+", "-", "&#8290;", "/", "=", "sin", "cos", "tan","sqrt","power", "!"]
+    considerdict={
+        "plus":"+",
+        "minus":"-",
+        "times":"&#8290;",
+        "divide": "/",
+        "eq":"=",
+        "neq":"&#x2260;",
+        "approx": "&#8776;",
+        "equivalent":"&#8801;",
+        "geq":"&#x2265;",
+        "leq":"&#x2264;",
+        "gt": "&#x3e;",
+        "lt":"&#x3c;",
+        "sin":"sin",
+        "cos":"cos",
+        "tan":"tan",
+        "root": "sqrt",
+        "power":"power",
+        "factorial": "!",
+        "not": "&#172;",
+        "factorof":"&#xFF5C;",
+        "in" : "&#x2208;",
+        "complexes": "&#x2102;"
+
+    }
     leaf = ["cn", "ci"]
     tag = get_tag(element)
 
@@ -318,25 +342,18 @@ def check_cnode(element, siblings):
                 return make_cnode("ci", element, siblings, element.text)
         if tag == "interval":
             return make_interval_node(element,siblings)
-        #won't be in consider, can't apply an operator to nothing?
-
+        if considerdict.get(tag) != None:
+            return make_cnode("operator", element, siblings, considerdict.get(tag))
     #the element and one sibling xml node are what is available for consideration
     if len(siblings) == 1:
         if tag in ignore:
             print("add some logic here")
-        if tag in consider:
-            i = 0
-            while i <= len(consider):
-                if tag == consider[i]:
-                    return make_cnode("operator", element, siblings, consider_node_name[i])
-                i += 1
+        if considerdict.get(tag) != None:
+            return make_cnode("operator", element, siblings, considerdict.get(tag))
+
     if len(siblings) >1:
-        if tag in consider:
-            i=0
-            while i <= len(consider):
-                if tag == consider[i]:
-                    return make_cnode("operator", element, siblings, consider_node_name[i])
-                i+=1
+        if considerdict.get(tag) != None:
+            return make_cnode("operator", element, siblings, considerdict.get(tag))
         else:
             print("len(siblings) >1 logic needs adding")
 
@@ -357,7 +374,7 @@ def make_cnode(type, element, siblings, name):
         return Identifier(name, None, element.attrib)
     if type == "operator":
         print("making op: " + name)
-        return Operator(name, check_cnode(siblings[0], []), check_op_siblingsc(element, siblings), element.attrib  )
+        return Operator(name, get_op_child(element,siblings), check_op_siblingsc(element, siblings), element.attrib  )
 
 def make_interval_node(element, siblings):
     intervaltype = element.attrib.get("closure")
@@ -383,10 +400,18 @@ def make_interval_node(element, siblings):
 '''helper method for checking what the sibling for an operator node is'''
 def check_op_siblingsc(element, siblings):
     # returns value for siblings
-    if len(siblings) == 1:
+    if len(siblings) <= 1:
         opsibling = None
     if len(siblings) == 2:
         opsibling = check_cnode(siblings[1], [])
     if len(siblings) > 2:
         opsibling = check_cnode(element, siblings[1:])
     return opsibling
+
+def get_op_child(element,siblings):
+    #returns what he value for the operators child is
+    if siblings == []:
+        opchild = None
+    else:
+        opchild = check_cnode(siblings[0], [])
+    return opchild

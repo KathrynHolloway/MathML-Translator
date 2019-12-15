@@ -46,6 +46,7 @@ def translatecname(nodename):
     nodename = nodename.strip()
     contnamedict = {
         "=" : "eq",
+        "&#x2260;":"neq",
         "+": "plus",
         "-": "minus",
         "&#8290;":"times",
@@ -54,12 +55,19 @@ def translatecname(nodename):
         "sqrt": "root",
         "&#8776;":"approx",
         "&#8801;":"equivalent",
+        "&#x2265;": "geq",
+        "&#x2264;": "leq",
+        "&#x3e;": "gt",
+        "&#x3c;" : "lt",
         "&#172;":"not",
         "&#xFF5C;":"factorof",
         "power": "power",
         "sin": "sin",
         "cos": "cos",
-        "tan":"tan"
+        "tan":"tan",
+        "&#x2208;": "in",
+        "&#x2102;": "complexes"
+
     }
     newname = contnamedict.get(nodename)
     # if nodename == "=":
