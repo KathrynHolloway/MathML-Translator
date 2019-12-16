@@ -310,7 +310,7 @@ def check_cnode(element, siblings):
         "divide": "/",
         "eq":"=",
         "neq":"&#x2260;",
-        "approx": "&#8776;",
+        "approx": "&#x2243;",
         "equivalent":"&#8801;",
         "geq":"&#x2265;",
         "leq":"&#x2264;",
@@ -325,8 +325,28 @@ def check_cnode(element, siblings):
         "not": "&#172;",
         "factorof":"&#xFF5C;",
         "in" : "&#x2208;",
-        "complexes": "&#x2102;"
-
+        "complexes": "complexes",#&#x2102;"
+        "integers":"integers",
+        "emptyset":"emptyset",
+        "eulergamma": "eulergamma",
+        "ln": "ln",
+        "exponentiale":"exponentiale",
+        "and": "and",
+        "false":"false",
+        "imaginaryi": "imaginaryi",
+        "infinity": "infinity",
+        "naturalnumbers": "naturalnumbers",
+        "notanumber": "notanumber",
+        "pi":"pi",
+        "primes":"primes",
+        "rationals": "rationals",
+        "reals":"reals",
+        "or":"or",
+        "true":"true",
+        "abs":"abs",
+        "rem":"rem",
+        "gcd":"gcd",
+        "lcm":"lcm"
     }
     leaf = ["cn", "ci"]
     tag = get_tag(element)

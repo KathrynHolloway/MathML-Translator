@@ -53,7 +53,7 @@ def translatecname(nodename):
         "/":"divide",
         "!":"factorial",
         "sqrt": "root",
-        "&#8776;":"approx",
+        "&#x2243;":"approx",
         "&#8801;":"equivalent",
         "&#x2265;": "geq",
         "&#x2264;": "leq",
@@ -66,35 +66,31 @@ def translatecname(nodename):
         "cos": "cos",
         "tan":"tan",
         "&#x2208;": "in",
-        "&#x2102;": "complexes"
+        "complexes": "complexes",
+        "integers": "integers",
+        "emptyset": "emptyset",
+        "eulergamma": "eulergamma",
+        "ln": "ln",
+        "exponentiale": "exponentiale",
+        "and": "and",
+        "false": "false",
+        "imaginaryi": "imaginaryi",
+        "infinity": "infinity",
+        "naturalnumbers": "naturalnumbers",
+        "notanumber": "notanumber",
+        "pi": "pi",
+        "primes": "primes",
+        "rationals": "rationals",
+        "reals": "reals",
+        "or": "or",
+        "true":"true",
+        "abs": "abs",
+        "rem": "rem",
+        "gcd": "gcd",
+        "lcm": "lcm"
 
     }
     newname = contnamedict.get(nodename)
-    # if nodename == "=":
-    #     newname = "eq"
-    # if nodename == "+":
-    #     newname = "plus"
-    # if nodename == "-":
-    #     newname = "minus"
-    # if nodename == "&#8290;":
-    #     newname = "times"
-    # if nodename == "/":
-    #     newname = "divide"
-    # if nodename == "!":
-    #     newname = "factorial"
-    # if nodename == "sqrt":
-    #     newname = "root"
-    # if nodename == "&#8776;":
-    #     newname = "approx"
-    # if nodename == "&#8801;":
-    #     newname = "equivalent"
-    # if nodename == "&#172;":
-    #     newname = "not"
-    # if nodename == "&#xFF5C;":
-    #     newname = "factorof"
-    # remain = ["power", "sin", "cos", "tan"]
-    # if nodename in remain:
-    #     newname = nodename
     return newname
 
 def translatepname(nodename):
@@ -103,20 +99,35 @@ def translatepname(nodename):
         "sqrt": "msqrt",
         "/": "mfrac",
         "divide": "mfrac",
-        "power": "msup"
+        "power": "msup",
+        "complexes" : "C",
+        "integers": "Z",
+        "emptyset": "&#x2205",
+        "eulergamma": "&#x3b3;",
+        "exponentiale": "e",
+        "false": "false",
+        "and": "&#x2227;",
+        "imaginaryi": "i",
+        "infinity": "&#x221e;",
+        "naturalnumbers": "N",
+        "notanumber": "NaN",
+        "pi": "&#x3c0;",
+        "primes": "P",
+        "rationals": "Q",
+        "reals": "R",
+        "or": "&#x2228;",
+        "abs": "||",
+        "rem": "mod",
+        "gcd": ["gcd","(",")",","], #prefix, open, close, separators
+        "lcm": ["lcm","(",")",","]
     }
     separators = [":", ";", ",","|"]
-    if nodename in ["+", "-", "=", "!", "&#8290;"] or separators: #these don't change
+    if presnamedict.get(nodename)!=None:
+        newname = presnamedict.get(nodename)
+    elif nodename in ["+", "-", "=", "!", "&#8290;"] or separators: #these don't change
         newname = nodename
     else:
-        newname = presnamedict.get(nodename)
-
-    # if nodename == "sqrt":
-    #     newname = "msqrt"
-    # if nodename == "/" or nodename == "divide" :
-    #     newname = "mfrac"
-    # if nodename == "power":
-    #     newname = "msup"
+        print(nodename, "Hasn't been implemented yet")
     return newname
 
 def write_to_file(treestring, output_file_loc):

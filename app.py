@@ -79,6 +79,7 @@ def parse(arguments):
         tree = make_presml_tree(parsed_doc)
         presxmlout(tree,output_file_loc )
 
+
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.1.1rc2')
     print(arguments)
