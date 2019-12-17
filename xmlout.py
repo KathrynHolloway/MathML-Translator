@@ -87,7 +87,11 @@ def translatecname(nodename):
         "abs": "abs",
         "rem": "rem",
         "gcd": "gcd",
-        "lcm": "lcm"
+        "lcm": "lcm",
+        "floor":"floor",
+        "xor": "xor",
+        "implies": "implies",
+        "arg": "arg"
 
     }
     newname = contnamedict.get(nodename)
@@ -116,10 +120,14 @@ def translatepname(nodename):
         "rationals": "Q",
         "reals": "R",
         "or": "&#x2228;",
-        "abs": "||",
+        "abs": ["|","|"],
         "rem": "mod",
         "gcd": ["gcd","(",")",","], #prefix, open, close, separators
-        "lcm": ["lcm","(",")",","]
+        "lcm": ["lcm","(",")",","],
+        "arg": ["arg","(",")",""],
+        "floor": ["&#x230a;","&#x230b;"],
+        "xor": "xor",
+        "implies": "&#x21d2;" #rightwards double arrow
     }
     separators = [":", ";", ",","|"]
     if presnamedict.get(nodename)!=None:

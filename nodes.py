@@ -89,7 +89,7 @@ class Operator(Node):
                 self.get_nextchild().outputpresxml(mrow2)
             else:
                 self.get_nextchild().outputpresxml(mo)
-        #have one child
+        #functions that have one child
         elif self.get_name().strip() in ["sin", "cos", "tan","ln,"]:
             #these have been represented using operators but are actually identifiers in pres ML
             # output the xml for this element
@@ -102,53 +102,8 @@ class Operator(Node):
             #output the child
             self.get_child().outputpresxml(parent)
 
-        #have no second child, maybe also no first child (eg setof complexes)
-        elif self.get_nextchild() == None : # eg sqrt, -b and other UNARY operators
-            #output xml for it's first and only child then the operator
-            if self.get_name().strip() in ["!"]:
-                mrow = etree.SubElement(parent, "mrow")
-                self.get_child().outputpresxml(mrow)
-                mo = etree.SubElement(mrow, "mo")
-                mo.text = translatepname(self.get_name())
-            #special operator first eg sqrt, then its first and only child
-            elif self.get_name().strip() in ["sqrt"]:
-                mrow = etree.SubElement(parent, "mrow")
-                mo = etree.SubElement(mrow, translatepname(self.get_name()))
-                # output the xml for only child
-                self.get_child().outputpresxml(mo)
-            #for those that from content, become mfenced elements and require no prefix
-            elif self.get_name().strip() in ["abs"]:
-                mrow = etree.SubElement(parent, "mrow")
-                name = translatepname(self.get_name())
-                if len(name)<3:
-                    seps = ""
-                else:
-                    seps = name[2:]
-                mo = etree.SubElement(mrow, "mfenced",open = name[0], close = name[1], separators = seps )
-                self.get_child().outputpresxml(mo)
-
-            elif self.get_child()==None:
-                #should be some sort of constant or symbol element which has a double struck style
-                constantsandsymbols = ["complexes", "integers","naturalnumbers", "primes","rationals","reals"]
-                if self.get_name() in constantsandsymbols:
-                    #output the element as an identifier with attribute mathvariant = "double-struck"
-                    mi = etree.SubElement(parent, "mi", mathvariant = "double-struck")
-                    mi.text = translatepname(self.get_name())
-                else:
-                    #else just use the html entity equivalent
-                    mi = etree.SubElement(parent, "mi")
-                    mi.text = html.unescape(translatepname(self.get_name()))
-
-            #operator first, then its first and only child
-            else:
-                mrow = etree.SubElement(parent, "mrow")
-                mo = etree.SubElement(mrow, "mo")
-                mo.text = html.unescape(translatepname(self.get_name()))
-                #output the xml for only child
-                self.get_child().outputpresxml(mrow)
-
         # for those that from content, become mfenced elements and require a prefix
-        elif self.get_name().strip() in ["gcd","lcm"]:
+        elif self.get_name().strip() in ["gcd", "lcm", "arg"]:
             info = translatepname(self.get_name())
 
             # add the prefix
@@ -173,7 +128,61 @@ class Operator(Node):
                     self.get_nextchild().outputpresxml(mo)
             except AttributeError:
                 pass
-            '''###################################################################'''
+        #have no second child, maybe also no first child (eg setof complexes)
+        elif self.get_nextchild() == None : # eg sqrt, -b and other UNARY operators
+            #output xml for it's first and only child then the operator
+            if self.get_name().strip() in ["!"]:
+                mrow = etree.SubElement(parent, "mrow")
+                self.get_child().outputpresxml(mrow)
+                mo = etree.SubElement(mrow, "mo")
+                mo.text = translatepname(self.get_name())
+            #special operator first eg sqrt, then its first and only child
+            elif self.get_name().strip() in ["sqrt"]:
+                mrow = etree.SubElement(parent, "mrow")
+                mo = etree.SubElement(mrow, translatepname(self.get_name()))
+                # output the xml for only child
+                self.get_child().outputpresxml(mo)
+            #for those that from content, become mfenced elements and require no prefix
+            elif self.get_name().strip() in ["abs"]:
+                mrow = etree.SubElement(parent, "mrow")
+                name = translatepname(self.get_name())
+                if len(name)<3:
+                    seps = ""
+                else:
+                    seps = name[2]
+                mo = etree.SubElement(mrow, "mfenced",open = name[0], close = name[1], separators = seps )
+                self.get_child().outputpresxml(mo)
+
+            elif self.get_name().strip() == "floor":
+                mrow = etree.SubElement(parent, "mrow")
+                openmo = etree.SubElement(mrow, "mo")
+                openmo.text = html.unescape(translatepname(self.get_name())[0])
+
+                self.get_child().outputpresxml(mrow)
+
+                closemo = etree.SubElement(mrow, "mo")
+                closemo.text = html.unescape(translatepname(self.get_name())[1])
+            #no children
+            elif self.get_child()==None:
+                #should be some sort of constant or symbol element which has a double struck style
+                constantsandsymbols = ["complexes", "integers","naturalnumbers", "primes","rationals","reals"]
+                if self.get_name() in constantsandsymbols:
+                    #output the element as an identifier with attribute mathvariant = "double-struck"
+                    mi = etree.SubElement(parent, "mi", mathvariant = "double-struck")
+                    mi.text = translatepname(self.get_name())
+                else:
+                    #else just use the html entity equivalent
+                    mi = etree.SubElement(parent, "mi")
+                    mi.text = html.unescape(translatepname(self.get_name()))
+
+            #operator first, then its first and only child
+            else:
+                mrow = etree.SubElement(parent, "mrow")
+                mo = etree.SubElement(mrow, "mo")
+                mo.text = html.unescape(translatepname(self.get_name()))
+                #output the xml for only child
+                self.get_child().outputpresxml(mrow)
+
         else:
             # first output the xml for child0
             mrow1 = etree.SubElement(parent, "mrow")
@@ -298,7 +307,6 @@ class Interval(Node):
             interval = etree.SubElement(apply, "interval", closure="closed")
         self.get_child().get_child().outputcontxml(apply)
         self.get_child().get_nextchild().outputcontxml(apply)
-
 
 
 

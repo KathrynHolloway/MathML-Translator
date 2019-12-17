@@ -346,7 +346,11 @@ def check_cnode(element, siblings):
         "abs":"abs",
         "rem":"rem",
         "gcd":"gcd",
-        "lcm":"lcm"
+        "lcm":"lcm",
+        "xor":"xor",
+        "implies":"implies",
+        "arg":"arg",
+        "floor": "floor"
     }
     leaf = ["cn", "ci"]
     tag = get_tag(element)
@@ -372,8 +376,11 @@ def check_cnode(element, siblings):
             return make_cnode("operator", element, siblings, considerdict.get(tag))
 
     if len(siblings) >1:
-        if considerdict.get(tag) != None:
+        if tag == "quotient":
+            return make_cnode("quotient", element, siblings, "floor")
+        elif considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
+
         else:
             print("len(siblings) >1 logic needs adding")
 
@@ -395,7 +402,11 @@ def make_cnode(type, element, siblings, name):
     if type == "operator":
         print("making op: " + name)
         return Operator(name, get_op_child(element,siblings), check_op_siblingsc(element, siblings), element.attrib  )
-
+    if type == "quotient":
+        print("making quotient: " + name)
+        firstchild = make_cnode("operator", element, siblings, "/")
+        secondchild = None
+        return Operator(name, firstchild, secondchild, element.attrib )
 def make_interval_node(element, siblings):
     intervaltype = element.attrib.get("closure")
 
