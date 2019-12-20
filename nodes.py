@@ -16,7 +16,6 @@ class Node(ABC):
     # def get_sibling(self):
     #     pass
     #     return self.sibling
-    '''add get attributes?'''
     def get_attributes(self):
         return  self.attributes
 
@@ -217,7 +216,20 @@ class Operator(Node):
                                "imaginaryi", "infinity","naturalnumbers", "notanumber","pi","primes","rationals",
                                "reals","true"]
         if name in constantsandsymbols:
+            #just output the operator
             op = etree.SubElement(parent, name)
+        elif name == "separator":
+            #just output the children
+            self.get_child().outputcontxml(parent)
+            try:
+                #if next child is the same operator as the current element, just output ITS first child
+                if self.get_nextchild().get_name().strip() == self.get_name().strip():
+                    self.get_nextchild().outputnextcontxml(parent, self.get_name().strip())
+                else:
+                    self.get_nextchild().outputcontxml(parent)
+            except AttributeError:
+                pass
+
         else:
             apply = etree.SubElement(parent, "apply")
             op = etree.SubElement(apply, name)
@@ -233,7 +245,7 @@ class Operator(Node):
 
 
     def outputnextcontxml(self, parent, prevop):
-        #mamke the lhs child
+        #make the lhs child
         self.get_child().outputcontxml(parent)
         #check the rhs child
         if self.get_nextchild().get_name().strip() == prevop :
@@ -264,12 +276,42 @@ class Brackets(Node):
         moopen = etree.SubElement(mrow, "mo")
         moopen.text = html.unescape(self.get_openbrac())
         # output the xml for only child
-        self.get_child().outputpresxml(mrow)
+        try:
+            self.get_child().outputpresxml(mrow)
+        except AttributeError:
+            pass
         moclose = etree.SubElement( mrow, "mo")
         moclose.text = html.unescape(self.get_closebrac())
 
     def outputcontxml(self,parent):
-        print("implement")
+        #brackets dont need to be explicitly made for content ml;
+        # theyre mostly decided on by the parser in the browser?
+        #if not an interval, skip over brackets?
+        #what about function applications?... if it is required that the invisible function
+        #application operator is used this can be handled relatively easily
+        '''fine to skip over the brackets if the first and only child is not a separator
+         as this should mean it is not an interval, list, set?'''
+        if self.get_attributes().get("list") == "true":
+            #this is the beginning of a tree representing a list
+            #output list tag
+            list = etree.SubElement(parent, "list")
+            #output child
+            if self.get_child() != None:
+                #output the first child if one exists
+                self.get_child().outputcontxml(list)
+        elif self.get_attributes().get("set") == "true":
+            #this is the beginning of a tree representing a list
+            #output list tag
+            list = etree.SubElement(parent, "set")
+            #output child
+            if self.get_child() != None:
+                #output the first child if one exists
+                self.get_child().outputcontxml(list)
+        elif self.get_child().get_attributes().get("separator") != "true":
+            self.get_child().outputcontxml(parent)
+        else:
+            print("implement this brackets logic")
+
 
 class Interval(Node):
     def __init__(self, openbracket, closebracket , child, attributes):
@@ -296,14 +338,10 @@ class Interval(Node):
 
     def outputcontxml(self,parent):
         apply = etree.SubElement(parent, "apply")
-        # try:
-        #     closuretype = self.get_attributes().get("closure")
-        # except TypeError:
-        #     closuretype = "closed"
-        # interval = etree.SubElement(apply, "interval", closure = closuretype)
         try:
             interval = etree.SubElement(apply, "interval", closure=self.get_attributes().get("closure"))
         except TypeError:
+            #closed is the default type of closure
             interval = etree.SubElement(apply, "interval", closure="closed")
         self.get_child().get_child().outputcontxml(apply)
         self.get_child().get_nextchild().outputcontxml(apply)

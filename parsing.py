@@ -350,7 +350,9 @@ def check_cnode(element, siblings):
         "xor":"xor",
         "implies":"implies",
         "arg":"arg",
-        "floor": "floor"
+        "floor": "floor",
+        "list": "()",
+        "set": "{}"
     }
     leaf = ["cn", "ci"]
     tag = get_tag(element)
@@ -366,6 +368,9 @@ def check_cnode(element, siblings):
                 return make_cnode("ci", element, siblings, element.text)
         if tag == "interval":
             return make_interval_node(element,siblings)
+        if tag == "list" or tag == "set":
+            return make_cnode(tag , element, siblings, considerdict.get(tag) )
+
         if considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
     #the element and one sibling xml node are what is available for consideration
@@ -374,13 +379,20 @@ def check_cnode(element, siblings):
             print("add some logic here")
         if considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
+        if tag == "interval":
+            return make_interval_node(element,siblings)
+        if tag == "list" or tag == "set":
+            return make_cnode(tag , element, siblings, considerdict.get(tag))
 
     if len(siblings) >1:
         if tag == "quotient":
             return make_cnode("quotient", element, siblings, "floor")
         elif considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
-
+        elif tag == "interval":
+            return make_interval_node(element,siblings)
+        elif tag == "list" or tag == "set":
+            return make_cnode(tag , element, siblings, considerdict.get(tag))
         else:
             print("len(siblings) >1 logic needs adding")
 
@@ -407,6 +419,38 @@ def make_cnode(type, element, siblings, name):
         firstchild = make_cnode("operator", element, siblings, "/")
         secondchild = None
         return Operator(name, firstchild, secondchild, element.attrib )
+
+    if type == "list" or type =="set":
+        operatorchildren = get_children(element)
+        if len(operatorchildren) == 0:
+            #empty list
+            child0 = None
+        if len(operatorchildren) == 1:
+            #length 1 list
+            child0 = check_cnode(operatorchildren[0],[])
+        if len(operatorchildren) == 2:
+            child0 = Operator(",", check_cnode(operatorchildren[0],[]),
+                              check_cnode(operatorchildren[1],[]), {"separator": "true"})
+        if len(operatorchildren) >2:
+            child0 = Operator(",", check_cnode(operatorchildren[0],[]),
+                              make_cnode("separator", operatorchildren[1],operatorchildren[2:], ","), {"separator": "true"})
+        attributesdict = element.attrib
+        attributesdict[type]= "true"
+        return Brackets(name[0], name[1], child0 , attributesdict )
+
+    if type == "separator":
+        if len(siblings)<2:
+            #i.e. one element, make this the 'other' child of the separator
+            child1 = check_cnode(siblings[0],[])
+        else:
+            # 2 or more children requires another separator node, make this the 'other' child
+            child1 = make_cnode("separator", siblings[0],siblings[1:], ",")
+        return Operator(",", check_cnode(element,[]), child1, {"separator": "true"})
+
+
+
+
+
 def make_interval_node(element, siblings):
     intervaltype = element.attrib.get("closure")
 
@@ -427,7 +471,6 @@ def make_interval_node(element, siblings):
     return Interval(openbrac, closebrac, separatornode,element.attrib)
 
 
-
 '''helper method for checking what the sibling for an operator node is'''
 def check_op_siblingsc(element, siblings):
     # returns value for siblings
@@ -440,9 +483,16 @@ def check_op_siblingsc(element, siblings):
     return opsibling
 
 def get_op_child(element,siblings):
-    #returns what he value for the operators child is
+    #returns what the value for the operators first child is
     if siblings == []:
         opchild = None
     else:
         opchild = check_cnode(siblings[0], [])
     return opchild
+
+def get_children(element):
+    #returns list of elements children
+    list = []
+    for child in element:
+        list.append(child)
+    return list

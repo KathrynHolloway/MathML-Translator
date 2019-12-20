@@ -49,7 +49,7 @@ def translatecname(nodename):
         "&#x2260;":"neq",
         "+": "plus",
         "-": "minus",
-        "&#8290;":"times",
+        "&#8290;":"times", #invisible times
         "/":"divide",
         "!":"factorial",
         "sqrt": "root",
@@ -91,7 +91,8 @@ def translatecname(nodename):
         "floor":"floor",
         "xor": "xor",
         "implies": "implies",
-        "arg": "arg"
+        "arg": "arg",
+        ",":"separator"
 
     }
     newname = contnamedict.get(nodename)
