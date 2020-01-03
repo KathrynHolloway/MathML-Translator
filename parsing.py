@@ -93,8 +93,6 @@ def check_pnode(element, siblings):
             if tag == "mfenced":
                 return make_bracket_node(tag,element, siblings, None)
 
-
-
         #is the current element a leaf?
         if tag in leaf:
             return leafnode(tag, element,siblings, element.text)
@@ -102,8 +100,11 @@ def check_pnode(element, siblings):
     #the current element has only one sibling
     if len(siblings) == 1:
         if tag == "mo":
-            return opfirst(element,siblings, element.text)
-        if get_tag(siblings[0]) == "mo":
+            if element.text.strip() in ["(", "[", "{"] and siblings[0].text.strip() in [")", "]", "}"]:
+                return make_bracket_node("justbrackets",element, siblings, 0)
+            else:
+                return opfirst(element,siblings, element.text)
+        elif get_tag(siblings[0]) == "mo":
             return opsecond(element,siblings, siblings[0].text)
             #example case is factorial (!)
         elif tag in leaf:
@@ -164,14 +165,20 @@ def check_pnode(element, siblings):
 
 def find_other_bracket(siblings):
     bracket2loc = 0
-    i = 0
-    while (i < len(siblings)):
+    siblingnumber = 0
+    incompletebrackets = 0
+    while (siblingnumber < len(siblings)):
         # print(siblings[i].text)
-        if get_tag(siblings[i]) == "mo":
-            if siblings[i].text.strip() in [")", "]", "}"]:
-                break
+        if get_tag(siblings[siblingnumber]) == "mo":
+            if siblings[siblingnumber].text.strip() in ["(", "[", "{"]:
+                incompletebrackets += 1
+            if siblings[siblingnumber].text.strip() in [")", "]", "}"]:
+                if incompletebrackets == 0:
+                    break
+                else:
+                    incompletebrackets -= 1
         bracket2loc += 1
-        i += 1
+        siblingnumber += 1
     return bracket2loc
 
 def make2childopnode(element, siblings, name):
@@ -242,7 +249,10 @@ def make_bracket_node(type, element, siblings, bracket2loc ):
     if type == "justbrackets":
         print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
         return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]), element.attrib)
-
+    # if type == "emptybrackets":
+    #     print("making empty brackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
+    #     return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(),
+    #                     check_for_psiblings(siblings[:bracket2loc]), element.attrib)
     if type == "mfenced":
         openbrac = element.attrib.get("open")
         closebrac = element.attrib.get("close")

@@ -275,7 +275,7 @@ class Brackets(Node):
         mrow = etree.SubElement(parent, "mrow")
         moopen = etree.SubElement(mrow, "mo")
         moopen.text = html.unescape(self.get_openbrac())
-        # output the xml for only child
+        # output the xml for only child if one exists
         try:
             self.get_child().outputpresxml(mrow)
         except AttributeError:
@@ -308,6 +308,7 @@ class Brackets(Node):
                 #output the first child if one exists
                 self.get_child().outputcontxml(list)
         elif self.get_child().get_attributes().get("separator") != "true":
+            #eg mfenced
             self.get_child().outputcontxml(parent)
         else:
             print("implement this brackets logic")
