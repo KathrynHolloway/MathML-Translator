@@ -1,4 +1,5 @@
 from lxml import etree
+from optimisepresml import optimise
 
 '''for now, print the xml as a string instead of writing to an actual file?'''
 
@@ -18,7 +19,10 @@ def presxmlout(tree, output_file_loc):
 
     tree.outputpresxml(mrow)
 
-    write_to_file(str(etree.tostring(root)),output_file_loc)
+    optimisedtree = optimise(root)
+
+    # write_to_file(str(etree.tostring(root)),output_file_loc)
+    write_to_file(str(etree.tostring(optimisedtree)),output_file_loc)
 
     # return etree.tostring(root)
 
