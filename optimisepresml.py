@@ -1,16 +1,13 @@
 from lxml import etree
 
 def optimise(tree):
-    # root = tree.getroot()
-    root = tree
-
     '''the following two nodes are always present and necessary'''
-    newoptimisedtree = etree.Element(root.tag, xmlns="http://www.w3.org/1998/Math/MathML") # math
+    newoptimisedtree = etree.Element(tree.tag, xmlns="http://www.w3.org/1998/Math/MathML") # math
     mrow = etree.SubElement(newoptimisedtree, "mrow")
     '''note: cannot just trace tree and remove unnecessary nodes as this looses any descendants also'''
 
     #check the child(ren) of the first mrow before iterating through the rest of the tree
-    check_element(root[0], mrow)
+    check_element(tree[0], mrow)
 
     return newoptimisedtree
 
@@ -35,3 +32,4 @@ def get_list_of_children(element):
         children.append(child)
 
     return children
+

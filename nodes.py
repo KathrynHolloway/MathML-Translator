@@ -59,6 +59,9 @@ class Operator(Node):
     def get_name(self):
         return self.name
 
+    def set_name(self, newname):
+        self.name = newname
+
     def get_child(self):
         return self.child0
 
@@ -89,7 +92,7 @@ class Operator(Node):
             else:
                 self.get_nextchild().outputpresxml(mo)
         #functions that have one child
-        elif self.get_name().strip() in ["sin", "cos", "tan","ln,"]:
+        elif self.get_name().strip() in ["sin", "cos", "tan","ln"]:
             #these have been represented using operators but are actually identifiers in pres ML
             # output the xml for this element
             mi = etree.SubElement(parent, "mi")
@@ -309,6 +312,7 @@ class Brackets(Node):
                 self.get_child().outputcontxml(list)
         elif self.get_child().get_attributes().get("separator") != "true":
             #eg mfenced
+
             self.get_child().outputcontxml(parent)
         else:
             print("implement this brackets logic")

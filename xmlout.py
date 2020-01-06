@@ -1,14 +1,15 @@
 from lxml import etree
 from optimisepresml import optimise
+import nodes
+
 
 '''for now, print the xml as a string instead of writing to an actual file?'''
 
 def presxmlout(tree, output_file_loc):
-    # with open(output_file_loc, 'w') as output_file:
-    #     output_file.write('some info here. great')
-    '''above: if the file exists it writes to (and over) that file
-             should create a file if one with that name doesn't exist, then write'''
-    '''next: want to walk the tree and make my personal structure back into and etree'''
+    '''want to walk the tree and make my personal structure back into an etree
+    but before that, check for any issues with invisible times'''
+
+    invisibletimescheck(tree)
     
     # root = etree.Element(tree.get_name())
     # makechildren(tree, root)
@@ -152,6 +153,28 @@ def write_to_file(treestring, output_file_loc):
              should create a file if one with that name doesn't exist, then write'''
     '''next: want to walk the tree and make my personal structure back into and etree'''
 
+
+def invisibletimescheck(element):
+    '''note indexing shouldn't be an issue as times is a binary operation.
+    caution necessary when operation isn't times'''
+    #checks for any issues with multiplication as invisible times is used as a default when parsing times
+    if type(element) is nodes.Operator and element.get_name() == "&#8290;":
+        if type(element.get_child()) is nodes.Value and type(element.get_nextchild()) is nodes.Value: #if both children of times are numbers, "x" necessary
+            element.set_name("&#xd7;")
+        elif type(element.get_child()) is nodes.Value and element.get_nextchild().get_name() == "&#8290;" \
+                and type(element.get_nextchild().get_child()) is nodes.Value:
+            #covers multiplication of more than two numbers together
+            element.set_name("&#xd7;")
+            invisibletimescheck(element.get_nextchild())
+        else:
+            invisibletimescheck(element.get_nextchild())
+    else:
+        '''could be none times operator or leaf node'''
+        try:
+            invisibletimescheck(element.get_child())
+            invisibletimescheck(element.get_nextchild())
+        except:
+            pass
 
 # def makechildren(treenodeparent, xmlparent):
 #     #print(treenodeparent)
