@@ -130,7 +130,7 @@ class Operator(Node):
                     self.get_nextchild().outputpresxml(mo)
             except AttributeError:
                 pass
-        #have no second child, maybe also no first child (eg setof complexes)
+        #elements that have no second child, maybe also no first child (eg setof complexes)
         elif self.get_nextchild() == None : # eg sqrt, -b and other UNARY operators
             #output xml for it's first and only child then the operator
             if self.get_name().strip() in ["!"]:
@@ -215,9 +215,9 @@ class Operator(Node):
         #i expect that they don't have children
         name = translatecname(self.get_name().strip())
         #below are the elements which dont' require wrapping in apply
-        constantsandsymbols = ["complexes", "integers", "emptyset", "eulergamma", "exponentiale","false",
-                               "imaginaryi", "infinity","naturalnumbers", "notanumber","pi","primes","rationals",
-                               "reals","true"]
+        constantsandsymbols = [ "emptyset", "eulergamma", "exponentiale","false",
+                               "imaginaryi", "infinity", "notanumber","pi","true"]
+                              # "reals", "complexes", "integers", "naturalnumbers","primes","rationals"]
         if name in constantsandsymbols:
             #just output the operator
             op = etree.SubElement(parent, name)
@@ -351,6 +351,23 @@ class Interval(Node):
         self.get_child().get_child().outputcontxml(apply)
         self.get_child().get_nextchild().outputcontxml(apply)
 
+'''HERE''''''''''''''''''''''''''''''''''''''''''''''''';'''''
+class NumberSet(Node):
+    def __init__(self, name, attributes):
+        super().__init__(attributes)
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+    def outputpresxml(self, parent):
+        # output the xml for this element
+        mi = etree.SubElement(parent, "mi", mathvariant = self.get_attributes().get("mathvariant") )
+        mi.text = html.unescape(translatepname(self.get_name()))
+
+    def outputcontxml(self, parent):
+        # output the xml for this element
+        op = etree.SubElement(parent, translatecname(self.get_name().strip()))
 
 
 class Identifier(Node):
@@ -368,6 +385,7 @@ class Identifier(Node):
 
     def get_nextchild(self):
         return self.sibling
+    #need this??
 
     def outputpresxml(self, parent):
         # output the xml for this element
@@ -376,5 +394,8 @@ class Identifier(Node):
 
     def outputcontxml(self,parent):
         # output the xml for this element
-        ci = etree.SubElement(parent, "ci")
-        ci.text = self.get_name()
+        if self.get_name() in ["true", "false"]:
+            op = etree.SubElement(parent, self.get_name())
+        else:
+            ci = etree.SubElement(parent, "ci")
+            ci.text = self.get_name()
