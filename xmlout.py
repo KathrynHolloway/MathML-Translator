@@ -52,6 +52,8 @@ def translatecname(nodename):
     contnamedict = {
         "=" : "eq",
         "&#x2260;":"neq",
+        "&#8800;":"neq",
+        "≠":"neq",
         "+": "plus",
         "-": "minus",
         "&#8290;":"times", #invisible times
@@ -62,9 +64,17 @@ def translatecname(nodename):
         "&#8801;":"equivalent",
         "≡":"equivalent",
         "&#x2265;": "geq",
+        "&&#8805;": "geq",
+        "≥": "geq",
         "&#x2264;": "leq",
-        "&#x3e;": "gt",
+        "&#8804;": "leq",
+        "≤": "leq",
+        "&#x3e;": "gt", #gt symbol can be expressed multiple ways in pres ml
+        "&gt;": "gt",
+        ">": "gt",
         "&#x3c;" : "lt",
+        "&lt;" : "lt",
+        "<" : "lt",
         "&#172;":"not",
         "¬":"not",
         "&#xFF5C;":"factorof",
@@ -107,7 +117,8 @@ def translatecname(nodename):
         "&#8658;": "implies",
         "⇒": "implies",
         "arg": "arg",
-        ",":"separator"
+        ",":"separator",
+        "NaN" :"notanumber"
 
     }
     newname = contnamedict.get(nodename)

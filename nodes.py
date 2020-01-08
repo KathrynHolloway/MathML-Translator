@@ -394,8 +394,8 @@ class Identifier(Node):
 
     def outputcontxml(self,parent):
         # output the xml for this element
-        if self.get_name() in ["true", "false"]:
-            op = etree.SubElement(parent, self.get_name())
+        if self.get_name() in ["true", "false", "NaN"]:
+            op = etree.SubElement(parent, translatecname(self.get_name()))
         else:
             ci = etree.SubElement(parent, "ci")
             ci.text = self.get_name()

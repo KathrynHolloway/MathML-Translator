@@ -28,10 +28,6 @@ def get_tag(element):
         return element.tag[element.tag.index("}") + 1:]
     else:
         return element.tag
-# def get_children(child): #m this is for printing and visualising code
-#     for i in child:
-#         print_child(i)
-#         get_children(i)
 
 def child_list(element):
     # gets a list of an elements children for use in check_node, excluding first to represent siblings
@@ -232,7 +228,20 @@ def leafnode(type, element, siblings, name):
            #make identifier node
            sibling = check_for_psiblings(siblings)
            print("making mi: " + name)
-           return Identifier(name, sibling, element.attrib)  # keeps any attribs from mi
+           if element.attrib.get("mathvariant") == "double-struck":
+               numbersetdict = {
+                   "P": "primes",
+                   "Q": "rationals",
+                   "R": "reals",
+                   "C": "complexes",  # &#x2102;"
+                   "Z": "integers",
+                   "N": "naturalnumbers"
+                }
+               return NumberSet(numbersetdict.get(name), element.attrib)
+               #this is a number set such as reals, integers etc
+
+           else:
+               return Identifier(name, sibling, element.attrib)  # keeps any attribs from mi
        else:
            pass
 
@@ -316,7 +325,7 @@ def check_cnode(element, siblings):
     considerdict={
         "plus":"+",
         "minus":"-",
-        "times":"&#8290;",
+        "times":"&#8290;", #invisible times
         "divide": "/",
         "eq":"=",
         "neq":"&#x2260;",
@@ -335,8 +344,8 @@ def check_cnode(element, siblings):
         "not": "&#172;",
         "factorof":"&#xFF5C;",
         "in" : "&#x2208;",
-        "complexes": "complexes",#&#x2102;"
-        "integers":"integers",
+        # "complexes": "complexes",#&#x2102;"
+        # "integers":"integers",
         "emptyset":"emptyset",
         "eulergamma": "eulergamma",
         "ln": "ln",
@@ -345,12 +354,12 @@ def check_cnode(element, siblings):
         "false":"false",
         "imaginaryi": "imaginaryi",
         "infinity": "infinity",
-        "naturalnumbers": "naturalnumbers",
+        # "naturalnumbers": "naturalnumbers",
         "notanumber": "notanumber",
         "pi":"pi",
-        "primes":"primes",
-        "rationals": "rationals",
-        "reals":"reals",
+        # "primes":"primes",
+        # "rationals": "rationals",
+        # "reals":"reals",
         "or":"or",
         "true":"true",
         "abs":"abs",
@@ -363,6 +372,14 @@ def check_cnode(element, siblings):
         "floor": "floor",
         "list": "()",
         "set": "{}"
+    }
+    numbersetdict = {
+        "primes": "primes",
+        "rationals": "rationals",
+        "reals": "reals",
+        "complexes": "complexes",  # &#x2102;"
+        "integers": "integers",
+        "naturalnumbers": "naturalnumbers"
     }
     leaf = ["cn", "ci"]
     tag = get_tag(element)
@@ -380,13 +397,16 @@ def check_cnode(element, siblings):
             return make_interval_node(element,siblings)
         if tag == "list" or tag == "set":
             return make_cnode(tag , element, siblings, considerdict.get(tag) )
-
+        if numbersetdict.get(tag) != None:
+            return make_cnode("numberset", element, siblings, numbersetdict.get(tag))
         if considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
     #the element and one sibling xml node are what is available for consideration
     if len(siblings) == 1:
         if tag in ignore:
             print("add some logic here")
+        if numbersetdict.get(tag) != None:
+            return make_cnode("numberset", element, siblings, numbersetdict.get(tag))
         if considerdict.get(tag) != None:
             return make_cnode("operator", element, siblings, considerdict.get(tag))
         if tag == "interval":
@@ -456,6 +476,9 @@ def make_cnode(type, element, siblings, name):
             # 2 or more children requires another separator node, make this the 'other' child
             child1 = make_cnode("separator", siblings[0],siblings[1:], ",")
         return Operator(",", check_cnode(element,[]), child1, {"separator": "true"})
+
+    if type== "numberset":
+        return NumberSet(name, {"mathvariant":"double-struck"})
 
 
 
