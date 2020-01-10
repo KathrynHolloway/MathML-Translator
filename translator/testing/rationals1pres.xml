@@ -1,0 +1,15 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mrow>
+            <mfrac>
+                <mn> 22</mn>
+                <mn> 7</mn>
+            </mfrac>
+        </mrow>
+        <mo>&#8712;</mo>
+        <mrow>
+            <mi mathvariant="double-struck">Q</mi>
+        </mrow>
+    </mrow>
+</math>

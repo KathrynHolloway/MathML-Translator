@@ -1,0 +1,19 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+        <plus/>
+        <ci type="real"> x </ci>
+        <ci type="integer"> x </ci>
+        <ci type="rational"> x </ci>
+        <ci type="complex-cartesian"> y </ci>
+        <ci type="complex-polar"> &theta; </ci>
+        <ci type="vector"> v </ci>
+        <ci type="constant"> &pi; </ci>
+        <ci> &ExponentialE; </ci>
+        <ci> &ee; </ci>
+        <ci> &ImaginaryI; </ci>
+        <ci> &ii; </ci>
+        <ci> &gamma; </ci>
+        <ci> &infin; </ci>
+    </apply>
+</math>

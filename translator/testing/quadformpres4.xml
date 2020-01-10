@@ -1,0 +1,37 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+   <mi>x</mi>
+   <mo>=</mo>
+   <mfrac>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mi>b</mi>
+     </mrow>
+     <mo>&PlusMinus;</mo>
+     <msqrt>
+      <mrow>
+       <msup>
+        <mi>b</mi>
+        <mn>2</mn>
+       </msup>
+       <mo>-</mo>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+      </mrow>
+     </msqrt>
+    </mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>a</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+</math>

@@ -1,0 +1,9 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mfenced>
+            <mi>x</mi>
+            <mi>y</mi>
+        </mfenced>
+    </mrow>
+</math>
