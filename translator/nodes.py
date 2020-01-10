@@ -235,6 +235,7 @@ class Operator(Node):
 
         else:
             apply = etree.SubElement(parent, "apply")
+            print(self.get_name())
             op = etree.SubElement(apply, name)
             self.get_child().outputcontxml(apply)
 
@@ -289,12 +290,24 @@ class Brackets(Node):
     def outputcontxml(self,parent):
         #brackets dont need to be explicitly made for content ml;
         # theyre mostly decided on by the parser in the browser?
-        #if not an interval, skip over brackets?
+        #if not an interval, 'skip over' brackets? ie don't use the braclets for info but not in the output
         #what about function applications?... if it is required that the invisible function
         #application operator is used this can be handled relatively easily
         '''fine to skip over the brackets if the first and only child is not a separator
          as this should mean it is not an interval, list, set?'''
-        if self.get_attributes().get("list") == "true":
+        openbracket = self.get_openbrac().strip()
+        closebracket = self.get_closebrac().strip()
+        type = input("Is"+openbracket + closebracket +" \na) An interval \nb) A list\n")
+        print(type)
+
+        if openbracket in ["&#8970;","⌊"] and closebracket in ["&#8971;", "⌋"]:
+            #floor of child being taken
+            apply = etree.SubElement(parent,"apply")
+            floor = etree.SubElement(apply,"floor")
+            if self.get_child() != None:
+                #output the first child if one exists
+                self.get_child().outputcontxml(apply)
+        elif self.get_attributes().get("list") == "true":
             #this is the beginning of a tree representing a list
             #output list tag
             list = etree.SubElement(parent, "list")
@@ -302,7 +315,7 @@ class Brackets(Node):
             if self.get_child() != None:
                 #output the first child if one exists
                 self.get_child().outputcontxml(list)
-        elif self.get_attributes().get("set") == "true":
+        elif self.get_attributes().get("set") == "true" or (openbracket == "{" and closebracket == "}"):
             #this is the beginning of a tree representing a list
             #output list tag
             list = etree.SubElement(parent, "set")
@@ -312,7 +325,6 @@ class Brackets(Node):
                 self.get_child().outputcontxml(list)
         elif self.get_child().get_attributes().get("separator") != "true":
             #eg mfenced
-
             self.get_child().outputcontxml(parent)
         else:
             print("implement this brackets logic")
@@ -394,7 +406,8 @@ class Identifier(Node):
 
     def outputcontxml(self,parent):
         # output the xml for this element
-        if self.get_name() in ["true", "false", "NaN"]:
+        if self.get_name() in ["true", "false", "NaN", "&#8709;", "∅", "γ","&#947;","&#8734;" ,"∞"]: #&#8709; is empty set, &#960; is pi
+            #these are elements represented in pres ml as identifiers but act like operators in cont ml
             op = etree.SubElement(parent, translatecname(self.get_name()))
         else:
             ci = etree.SubElement(parent, "ci")

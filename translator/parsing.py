@@ -96,7 +96,7 @@ def check_pnode(element, siblings):
     #the current element has only one sibling
     if len(siblings) == 1:
         if tag == "mo":
-            if element.text.strip() in ["(", "[", "{"] and siblings[0].text.strip() in [")", "]", "}"]:
+            if element.text.strip() in ["(", "[", "{","&#8970;","⌊"] and siblings[0].text.strip() in [")", "]", "}","&#8971;","⌋"]:
                 return make_bracket_node("justbrackets",element, siblings, 0)
             else:
                 return opfirst(element,siblings, element.text)
@@ -131,7 +131,7 @@ def check_pnode(element, siblings):
             #ie op elmnt op etc
 
             # is a bracket
-            if element.text.strip() in ["(", "[", "{"]:
+            if element.text.strip() in ["(", "[", "{","&#8970;","⌊"]:
                 #find closing bracket
                 bracket2loc = find_other_bracket(siblings)
 
@@ -166,9 +166,9 @@ def find_other_bracket(siblings):
     while (siblingnumber < len(siblings)):
         # print(siblings[i].text)
         if get_tag(siblings[siblingnumber]) == "mo":
-            if siblings[siblingnumber].text.strip() in ["(", "[", "{"]:
+            if siblings[siblingnumber].text.strip() in ["(", "[", "{","&#8970;","⌊"]:
                 incompletebrackets += 1
-            if siblings[siblingnumber].text.strip() in [")", "]", "}"]:
+            if siblings[siblingnumber].text.strip() in [")", "]", "}","&#8971;", "⌋"]:
                 if incompletebrackets == 0:
                     break
                 else:
