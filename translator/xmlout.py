@@ -57,6 +57,7 @@ def translatecname(nodename):
         "+": "plus",
         "-": "minus",
         "&#8290;":"times", #invisible times
+        "⁢":"times", #invisible times
         "/":"divide",
         "!":"factorial",
         "sqrt": "root",
@@ -73,6 +74,7 @@ def translatecname(nodename):
         "&#x3e;": "gt", #gt symbol can be expressed multiple ways in pres ml
         "&gt;": "gt",
         ">": "gt",
+        "±":"plus",
         "&#x3c;" : "lt",
         "&lt;" : "lt",
         "<" : "lt",
@@ -96,11 +98,13 @@ def translatecname(nodename):
         "&#947;": "eulergamma",
         "ln": "ln",
         "exponentiale": "exponentiale",
+        "e": "exponentiale",
         "and": "and",
         "∧": "and",
         "&#8743;": "and",
         "false": "false",
         "imaginaryi": "imaginaryi",
+        "i": "imaginaryi",
         "infinity": "infinity",
         "∞": "infinity",
         "&#8734;": "infinity",
@@ -128,7 +132,8 @@ def translatecname(nodename):
         "⇒": "implies",
         "arg": "arg",
         ",":"separator",
-        "NaN" :"notanumber"
+        "NaN" :"notanumber",
+        "&#8289;":"fnapplication"
 
     }
     newname = contnamedict.get(nodename)
@@ -171,7 +176,7 @@ def translatepname(nodename):
         newname = presnamedict.get(nodename)
     elif nodename in ["+", "-", "=", "!", "&#8290;"] or separators: #these don't change
         newname = nodename
-    else:
+    elif presnamedict.get(nodename) == None:
         print(nodename, "Hasn't been implemented yet")
     return newname
 

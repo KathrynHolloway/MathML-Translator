@@ -151,7 +151,7 @@ def check_pnode(element, siblings):
 
         elif get_tag(siblings[0]) == "mo": # operator is second
             # check if the operator is a function application, it require different tree structure
-            if element.text.strip() in ["sin", "cos" , "tan"]:
+            if element.text.strip() in ["sin", "cos" , "tan", "ln"]:
                 #this assumes that a function application is applied to the sin, cos etc and its contents
                 return opfirst(element, siblings[1:], element.text.strip())
             else:

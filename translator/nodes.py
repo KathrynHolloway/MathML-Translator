@@ -297,37 +297,62 @@ class Brackets(Node):
          as this should mean it is not an interval, list, set?'''
         openbracket = self.get_openbrac().strip()
         closebracket = self.get_closebrac().strip()
-        type = input("Is"+openbracket + closebracket +" \na) An interval \nb) A list\n")
-        print(type)
 
         if openbracket in ["&#8970;","⌊"] and closebracket in ["&#8971;", "⌋"]:
-            #floor of child being taken
+            #logic for the floor function
             apply = etree.SubElement(parent,"apply")
             floor = etree.SubElement(apply,"floor")
             if self.get_child() != None:
                 #output the first child if one exists
                 self.get_child().outputcontxml(apply)
-        elif self.get_attributes().get("list") == "true":
-            #this is the beginning of a tree representing a list
-            #output list tag
-            list = etree.SubElement(parent, "list")
-            #output child
+
+        elif openbracket == "|" and closebracket == "|":
+            #logic for the floor function
+            apply = etree.SubElement(parent,"apply")
+            floor = etree.SubElement(apply,"abs")
             if self.get_child() != None:
                 #output the first child if one exists
-                self.get_child().outputcontxml(list)
+                self.get_child().outputcontxml(apply)
+
         elif self.get_attributes().get("set") == "true" or (openbracket == "{" and closebracket == "}"):
             #this is the beginning of a tree representing a list
             #output list tag
-            list = etree.SubElement(parent, "set")
+            element = etree.SubElement(parent, "set")
             #output child
             if self.get_child() != None:
                 #output the first child if one exists
-                self.get_child().outputcontxml(list)
-        elif self.get_child().get_attributes().get("separator") != "true":
-            #eg mfenced
-            self.get_child().outputcontxml(parent)
+                self.get_child().outputcontxml(element)
+
         else:
-            print("implement this brackets logic")
+            answer = input("Are these brackets" + openbracket + closebracket + "best described"
+                                                                             " as 1, 2 or 3?"" \n1) An interval \n2) A list\n"
+                                                                             "3) Neither\nPlease enter the correct corresponding"
+                                                                             " number: ")
+            if self.get_attributes().get("list") == "true" or answer =="2":
+                # this is the beginning of a tree representing a list
+                # output list tag
+                list = etree.SubElement(parent, "list")
+                # output child
+                if self.get_child() != None:
+                    # output the first child if one exists
+                    self.get_child().outputcontxml(list)
+            elif answer == "1":
+                # output interval tag
+                intervalbrackets = openbracket + closebracket
+                closuretypedict = {
+                    "[]": "closed",
+                    "(]":"open-closed",
+                    "[)":"closed-open",
+                    "()":"open"
+                }
+                list = etree.SubElement(parent, "interval", closure= closuretypedict.get(intervalbrackets))
+                # output child
+                if self.get_child() != None:
+                    # output the first child if one exists
+                    self.get_child().outputcontxml(list)
+            elif self.get_child().get_attributes().get("separator") != "true" or answer == "3":
+                # eg mfenced and other instances where brackets don't need to be kept
+                self.get_child().outputcontxml(parent)
 
 
 class Interval(Node):
@@ -409,6 +434,14 @@ class Identifier(Node):
         if self.get_name() in ["true", "false", "NaN", "&#8709;", "∅", "γ","&#947;","&#8734;" ,"∞"]: #&#8709; is empty set, &#960; is pi
             #these are elements represented in pres ml as identifiers but act like operators in cont ml
             op = etree.SubElement(parent, translatecname(self.get_name()))
+        elif self.get_name().strip() in ["e","ln","i"]:
+            answer = input("\"" +self.get_name() + "\" has been found. Does this identifier represent " +
+                           translatecname(self.get_name()) + "? \ny/n:" )
+            if answer == "y":
+                op = etree.SubElement(parent, translatecname(self.get_name()))
+            else:
+                ci = etree.SubElement(parent, "ci")
+                ci.text = self.get_name()
         else:
             ci = etree.SubElement(parent, "ci")
             ci.text = self.get_name()
