@@ -142,7 +142,7 @@ def check_pnode(element, siblings):
                     if get_tag(next_sib) == "mo":
                         return make_bracket_node("opafter", element, siblings, bracket2loc)
                 except IndexError:
-                    print("location: except")
+                    # print("location: except")
                     return make_bracket_node("justbrackets", element, siblings, bracket2loc)
 
             else: #not a bracket
@@ -179,11 +179,11 @@ def find_other_bracket(siblings):
 
 def make2childopnode(element, siblings, name):
     #for nodes such as power, fractions etc which always have 2 children
-    print("making: " + name)
+    # print("making: " + name)
     return Operator(name, check_pnode(element[0], []), check_pnode(element[1], []), element.attrib)
 
 def make1childopnode(element, siblings, name):
-    print("making: " + name)
+    # print("making: " + name)
     #sqrt
     # do they not have siblings always?
     return Operator(name, check_pnode(element[0], child_list(element)), None, element.attrib)
@@ -194,7 +194,7 @@ def opfirst(element, siblings, name):
         newsibs = []
     if len(siblings) > 1:
         newsibs = siblings[1:]
-    print("making 1op: " + name)
+    # print("making 1op: " + name)
     # do they always not have siblings ?
     # print("type", Operator(name, check_pnode(siblings[0], newsibs), None, element.attrib).get_name())
     return Operator(name, check_pnode(siblings[0], newsibs), None, element.attrib)
@@ -209,11 +209,11 @@ def opsecond(element, siblings, name):
         child1 = check_pnode(siblings[1], [])
     else:  # ie len sibs > :
         child1 = check_pnode(siblings[1], siblings[2:])
-    print("making 2op: " + name)
+    # print("making 2op: " + name)
     return Operator(name, check_pnode(element, []), child1 , siblings[0].attrib)
 
 def opthird(element, siblings, name):
-    print("making 3op: " + name)
+    # print("making 3op: " + name)
     return Operator(name, check_pnode(element, siblings[:1]), check_for_psiblings(siblings[2:]), siblings[1].attrib)
     # return Operator(name, make_pnode("mi", siblings[0], [], siblings[0].text), check_for_psiblings(siblings[2:]),
     #                 siblings[1].attrib)
@@ -222,12 +222,12 @@ def leafnode(type, element, siblings, name):
        if type == "mn":
         # make a value node
         sibling = check_for_psiblings(siblings)
-        print("making mn: " + name)
+        # print("making mn: " + name)
         return Value(name, sibling, element.attrib)  # keeps any attribs from mn
        if type == "mi":
            #make identifier node
            sibling = check_for_psiblings(siblings)
-           print("making mi: " + name)
+           # print("making mi: " + name)
            if element.attrib.get("mathvariant") == "double-struck":
                numbersetdict = {
                    "P": "primes",
@@ -251,12 +251,12 @@ def make_bracket_node(type, element, siblings, bracket2loc ):
     if type == "opafter":
         #the brackets
         #the operator after the brackets
-        print("making op after bracket: " + siblings[bracket2loc +1].text) #correct
+        # print("making op after bracket: " + siblings[bracket2loc +1].text) #correct
 
         return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
 
     if type == "justbrackets":
-        print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
+        # print("making justbrackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
         return Brackets(element.text.strip(), siblings[bracket2loc].text.strip(), check_for_psiblings(siblings[:bracket2loc]), element.attrib)
     # if type == "emptybrackets":
     #     print("making empty brackets: " + element.text.strip() + siblings[bracket2loc].text.strip())
@@ -299,7 +299,7 @@ def check_for_psiblings(siblings):
 
 def handle_mfenced(element,siblings, separators):
     #the children of 'mfenced' are whats passed to this method
-    print("HANDLING MFENCED")
+    # print("HANDLING MFENCED")
 
     if siblings == []:
         return check_pnode(element,siblings)
@@ -439,17 +439,17 @@ def check_cnode(element, siblings):
 def make_cnode(type, element, siblings, name):
     #Value nodes
     if type == "cn":
-        print("making cn: " + name)
+        # print("making cn: " + name)
         return Value(name, None, element.attrib)
     #Identifier nodes
     if type == "ci":
-        print("making ci: " + name)
+        # print("making ci: " + name)
         return Identifier(name, None, element.attrib)
     if type == "operator":
-        print("making op: " + name)
+        # print("making op: " + name)
         return Operator(name, get_op_child(element,siblings), check_op_siblingsc(element, siblings), element.attrib  )
     if type == "quotient":
-        print("making quotient: " + name)
+        # print("making quotient: " + name)
         firstchild = make_cnode("operator", element, siblings, "/")
         secondchild = None
         return Operator(name, firstchild, secondchild, element.attrib )
@@ -504,7 +504,7 @@ def make_interval_node(element, siblings):
     if intervaltype == "closed-open":
         closebrac = ")"
     separatornode = Operator(separator, check_cnode(element[0], []), check_cnode(element[1],[]), {"separator": "true"})
-    print("Making interval node")
+    # print("Making interval node")
     return Interval(openbrac, closebrac, separatornode,element.attrib)
 
 

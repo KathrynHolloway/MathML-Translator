@@ -98,7 +98,7 @@ def parse(arguments):
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.1.1rc2')
-    print(arguments)
+    # print(arguments)
     if arguments.get("translate") == True:
         translate(arguments)
     if arguments.get("parse")== True:

@@ -135,8 +135,9 @@ def translatecname(nodename):
         ",":"separator",
         "NaN" :"notanumber",
         "&#8289;":"fnapplication",
+        "⁡":"fnapplication",
         "cartesianproduct": "cartesianproduct",
-        # "vectorproduct": "vectorproduct",
+        "vectorproduct": "vectorproduct",
         "×": "ambiguous", #multiplication sign
         "&#xd7;": "ambiguous",
         "&#215;": "ambiguous",
@@ -178,7 +179,7 @@ def translatepname(nodename):
         "xor": "xor",
         "implies": "&#x21d2;", #rightwards double arrow
         "cartesianproduct": "&#xd7;", #multiplication sign
-        # "vectorproduct": "&#xd7;" #multiplication sign
+        "vectorproduct": "&#xd7;" #multiplication sign
 
     }
     separators = [":", ";", ",","|"]

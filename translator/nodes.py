@@ -101,8 +101,13 @@ class Operator(Node):
             mo = etree.SubElement(parent, "mo")
             mo.text = html.unescape("&#8289;") #function application
 
+            openbrac = etree.SubElement(parent, "mo")
+            openbrac.text = "("
             #output the child
             self.get_child().outputpresxml(parent)
+            closebrac = etree.SubElement(parent, "mo")
+            closebrac.text= ")"
+
 
         # for those that from content, become mfenced elements and require a prefix
         elif self.get_name().strip() in ["gcd", "lcm", "arg"]:
@@ -236,7 +241,7 @@ class Operator(Node):
         #ambiguous elements
         elif name == "ambiguous":
             #multiplication sign -> times, cartesian product, vectorproduct
-            answer = input("Is " + self.get_child().get_name() + " best described as 1 or 2?"
+            answer = input("Is \"" + self.get_child().get_name() + "\" best described as 1 or 2?"
                                                                  " \n1)Set \n2)Vector\n"
                                                                  "Please enter the correct corresponding"
                                                                  " number: ")
@@ -255,10 +260,13 @@ class Operator(Node):
                     self.get_nextchild().outputcontxml(apply)
             except AttributeError:
                 pass
-
+        elif name == "fnapplication":
+            apply = etree.SubElement(parent, "apply")
+            self.get_child().outputcontxml(apply)
+            self.get_nextchild().outputcontxml(apply)
         else:
             apply = etree.SubElement(parent, "apply")
-            print(self.get_name())
+            # print(self.get_name())
             op = etree.SubElement(apply, name)
             self.get_child().outputcontxml(apply)
 
@@ -418,7 +426,6 @@ class Interval(Node):
         self.get_child().get_child().outputcontxml(apply)
         self.get_child().get_nextchild().outputcontxml(apply)
 
-'''HERE''''''''''''''''''''''''''''''''''''''''''''''''';'''''
 class NumberSet(Node):
     def __init__(self, name, attributes):
         super().__init__(attributes)
