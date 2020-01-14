@@ -1,0 +1,49 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+        <eq/>
+        <apply>
+            <sin/>
+            <apply>
+                <times/>
+                <cn>2</cn>
+                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+            </apply>
+        </apply>
+        <apply>
+            <times/>
+            <cn>2</cn>
+            <apply>
+                <sin/>
+                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+            </apply>
+            <apply>
+                <cos/>
+                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+            </apply>
+        </apply>
+        <apply>
+            <divide/>
+            <apply>
+                <times/>
+                <cn>2</cn>
+                <apply>
+                    <tan/>
+                    <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                </apply>
+            </apply>
+            <apply>
+                <plus/>
+                <cn>1</cn>
+                <apply>
+                    <power/>
+                    <apply>
+                        <tan/>
+                        <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                    </apply>
+                    <cn>2</cn>
+                </apply>
+            </apply>
+        </apply>
+    </apply>
+ </math>

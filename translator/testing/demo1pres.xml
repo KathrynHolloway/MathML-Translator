@@ -1,0 +1,37 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mrow>
+            <mo>&#8970;</mo>
+            <mfrac>
+                <mi> a </mi>
+                <mi> b </mi>
+            </mfrac>
+            <mo>&#8971;</mo>
+        </mrow>
+        <mo>&#8800;</mo>
+        <mrow>
+            <mrow>
+                <mo>{</mo>
+                <mrow>
+                    <mi> b </mi>
+                </mrow>
+                <mo>,</mo>
+                <mrow>
+                    <mrow>
+                        <mi> a </mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                        <mi> c </mi>
+                    </mrow>
+                </mrow>
+                <mo>}</mo>
+            </mrow>
+            <mo>&#8800;</mo>
+            <mrow>
+                <mi mathvariant="double-struck">N</mi>
+            </mrow>
+        </mrow>
+    </mrow>
+</math>
