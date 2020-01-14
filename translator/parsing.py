@@ -371,7 +371,11 @@ def check_cnode(element, siblings):
         "arg":"arg",
         "floor": "floor",
         "list": "()",
-        "set": "{}"
+        "set": "{}",
+        "card":"card",#cardinality ||
+        "cartesianproduct":"cartesianproduct",
+        # "vectorproduct": "vectorproduct",
+
     }
     numbersetdict = {
         "primes": "primes",

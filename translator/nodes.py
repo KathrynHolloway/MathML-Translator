@@ -145,7 +145,7 @@ class Operator(Node):
                 # output the xml for only child
                 self.get_child().outputpresxml(mo)
             #for those that from content, become mfenced elements and require no prefix
-            elif self.get_name().strip() in ["abs"]:
+            elif self.get_name().strip() in ["abs","card"]:
                 mrow = etree.SubElement(parent, "mrow")
                 name = translatepname(self.get_name())
                 if len(name)<3:
@@ -233,6 +233,29 @@ class Operator(Node):
             except AttributeError:
                 pass
 
+        #ambiguous elements
+        elif name == "ambiguous":
+            #multiplication sign -> times, cartesian product, vectorproduct
+            answer = input("Is " + self.get_child().get_name() + " best described as 1 or 2?"
+                                                                 " \n1)Set \n2)Vector\n"
+                                                                 "Please enter the correct corresponding"
+                                                                 " number: ")
+            answerdict = {
+                "1": "cartesianproduct",
+                "2": "vectorproduct"
+            }
+            apply = etree.SubElement(parent,"apply")
+            op = etree.SubElement(apply, answerdict.get(answer))
+            self.get_child().outputcontxml(apply)
+            try:
+                # if next child is the same operator as the current element, just output ITS first child
+                if self.get_nextchild().get_name().strip() == self.get_name().strip():
+                    self.get_nextchild().outputnextcontxml(apply, self.get_name().strip())
+                else:
+                    self.get_nextchild().outputcontxml(apply)
+            except AttributeError:
+                pass
+
         else:
             apply = etree.SubElement(parent, "apply")
             print(self.get_name())
@@ -307,9 +330,16 @@ class Brackets(Node):
                 self.get_child().outputcontxml(apply)
 
         elif openbracket == "|" and closebracket == "|":
-            #logic for the floor function
+            answer = input("Are these vertical lines" + openbracket + closebracket + "best described"
+                                                                               " as 1 or 2?"" \n1)Absolute Value \n2)Cardinality\n"
+                                                                               "Please enter the correct corresponding"
+                                                                               " number: ")
+            answerdict = {
+                "1": "abs",
+                "2": "card"
+            }
             apply = etree.SubElement(parent,"apply")
-            floor = etree.SubElement(apply,"abs")
+            floor = etree.SubElement(apply,answerdict.get(answer))
             if self.get_child() != None:
                 #output the first child if one exists
                 self.get_child().outputcontxml(apply)

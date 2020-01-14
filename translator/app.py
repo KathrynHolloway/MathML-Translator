@@ -10,6 +10,7 @@ from parsing import doc_parse, make_contentml_tree, make_presml_tree
 from nodes import Node
 from xmlout import contxmlout, presxmlout
 import os
+import warnings
 
 def translate(arguments):
     input_file_loc = arguments.get("<filein>")
@@ -25,30 +26,48 @@ def translate(arguments):
 
     # parse the input file
     parsed_doc = doc_parse(input_file_loc)
-    '''MAKES IT TO HERE'''
+
     if cont2cont == True:
         # use the parsed content ml file and convert it to internal tree structure
         tree = make_contentml_tree(parsed_doc)
         # output to the given file location, the requested pres xml
-        contxmlout(tree, output_file_loc)
+        try:
+            contxmlout(tree, output_file_loc)
+        except AttributeError:
+            warnings.warn("Your input appears to include elements not yet supported. Sorry.")
+            quit()
+
 
     elif pres2pres == True :
         # use the parsed content ml file and convert it to internal tree structure
         tree = make_presml_tree(parsed_doc)
         # output to the given file location, the requested pres xml
-        presxmlout(tree, output_file_loc)
+        try:
+            presxmlout(tree, output_file_loc)
+        except AttributeError:
+            warnings.warn("Your input appears to include elements not yet supported. Sorry.")
+            quit()
 
     elif cont2pres == True:
         # use the parsed content ml file and convert it to internal tree structure
         tree = make_contentml_tree(parsed_doc)
         # output to the given file location, the requested pres xml
-        presxmlout(tree, output_file_loc)
+        try:
+            presxmlout(tree, output_file_loc)
+        except AttributeError:
+            warnings.warn("Your input appears to include elements not yet supported. Sorry.")
+            quit()
 
     elif pres2cont == True:
         # use the parsed presentation ml file and convert it to internal tree structure
         tree = make_presml_tree(parsed_doc)
         # output to the given file location, the requested content xml
-        contxmlout(tree, output_file_loc)
+        try:
+            contxmlout(tree, output_file_loc)
+        except AttributeError:
+            warnings.warn("Your input appears to include elements not yet supported. Sorry.")
+            quit()
+
 
     else:
         print("I didn't do anything useful, sorry")
@@ -67,6 +86,14 @@ def parse(arguments):
     if arguments.get("pres")== True:
         tree = make_presml_tree(parsed_doc)
         presxmlout(tree,output_file_loc )
+
+# def warnings(action):
+#     try:
+#         action
+#     except AttributeError:
+#         warnings.warn("Your input appears to includ elements not yet supported. Sorry.")
+#         sys.exit()
+
 
 
 if __name__ == '__main__':

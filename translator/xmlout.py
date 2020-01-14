@@ -121,6 +121,7 @@ def translatecname(nodename):
         "∨": "or",
         "true":"true",
         "abs": "abs",
+        "card": "card",
         "rem": "rem",
         "mod": "rem",
         "gcd": "gcd",
@@ -133,7 +134,12 @@ def translatecname(nodename):
         "arg": "arg",
         ",":"separator",
         "NaN" :"notanumber",
-        "&#8289;":"fnapplication"
+        "&#8289;":"fnapplication",
+        "cartesianproduct": "cartesianproduct",
+        # "vectorproduct": "vectorproduct",
+        "×": "ambiguous", #multiplication sign
+        "&#xd7;": "ambiguous",
+        "&#215;": "ambiguous",
 
     }
     newname = contnamedict.get(nodename)
@@ -163,13 +169,17 @@ def translatepname(nodename):
         "reals": "R",
         "or": "&#x2228;",
         "abs": ["|","|"],
+        "card": ["|","|"],
         "rem": "mod",
         "gcd": ["gcd","(",")",","], #prefix, open, close, separators
         "lcm": ["lcm","(",")",","],
         "arg": ["arg","(",")",""],
         "floor": ["&#x230a;","&#x230b;"],
         "xor": "xor",
-        "implies": "&#x21d2;" #rightwards double arrow
+        "implies": "&#x21d2;", #rightwards double arrow
+        "cartesianproduct": "&#xd7;", #multiplication sign
+        # "vectorproduct": "&#xd7;" #multiplication sign
+
     }
     separators = [":", ";", ",","|"]
     if presnamedict.get(nodename)!=None:
