@@ -252,7 +252,7 @@ def make_bracket_node(type, element, siblings, bracket2loc ):
         #the brackets
         #the operator after the brackets
         # print("making op after bracket: " + siblings[bracket2loc +1].text) #correct
-
+        print("here op after" + name)
         return Operator(siblings[bracket2loc +1].text, check_pnode(element, siblings[:bracket2loc +1]), check_for_psiblings(siblings[bracket2loc +2:]), siblings[bracket2loc +1].attrib)
 
     if type == "justbrackets":
@@ -374,7 +374,7 @@ def check_cnode(element, siblings):
         "set": "{}",
         "card":"card",#cardinality ||
         "cartesianproduct":"cartesianproduct",
-        # "vectorproduct": "vectorproduct",
+        "vectorproduct": "vectorproduct",
 
     }
     numbersetdict = {

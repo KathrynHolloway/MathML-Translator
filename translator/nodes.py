@@ -271,8 +271,14 @@ class Operator(Node):
             self.get_child().outputcontxml(apply)
 
             try:
-                if self.get_nextchild().get_name().strip() == self.get_name().strip():
+                if type(self.get_nextchild() ) is Brackets:
+                    #catches brackets after operator that elif statement would fail for
+                    #as next child doesnt have name, it would have open close brac
+                    self.get_nextchild().outputcontxml(apply)
+
+                elif self.get_nextchild().get_name().strip() == self.get_name().strip():
                     self.get_nextchild().outputnextcontxml(apply, self.get_name().strip())
+
                 else:
                     self.get_nextchild().outputcontxml(apply)
             except AttributeError:
