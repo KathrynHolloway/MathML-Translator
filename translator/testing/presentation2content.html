@@ -1,0 +1,4968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Testing | Pres2Cont </title>
+  <link rel="stylesheet" type="text/css" href="styling.css" />
+
+</head>
+<body>
+  <div class="nav">
+    <ul>
+      <li><a>Testing</a></li>
+      <li><a href="content2presentation.html">Content to Presentation</a></li>
+      <li><a href="presentation2content.html">Presentation to Content</a></li>
+    </ul>
+  </div>
+
+  <h1>Presentation to Content </h1>
+
+  <table>
+    <tr>
+      <th>Input</th>
+      <th>Requires User Input?</th>
+      <th>Internal Tree</th>
+      <th>Output</th>
+    </tr>
+<!--    abs1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>abs1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mfenced open="|" close="|" separators="">
+                      <mfrac>
+                          <mi> H </mi>
+                          <mi> K </mi>
+                      </mfrac>
+                  </mfenced>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mfenced open="|" close="|" separators=""&gt;
+                      &lt;mfrac&gt;
+                          &lt;mi&gt; H &lt;/mi&gt;
+                          &lt;mi&gt; K &lt;/mi&gt;
+                      &lt;/mfrac&gt;
+                  &lt;/mfenced&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <abs/>
+                  <apply>
+                      <divide/>
+                      <ci> H </ci>
+                      <ci> K </ci>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;abs/&gt;
+                  &lt;apply&gt;
+                      &lt;divide/&gt;
+                      &lt;ci&gt; H &lt;/ci&gt;
+                      &lt;ci&gt; K &lt;/ci&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    abs2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>abs2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mfenced open="|" close="|" separators="">
+                    <mrow>
+                      <mrow>
+                          <mi> x </mi>
+                      </mrow>
+                      <mo>+</mo>
+                      <mrow>
+                          <mrow>
+                              <mi> y </mi>
+                          </mrow>
+                          <mo>+</mo>
+                          <mrow>
+                              <mi> z </mi>
+                          </mrow>
+                      </mrow>
+                    </mrow>
+                  </mfenced>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mfenced open="|" close="|" separators=""&gt;
+                      &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; x &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;+&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; y &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;+&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; z &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mfenced&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <abs/>
+                  <apply>
+                      <plus/>
+                      <ci> x </ci>
+                      <ci> y </ci>
+                      <ci> z </ci>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;abs/&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;ci&gt; x &lt;/ci&gt;
+                      &lt;ci&gt; y &lt;/ci&gt;
+                      &lt;ci&gt; z &lt;/ci&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    addpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>addpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mi>y</mi>
+                  <mo>+</mo>
+                  <mi>z</mi>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mi&gt;x&lt;/mi&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mi&gt;y&lt;/mi&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mi&gt;z&lt;/mi&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <plus/>
+                    <ci>x</ci>
+                    <ci>y</ci>
+                    <ci>z</ci>
+                </apply>
+            </math>
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;plus/&gt;
+                  &lt;ci&gt;x&lt;/ci&gt;
+                  &lt;ci&gt;y&lt;/ci&gt;
+                  &lt;ci&gt;z&lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--and1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>and1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mrow>
+                          <mi>A</mi>
+                      </mrow>
+                      <mo>=</mo>
+                      <mrow>
+                          <mi>B</mi>
+                      </mrow>
+                  </mrow>
+                  <mo>&#8658;</mo>
+                  <mrow>
+                      <mrow>
+                          <mrow>
+                              <mi>A</mi>
+                          </mrow>
+                          <mo>&#8743;</mo>
+                          <mrow>
+                              <mi>C</mi>
+                          </mrow>
+                      </mrow>
+                      <mo>=</mo>
+                      <mrow>
+                          <mrow>
+                              <mi>B</mi>
+                          </mrow>
+                          <mo>&#8743;</mo>
+                          <mrow>
+                              <mi>C</mi>
+                          </mrow>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;A&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;=&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;B&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8658;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;A&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;&#8743;&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;C&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;=&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;B&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;&#8743;&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;C&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <implies/>
+                  <apply>
+                      <eq/>
+                      <ci>A</ci>
+                      <ci>B</ci>
+                  </apply>
+                  <apply>
+                      <eq/>
+                      <apply>
+                          <and/>
+                          <ci>A</ci>
+                          <ci>C</ci>
+                      </apply>
+                      <apply>
+                          <and/>
+                          <ci>B</ci>
+                          <ci>C</ci>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;implies/&gt;
+                  &lt;apply&gt;
+                      &lt;eq/&gt;
+                      &lt;ci&gt;A&lt;/ci&gt;
+                      &lt;ci&gt;B&lt;/ci&gt;
+                  &lt;/apply&gt;
+                  &lt;apply&gt;
+                      &lt;eq/&gt;
+                      &lt;apply&gt;
+                          &lt;and/&gt;
+                          &lt;ci&gt;A&lt;/ci&gt;
+                          &lt;ci&gt;C&lt;/ci&gt;
+                      &lt;/apply&gt;
+                      &lt;apply&gt;
+                          &lt;and/&gt;
+                          &lt;ci&gt;B&lt;/ci&gt;
+                          &lt;ci&gt;C&lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    approx1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>approx1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&#8771;</mo>
+                  <mrow>
+                      <mn> &#960; </mn>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8771;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt; &#960; &lt;/mn&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <approx/>
+                    <ci> a </ci>
+                    <cn> &#960; </cn>
+                </apply>
+            </math>
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;approx/&gt;
+                  &lt;ci&gt; a &lt;/ci&gt;
+                  &lt;cn&gt; &#960; &lt;/cn&gt;
+              &lt;/apply&gt;
+              &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    brackets1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>(</mo>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mn>2</mn>
+                  <mo>)</mo>
+                  <mo>-</mo>
+                  <mn>7</mn>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mi&gt;x&lt;/mi&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mn&gt;2&lt;/mn&gt;
+                  &lt;mo&gt;)&lt;/mo&gt;
+                  &lt;mo&gt;-&lt;/mo&gt;
+                  &lt;mn&gt;7&lt;/mn&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <minus/>
+                  <apply>
+                      <plus/>
+                      <ci>x</ci>
+                      <cn>2</cn>
+                  </apply>
+                  <cn>7</cn>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;minus/&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;ci&gt;x&lt;/ci&gt;
+                      &lt;cn&gt;2&lt;/cn&gt;
+                  &lt;/apply&gt;
+                  &lt;cn&gt;7&lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--brackets2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>(</mo>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mn>2</mn>
+                  <mo>)</mo>
+              </mrow>
+                  <mo>-</mo>
+                  <mn>7</mn>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mi&gt;x&lt;/mi&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mn&gt;2&lt;/mn&gt;
+                  &lt;mo&gt;)&lt;/mo&gt;
+              &lt;/mrow&gt;
+                  &lt;mo&gt;-&lt;/mo&gt;
+                  &lt;mn&gt;7&lt;/mn&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <minus/>
+                  <apply>
+                      <plus/>
+                      <ci>x</ci>
+                      <cn>2</cn>
+                  </apply>
+                  <cn>7</cn>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;minus/&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;ci&gt;x&lt;/ci&gt;
+                      &lt;cn&gt;2&lt;/cn&gt;
+                  &lt;/apply&gt;
+                  &lt;cn&gt;7&lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+  
+<!--    brackets3pres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets3pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mo>(</mo>
+                          <mn>3</mn>
+                      <mo>+</mo>
+                          <mn>y</mn>
+                      <mo>)</mo>
+                  </mrow>
+              </mrow>
+              <mo>-</mo>
+              <mrow>
+                  <mo>(</mo>
+                  <mn>7</mn>
+                  <mo>+</mo>
+                  <mn>22</mn>
+                  <mo>)</mo>
+              </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mo&gt;(&lt;/mo&gt;
+                          &lt;mn&gt;3&lt;/mn&gt;
+                      &lt;mo&gt;+&lt;/mo&gt;
+                          &lt;mn&gt;y&lt;/mn&gt;
+                      &lt;mo&gt;)&lt;/mo&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+              &lt;mo&gt;-&lt;/mo&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mn&gt;7&lt;/mn&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mn&gt;22&lt;/mn&gt;
+                  &lt;mo&gt;)&lt;/mo&gt;
+              &lt;/mrow&gt;
+      &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <minus/>
+                  <apply>
+                      <plus/>
+                      <cn>3</cn>
+                      <cn>y</cn>
+                  </apply>
+                  <apply>
+                      <plus/>
+                      <cn>7</cn>
+                      <cn>22</cn>
+                  </apply>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;minus/&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;cn&gt;3&lt;/cn&gt;
+                      &lt;cn&gt;y&lt;/cn&gt;
+                  &lt;/apply&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;cn&gt;7&lt;/cn&gt;
+                      &lt;cn&gt;22&lt;/cn&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    brackets4pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets4pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mo>(</mo>
+              <mn>3</mn>
+              <mo>+</mo>
+              <mi>y</mi>
+              <mo>-</mo>
+              <mrow>
+                  <mo>(</mo>
+                  <mn>7</mn>
+                  <mo>+</mo>
+                  <mn>22</mn>
+                  <mo>)</mo>
+              </mrow>
+          
+              <mo>)</mo>
+              </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mo&gt;(&lt;/mo&gt;
+              &lt;mn&gt;3&lt;/mn&gt;
+              &lt;mo&gt;+&lt;/mo&gt;
+              &lt;mi&gt;y&lt;/mi&gt;
+              &lt;mo&gt;-&lt;/mo&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mn&gt;7&lt;/mn&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mn&gt;22&lt;/mn&gt;
+                  &lt;mo&gt;)&lt;/mo&gt;
+              &lt;/mrow&gt;
+          
+              &lt;mo&gt;)&lt;/mo&gt;
+              &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <plus/>
+                  <cn>3</cn>
+                  <apply>
+                      <minus/>
+                      <ci>y</ci>
+                      <apply>
+                          <plus/>
+                          <cn>7</cn>
+                          <cn>22</cn>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;plus/&gt;
+                  &lt;cn&gt;3&lt;/cn&gt;
+                  &lt;apply&gt;
+                      &lt;minus/&gt;
+                      &lt;ci&gt;y&lt;/ci&gt;
+                      &lt;apply&gt;
+                          &lt;plus/&gt;
+                          &lt;cn&gt;7&lt;/cn&gt;
+                          &lt;cn&gt;22&lt;/cn&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--  brackets5pres.xml  -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets5pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mo>[</mo>
+              <mn>17</mn>
+              <mo>+</mo>
+              <mi>a</mi>
+              <mo>-</mo>
+              <mo>(</mo>
+              <mi>z</mi>
+              <mo>+</mo>
+              <mn>22</mn>
+              <mo>)</mo>
+              <mo>]</mo>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mo&gt;[&lt;/mo&gt;
+              &lt;mn&gt;17&lt;/mn&gt;
+              &lt;mo&gt;+&lt;/mo&gt;
+              &lt;mi&gt;a&lt;/mi&gt;
+              &lt;mo&gt;-&lt;/mo&gt;
+              &lt;mo&gt;(&lt;/mo&gt;
+              &lt;mi&gt;z&lt;/mi&gt;
+              &lt;mo&gt;+&lt;/mo&gt;
+              &lt;mn&gt;22&lt;/mn&gt;
+              &lt;mo&gt;)&lt;/mo&gt;
+              &lt;mo&gt;]&lt;/mo&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <plus/>
+                  <cn>17</cn>
+                  <apply>
+                      <minus/>
+                      <ci>a</ci>
+                      <apply>
+                          <plus/>
+                          <ci>z</ci>
+                          <cn>22</cn>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;plus/&gt;
+                  &lt;cn&gt;17&lt;/cn&gt;
+                  &lt;apply&gt;
+                      &lt;minus/&gt;
+                      &lt;ci&gt;a&lt;/ci&gt;
+                      &lt;apply&gt;
+                          &lt;plus/&gt;
+                          &lt;ci&gt;z&lt;/ci&gt;
+                          &lt;cn&gt;22&lt;/cn&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--brackets6pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>brackets6pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mo>[</mo>
+              <mn>17</mn>
+              <mo>+</mo>
+              <mi>a</mi>
+              <mo>-</mo>
+              <mo>(</mo>
+              <mi>z</mi>
+              <mo>+</mo>
+              <mn>22</mn>
+              <mo>- </mo>
+              <mo>{</mo>
+              <mo>}</mo>
+              <mo>)</mo>
+              <mo>]</mo>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mo&gt;[&lt;/mo&gt;
+              &lt;mn&gt;17&lt;/mn&gt;
+              &lt;mo&gt;+&lt;/mo&gt;
+              &lt;mi&gt;a&lt;/mi&gt;
+              &lt;mo&gt;-&lt;/mo&gt;
+              &lt;mo&gt;(&lt;/mo&gt;
+              &lt;mi&gt;z&lt;/mi&gt;
+              &lt;mo&gt;+&lt;/mo&gt;
+              &lt;mn&gt;22&lt;/mn&gt;
+              &lt;mo&gt;- &lt;/mo&gt;
+              &lt;mo&gt;{&lt;/mo&gt;
+              &lt;mo&gt;}&lt;/mo&gt;
+              &lt;mo&gt;)&lt;/mo&gt;
+              &lt;mo&gt;]&lt;/mo&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <plus/>
+                  <cn>17</cn>
+                  <apply>
+                      <minus/>
+                      <ci>a</ci>
+                      <apply>
+                          <plus/>
+                          <ci>z</ci>
+                          <apply>
+                              <minus/>
+                              <cn>22</cn>
+                              <set/>
+                          </apply>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;plus/&gt;
+                  &lt;cn&gt;17&lt;/cn&gt;
+                  &lt;apply&gt;
+                      &lt;minus/&gt;
+                      &lt;ci&gt;a&lt;/ci&gt;
+                      &lt;apply&gt;
+                          &lt;plus/&gt;
+                          &lt;ci&gt;z&lt;/ci&gt;
+                          &lt;apply&gt;
+                              &lt;minus/&gt;
+                              &lt;cn&gt;22&lt;/cn&gt;
+                              &lt;set/&gt;
+                          &lt;/apply&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    card1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>card1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mfenced open="|" close="|" separators="">
+                          <mi> A </mi>
+                      </mfenced>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mn> 5 </mn>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mfenced open="|" close="|" separators=""&gt;
+                          &lt;mi&gt; A &lt;/mi&gt;
+                      &lt;/mfenced&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt; 5 &lt;/mn&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <apply>
+                      <card/>
+                      <ci> A </ci>
+                  </apply>
+                  <cn> 5 </cn>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;apply&gt;
+                      &lt;card/&gt;
+                      &lt;ci&gt; A &lt;/ci&gt;
+                  &lt;/apply&gt;
+                  &lt;cn&gt; 5 &lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    cartesianproduct1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>cartesianproduct1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> A </mi>
+                  </mrow>
+                  <mo>&#215;</mo>
+                  <mrow>
+                      <mi> B </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; A &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#215;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; B &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <cartesianproduct/>
+                  <ci> A </ci>
+                  <ci> B </ci>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;cartesianproduct/&gt;
+                  &lt;ci&gt; A &lt;/ci&gt;
+                  &lt;ci&gt; B &lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    cartesianproduct2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>cartesianproduct2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi mathvariant="double-struck">R</mi>
+                  </mrow>
+                  <mo>&#215;</mo>
+                  <mrow>
+                      <mrow>
+                          <mi mathvariant="double-struck">R</mi>
+                      </mrow>
+                      <mo>&#215;</mo>
+                      <mrow>
+                          <mi mathvariant="double-struck">R</mi>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#215;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#215;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <cartesianproduct/>
+                  <reals/>
+                  <reals/>
+                  <reals/>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;cartesianproduct/&gt;
+                  &lt;reals/&gt;
+                  &lt;reals/&gt;
+                  &lt;reals/&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--  complexes1pres.xml  -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>complexes1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi>a</mi>
+                  </mrow>
+                  <mo>&#8712;</mo>
+                  <mrow>
+                      <mi mathvariant="double-struck">C</mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;a&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8712;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi mathvariant="double-struck"&gt;C&lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <in/>
+                  <ci>a</ci>
+                  <complexes/>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;in/&gt;
+                  &lt;ci&gt;a&lt;/ci&gt;
+                  &lt;complexes/&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    cos1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>cos1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>-</mo>
+                  <mi>cos</mi>
+                  <mo>&#8289;</mo>
+                  <mo>(</mo>
+                  <mrow>
+                      <mrow>
+                          <mn>2</mn>
+                      </mrow>
+                      <mo>&#8290;</mo>
+                      <mrow>
+                          <mi>x</mi>
+                      </mrow>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                      <mfrac>
+                          <mn>&#960;</mn>
+                          <mn>2</mn>
+                      </mfrac>
+                  </mrow>
+                  <mo>)</mo>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;-&lt;/mo&gt;
+                  &lt;mi&gt;cos&lt;/mi&gt;
+                  &lt;mo&gt;&#8289;&lt;/mo&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8290;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;x&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;+&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mfrac&gt;
+                          &lt;mn&gt;&#960;&lt;/mn&gt;
+                          &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/mfrac&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;)&lt;/mo&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <apply>
+                      <minus/>
+                      <ci>cos</ci>
+                  </apply>
+                  <apply>
+                      <plus/>
+                      <apply>
+                          <times/>
+                          <cn>2</cn>
+                          <ci>x</ci>
+                      </apply>
+                      <apply>
+                          <divide/>
+                          <cn>&#960;</cn>
+                          <cn>2</cn>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+        &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;apply&gt;
+                      &lt;minus/&gt;
+                      &lt;ci&gt;cos&lt;/ci&gt;
+                  &lt;/apply&gt;
+                  &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;apply&gt;
+                          &lt;times/&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                          &lt;ci&gt;x&lt;/ci&gt;
+                      &lt;/apply&gt;
+                      &lt;apply&gt;
+                          &lt;divide/&gt;
+                          &lt;cn&gt;&#960;&lt;/cn&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--  demo1pres.xml  -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>demo1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mo>&#8970;</mo>
+                      <mfrac>
+                          <mi> a </mi>
+                          <mi> b </mi>
+                      </mfrac>
+                      <mo>&#8971;</mo>
+                  </mrow>
+                  <mo>&#8800;</mo>
+                  <mrow>
+                      <mrow>
+                          <mo>{</mo>
+                          <mrow>
+                              <mi> b </mi>
+                          </mrow>
+                          <mo>,</mo>
+                          <mrow>
+                              <mrow>
+                                  <mi> a </mi>
+                              </mrow>
+                              <mo>,</mo>
+                              <mrow>
+                                  <mi> c </mi>
+                              </mrow>
+                          </mrow>
+                          <mo>}</mo>
+                      </mrow>
+                      <mo>&#8800;</mo>
+                      <mrow>
+                          <mi mathvariant="double-struck">N</mi>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mo&gt;&#8970;&lt;/mo&gt;
+                      &lt;mfrac&gt;
+                          &lt;mi&gt; a &lt;/mi&gt;
+                          &lt;mi&gt; b &lt;/mi&gt;
+                      &lt;/mfrac&gt;
+                      &lt;mo&gt;&#8971;&lt;/mo&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8800;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mo&gt;{&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt; b &lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;,&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt; a &lt;/mi&gt;
+                              &lt;/mrow&gt;
+                              &lt;mo&gt;,&lt;/mo&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt; c &lt;/mi&gt;
+                              &lt;/mrow&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;}&lt;/mo&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8800;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi mathvariant="double-struck"&gt;N&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <neq/>
+                  <apply>
+                      <floor/>
+                      <apply>
+                          <divide/>
+                          <ci> a </ci>
+                          <ci> b </ci>
+                      </apply>
+                  </apply>
+                  <set>
+                      <ci> b </ci>
+                      <ci> a </ci>
+                      <ci> c </ci>
+                  </set>
+                  <naturalnumbers/>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;neq/&gt;
+                  &lt;apply&gt;
+                      &lt;floor/&gt;
+                      &lt;apply&gt;
+                          &lt;divide/&gt;
+                          &lt;ci&gt; a &lt;/ci&gt;
+                          &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+                  &lt;set&gt;
+                      &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;ci&gt; a &lt;/ci&gt;
+                      &lt;ci&gt; c &lt;/ci&gt;
+                  &lt;/set&gt;
+                  &lt;naturalnumbers/&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--   demo2pres.xml -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>demo2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi>i</mi>
+                  </mrow>
+                  <mo>&#8800;</mo>
+                  <mrow>
+                      <mrow>
+                          <mo>(</mo>
+                          <mrow>
+                              <mi>x</mi>
+                          </mrow>
+                          <mo>,</mo>
+                          <mrow>
+                              <mn>7</mn>
+                          </mrow>
+                          <mo>)</mo>
+                      </mrow>
+                      <mo>&#8800;</mo>
+                      <mrow>
+                          <mrow>
+                              <mi mathvariant="double-struck">R</mi>
+                          </mrow>
+                          <mo>&#215;</mo>
+                          <mrow>
+                              <mrow>
+                                  <mi mathvariant="double-struck">R</mi>
+                              </mrow>
+                              <mo>&#215;</mo>
+                              <mrow>
+                                  <mi mathvariant="double-struck">R</mi>
+                              </mrow>
+                          </mrow>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;i&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8800;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mo&gt;(&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;x&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;,&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mn&gt;7&lt;/mn&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;)&lt;/mo&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8800;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mrow&gt;
+                              &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;&#215;&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                              &lt;/mrow&gt;
+                              &lt;mo&gt;&#215;&lt;/mo&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                              &lt;/mrow&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <neq/>
+                  <imaginaryi/>
+                  <list>
+                      <ci>x</ci>
+                      <cn>7</cn>
+                  </list>
+                  <apply>
+                      <cartesianproduct/>
+                      <reals/>
+                      <reals/>
+                      <reals/>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;neq/&gt;
+                  &lt;imaginaryi/&gt;
+                  &lt;list&gt;
+                      &lt;ci&gt;x&lt;/ci&gt;
+                      &lt;cn&gt;7&lt;/cn&gt;
+                  &lt;/list&gt;
+                  &lt;apply&gt;
+                      &lt;cartesianproduct/&gt;
+                      &lt;reals/&gt;
+                      &lt;reals/&gt;
+                      &lt;reals/&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    doubleangleformula1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>doubleangleformula1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi>sin</mi>
+                      <mo>&#8289;</mo>
+                      <mo>(</mo>
+                      <mrow>
+                          <mn>2</mn>
+                      </mrow>
+                      <mo>&#8290;</mo>
+                      <mrow>
+                          <mi>&#952;</mi>
+                      </mrow>
+                      <mo>)</mo>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mrow>
+                          <mrow>
+                              <mn>2</mn>
+                          </mrow>
+                          <mo>&#8290;</mo>
+                          <mrow>
+                              <mrow>
+                                  <mi>sin</mi>
+                                  <mo>&#8289;</mo>
+                                  <mo>(</mo>
+                                  <mi>&#952;</mi>
+                                  <mo>)</mo>
+                              </mrow>
+                              <mo>&#8290;</mo>
+                              <mrow>
+                                  <mi>cos</mi>
+                                  <mo>&#8289;</mo>
+                                  <mo>(</mo>
+                                  <mi>&#952;</mi>
+                                  <mo>)</mo>
+                              </mrow>
+                          </mrow>
+                      </mrow>
+                      <mo>=</mo>
+                      <mrow>
+                          <mfrac>
+                              <mrow>
+                                  <mrow>
+                                      <mn>2</mn>
+                                  </mrow>
+                                  <mo>&#8290;</mo>
+                                  <mrow>
+                                      <mi>tan</mi>
+                                      <mo>&#8289;</mo>
+                                      <mo>(</mo>
+                                      <mi>&#952;</mi>
+                                      <mo>)</mo>
+                                  </mrow>
+                              </mrow>
+                              <mrow>
+                                  <mrow>
+                                      <mn>1</mn>
+                                  </mrow>
+                                  <mo>+</mo>
+                                  <mrow>
+                                      <msup>
+                                          <mrow>
+                                              <mi>tan</mi>
+                                              <mo>&#8289;</mo>
+                                              <mo>(</mo>
+                                              <mi>&#952;</mi>
+                                              <mo>)</mo>
+                                          </mrow>
+                                          <mn>2</mn>
+                                      </msup>
+                                  </mrow>
+                              </mrow>
+                          </mfrac>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;sin&lt;/mi&gt;
+                      &lt;mo&gt;&#8289;&lt;/mo&gt;
+                      &lt;mo&gt;(&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8290;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;&#952;&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;)&lt;/mo&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mrow&gt;
+                              &lt;mn&gt;2&lt;/mn&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;&#8290;&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt;sin&lt;/mi&gt;
+                                  &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                  &lt;mo&gt;(&lt;/mo&gt;
+                                  &lt;mi&gt;&#952;&lt;/mi&gt;
+                                  &lt;mo&gt;)&lt;/mo&gt;
+                              &lt;/mrow&gt;
+                              &lt;mo&gt;&#8290;&lt;/mo&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt;cos&lt;/mi&gt;
+                                  &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                  &lt;mo&gt;(&lt;/mo&gt;
+                                  &lt;mi&gt;&#952;&lt;/mi&gt;
+                                  &lt;mo&gt;)&lt;/mo&gt;
+                              &lt;/mrow&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;=&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mfrac&gt;
+                              &lt;mrow&gt;
+                                  &lt;mrow&gt;
+                                      &lt;mn&gt;2&lt;/mn&gt;
+                                  &lt;/mrow&gt;
+                                  &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                  &lt;mrow&gt;
+                                      &lt;mi&gt;tan&lt;/mi&gt;
+                                      &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                      &lt;mo&gt;(&lt;/mo&gt;
+                                      &lt;mi&gt;&#952;&lt;/mi&gt;
+                                      &lt;mo&gt;)&lt;/mo&gt;
+                                  &lt;/mrow&gt;
+                              &lt;/mrow&gt;
+                              &lt;mrow&gt;
+                                  &lt;mrow&gt;
+                                      &lt;mn&gt;1&lt;/mn&gt;
+                                  &lt;/mrow&gt;
+                                  &lt;mo&gt;+&lt;/mo&gt;
+                                  &lt;mrow&gt;
+                                      &lt;msup&gt;
+                                          &lt;mrow&gt;
+                                              &lt;mi&gt;tan&lt;/mi&gt;
+                                              &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                              &lt;mo&gt;(&lt;/mo&gt;
+                                              &lt;mi&gt;&#952;&lt;/mi&gt;
+                                              &lt;mo&gt;)&lt;/mo&gt;
+                                          &lt;/mrow&gt;
+                                          &lt;mn&gt;2&lt;/mn&gt;
+                                      &lt;/msup&gt;
+                                  &lt;/mrow&gt;
+                              &lt;/mrow&gt;
+                          &lt;/mfrac&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <apply>
+                      <sin/>
+                      <apply>
+                          <times/>
+                          <cn>2</cn>
+                          <ci>&#952;</ci>
+                      </apply>
+                  </apply>
+                  <apply>
+                      <times/>
+                      <cn>2</cn>
+                      <apply>
+                          <sin/>
+                          <ci>&#952;</ci>
+                      </apply>
+                      <apply>
+                          <cos/>
+                          <ci>&#952;</ci>
+                      </apply>
+                  </apply>
+                  <apply>
+                      <divide/>
+                      <apply>
+                          <times/>
+                          <cn>2</cn>
+                          <apply>
+                              <tan/>
+                              <ci>&#952;</ci>
+                          </apply>
+                      </apply>
+                      <apply>
+                          <plus/>
+                          <cn>1</cn>
+                          <apply>
+                              <power/>
+                              <apply>
+                                  <tan/>
+                                  <ci>&#952;</ci>
+                              </apply>
+                              <cn>2</cn>
+                          </apply>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;apply&gt;
+                      &lt;sin/&gt;
+                      &lt;apply&gt;
+                          &lt;times/&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                          &lt;ci&gt;&#952;&lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+                  &lt;apply&gt;
+                      &lt;times/&gt;
+                      &lt;cn&gt;2&lt;/cn&gt;
+                      &lt;apply&gt;
+                          &lt;sin/&gt;
+                          &lt;ci&gt;&#952;&lt;/ci&gt;
+                      &lt;/apply&gt;
+                      &lt;apply&gt;
+                          &lt;cos/&gt;
+                          &lt;ci&gt;&#952;&lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+                  &lt;apply&gt;
+                      &lt;divide/&gt;
+                      &lt;apply&gt;
+                          &lt;times/&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                          &lt;apply&gt;
+                              &lt;tan/&gt;
+                              &lt;ci&gt;&#952;&lt;/ci&gt;
+                          &lt;/apply&gt;
+                      &lt;/apply&gt;
+                      &lt;apply&gt;
+                          &lt;plus/&gt;
+                          &lt;cn&gt;1&lt;/cn&gt;
+                          &lt;apply&gt;
+                              &lt;power/&gt;
+                              &lt;apply&gt;
+                                  &lt;tan/&gt;
+                                  &lt;ci&gt;&#952;&lt;/ci&gt;
+                              &lt;/apply&gt;
+                              &lt;cn&gt;2&lt;/cn&gt;
+                          &lt;/apply&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    emptyset1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>emptyset1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi mathvariant="double-struck">Z</mi>
+                  </mrow>
+                  <mo>&#8800;</mo>
+                  <mrow>
+                      <mi>&#8709;</mi>
+                  </mrow>
+              </mrow>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi mathvariant="double-struck"&gt;Z&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8800;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;&#8709;&lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <neq/>
+                  <integers/>
+                  <emptyset/>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;neq/&gt;
+                  &lt;integers/&gt;
+                  &lt;emptyset/&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--    eqpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>eqpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mi> x </mi>
+                  <mo> = </mo>
+                  <mn> 2 </mn>
+                  <mo> = </mo>
+                  <mn> 2 </mn>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mi&gt; x &lt;/mi&gt;
+                  &lt;mo&gt; = &lt;/mo&gt;
+                  &lt;mn&gt; 2 &lt;/mn&gt;
+                  &lt;mo&gt; = &lt;/mo&gt;
+                  &lt;mn&gt; 2 &lt;/mn&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <ci> x </ci>
+                  <cn> 2 </cn>
+                  <cn> 2 </cn>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;ci&gt; x &lt;/ci&gt;
+                  &lt;cn&gt; 2 &lt;/cn&gt;
+                  &lt;cn&gt; 2 &lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    equivalentpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>equivalentpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&#8801;</mo>
+                  <mrow>
+                      <mo>&#172;</mo>
+                      <mrow>
+                          <mo>&#172;</mo>
+                          <mi> a </mi>
+                      </mrow>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8801;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mo&gt;&#172;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mo&gt;&#172;&lt;/mo&gt;
+                          &lt;mi&gt; a &lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <equivalent/>
+                  <ci> a </ci>
+                  <apply>
+                      <not/>
+                      <apply>
+                          <not/>
+                          <ci> a </ci>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;equivalent/&gt;
+                  &lt;ci&gt; a &lt;/ci&gt;
+                  &lt;apply&gt;
+                      &lt;not/&gt;
+                      &lt;apply&gt;
+                          &lt;not/&gt;
+                          &lt;ci&gt; a &lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    eulergamma1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>eulergamma1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mi>&#947;</mi>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mi&gt;&#947;&lt;/mi&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <eulergamma/>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;eulergamma/&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--exponentiale1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>exponentiale1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi>ln</mi>
+                      <mo>&#8289;</mo>
+                      <mi>e</mi>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mn>1</mn>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;ln&lt;/mi&gt;
+                      &lt;mo&gt;&#8289;&lt;/mo&gt;
+                      &lt;mi&gt;e&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt;1&lt;/mn&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <apply>
+                      <ln/>
+                      <exponentiale/>
+                  </apply>
+                  <cn>1</cn>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;apply&gt;
+                      &lt;ln/&gt;
+                      &lt;exponentiale/&gt;
+                  &lt;/apply&gt;
+                  &lt;cn&gt;1&lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    factorialpres.xml
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>factorialpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mn> 7 </mn>
+                  <mo> ! </mo>
+              </mrow>
+           </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mn&gt; 7 &lt;/mn&gt;
+                  &lt;mo&gt; ! &lt;/mo&gt;
+              &lt;/mrow&gt;
+           &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <factorial/>
+                  <cn> 7 </cn>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;factorial/&gt;
+                  &lt;cn&gt; 7 &lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    false1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>false1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mrow>
+                          <mi>false</mi>
+                      </mrow>
+                      <mo>&#8743;</mo>
+                      <mrow>
+                          <mi>P</mi>
+                      </mrow>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mi>false</mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;false&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8743;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;P&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;false&lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <apply>
+                      <and/>
+                      <false/>
+                      <ci>P</ci>
+                  </apply>
+                  <false/>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;apply&gt;
+                      &lt;and/&gt;
+                      &lt;false/&gt;
+                      &lt;ci&gt;P&lt;/ci&gt;
+                  &lt;/apply&gt;
+                  &lt;false/&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    floor1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>floor1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>&#8970;</mo>
+                  <mi> a </mi>
+                  <mo>&#8971;</mo>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;&#8970;&lt;/mo&gt;
+                  &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;mo&gt;&#8971;&lt;/mo&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <floor/>
+                  <ci> a </ci>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;floor/&gt;
+                  &lt;ci&gt; a &lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    geqpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>geqpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&#8805;</mo>
+                  <mrow>
+                      <mi> b </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8805;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; b &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <geq/>
+                  <ci> a </ci>
+                  <ci> b </ci>
+              </apply>
+          </math>
+
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;geq/&gt;
+                  &lt;ci&gt; a &lt;/ci&gt;
+                  &lt;ci&gt; b &lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    gtpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>gtpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&gt;</mo>
+                  <mrow>
+                      <mi> b </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&gt;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; b &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <gt/>
+                  <ci> a </ci>
+                  <ci> b </ci>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;gt/&gt;
+                  &lt;ci&gt; a &lt;/ci&gt;
+                  &lt;ci&gt; b &lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--    imaginaryi1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>imaginaryi1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <msup>
+                          <mrow>
+                              <mi>i</mi>
+                          </mrow>
+                          <mn>2</mn>
+                      </msup>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mn>-1</mn>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;msup&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt;i&lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mn&gt;2&lt;/mn&gt;
+                      &lt;/msup&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt;-1&lt;/mn&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <apply>
+                      <power/>
+                      <imaginaryi/>
+                      <cn>2</cn>
+                  </apply>
+                  <cn>-1</cn>
+              </apply>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;apply&gt;
+                      &lt;power/&gt;
+                      &lt;imaginaryi/&gt;
+                      &lt;cn&gt;2&lt;/cn&gt;
+                  &lt;/apply&gt;
+                  &lt;cn&gt;-1&lt;/cn&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    implies1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>implies1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> A </mi>
+                  </mrow>
+                  <mo>&#8658;</mo>
+                  <mrow>
+                      <mi> B </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; A &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8658;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; B &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <implies/>
+                  <ci> A </ci>
+                  <ci> B </ci>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;implies/&gt;
+                  &lt;ci&gt; A &lt;/ci&gt;
+                  &lt;ci&gt; B &lt;/ci&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--  infinity1pres.xml  -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>infinity1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mi>&#8734;</mi>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mi&gt;&#8734;&lt;/mi&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <infinity/>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;infinity/&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+<!--    integers1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>integers1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mn> 42 </mn>
+                    </mrow>
+                    <mo>&#8712;</mo>
+                    <mrow>
+                        <mi mathvariant="double-struck">Z</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt; 42 &lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8712;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi mathvariant="double-struck"&gt;Z&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <in/>
+                    <cn> 42 </cn>
+                    <integers/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;in/&gt;
+                    &lt;cn&gt; 42 &lt;/cn&gt;
+                    &lt;integers/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    interval1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>interval1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+               <mrow>
+                  <mo> [ </mo>
+                  <mrow>
+                    <mn> 0 </mn>
+                    <mo> , </mo>
+                    <mn> 1 </mn>
+                  </mrow>
+                  <mo> ) </mo>
+                </mrow>
+              </math>
+
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+               &lt;mrow&gt;
+                  &lt;mo&gt; [ &lt;/mo&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt; 0 &lt;/mn&gt;
+                    &lt;mo&gt; , &lt;/mo&gt;
+                    &lt;mn&gt; 1 &lt;/mn&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt; ) &lt;/mo&gt;
+                &lt;/mrow&gt;
+              &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <interval closure="closed-open">
+                    <cn> 0 </cn>
+                    <cn> 1 </cn>
+                </interval>
+            </math>
+            
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;interval closure="closed-open"&gt;
+                    &lt;cn&gt; 0 &lt;/cn&gt;
+                    &lt;cn&gt; 1 &lt;/cn&gt;
+                &lt;/interval&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    interval2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>interval2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                        <mi>a</mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                        <mi>b</mi>
+                    </mrow>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;a&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;,&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;b&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <interval closure="open">
+                    <ci>a</ci>
+                    <ci>b</ci>
+                </interval>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;interval closure="open"&gt;
+                    &lt;ci&gt;a&lt;/ci&gt;
+                    &lt;ci&gt;b&lt;/ci&gt;
+                &lt;/interval&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    interval3pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>interval3pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>(</mo>
+                  <mrow>
+                      <mn>0</mn>
+                  </mrow>
+                  <mo>,</mo>
+                  <mrow>
+                      <mn>1</mn>
+                  </mrow>
+                  <mo>]</mo>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;(&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt;0&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;,&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mn&gt;1&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;]&lt;/mo&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <interval closure="open-closed">
+                    <cn>0</cn>
+                    <cn>1</cn>
+                </interval>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;interval closure="open-closed"&gt;
+                    &lt;cn&gt;0&lt;/cn&gt;
+                    &lt;cn&gt;1&lt;/cn&gt;
+                &lt;/interval&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--    leqpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>leqpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&#8804;</mo>
+                  <mrow>
+                      <mi> b </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8804;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; b &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <leq/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;leq/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    
+<!--    leq2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>leq2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mi> a </mi>
+                  </mrow>
+                  <mo>&#8804;</mo>
+                  <mrow>
+                      <mi> b </mi>
+                  </mrow>
+                  <mo>&#8804;</mo>
+                  <mrow>
+                      <mi> c </mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8804;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; b &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;&#8804;&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; c &lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <leq/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                    <ci> c </ci>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;leq/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                    &lt;ci&gt; c &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    list1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>list1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list/>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list/&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    list2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>list2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                        <mi>x</mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                        <mn>7</mn>
+                    </mrow>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;x&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;,&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt;7&lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <ci>x</ci>
+                    <cn>7</cn>
+                </list>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;cn&gt;7&lt;/cn&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    list3pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>list3pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                        <mn>7</mn>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                        <mrow>
+                            <mi>x</mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mn>5</mn>
+                        </mrow>
+                    </mrow>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt;7&lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;,&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;5&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <cn>7</cn>
+                    <ci>x</ci>
+                    <cn>5</cn>
+                </list>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;cn&gt;7&lt;/cn&gt;
+                    &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;cn&gt;5&lt;/cn&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--    ltpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>ltpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mi> a </mi>
+                    </mrow>
+                    <mo>&lt;</mo>
+                    <mrow>
+                        <mi> b </mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&lt;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;            
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <lt/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;lt/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    mfenced1pres.xml interval-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                    </mfenced>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mfenced&gt;
+                        &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;mi&gt;y&lt;/mi&gt;
+                    &lt;/mfenced&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <interval closure="open">
+                    <ci>x</ci>
+                    <ci>y</ci>
+                </interval>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;interval closure="open"&gt;
+                    &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;ci&gt;y&lt;/ci&gt;
+                &lt;/interval&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+    <!--    mfenced1pres.xml list -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                    </mfenced>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mfenced&gt;
+                        &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;mi&gt;y&lt;/mi&gt;
+                    &lt;/mfenced&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <ci>x</ci>
+                    <ci>y</ci>
+                </list>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;ci&gt;y&lt;/ci&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    
+<!--    mfenced2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced separators = ",,:">
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mi>z</mi>
+                    </mfenced>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mfenced separators = ",,:"&gt;
+                        &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;mi&gt;y&lt;/mi&gt;
+                        &lt;mi&gt;z&lt;/mi&gt;
+                    &lt;/mfenced&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <ci>x</ci>
+                    <ci>y</ci>
+                    <ci>z</ci>
+                </list>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;ci&gt;y&lt;/ci&gt;
+                    &lt;ci&gt;z&lt;/ci&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    mfenced3pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced3pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced separators = "," open = "{" close="}">
+                        <mi>a</mi>
+                        <mi>b</mi>
+                        <mi>c</mi>
+                    </mfenced>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mfenced separators = "," open = "{" close="}"&gt;
+                        &lt;mi&gt;a&lt;/mi&gt;
+                        &lt;mi&gt;b&lt;/mi&gt;
+                        &lt;mi&gt;c&lt;/mi&gt;
+                    &lt;/mfenced&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <set>
+                    <ci>a</ci>
+                    <ci>b</ci>
+                    <ci>c</ci>
+                </set>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;set&gt;
+                    &lt;ci&gt;a&lt;/ci&gt;
+                    &lt;ci&gt;b&lt;/ci&gt;
+                    &lt;ci&gt;c&lt;/ci&gt;
+                &lt;/set&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    
+<!--    mfenced4pres.xml list-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced4pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfenced>
+                        <mrow>
+                            <mi>a</mi>
+                            <mo>+</mo>
+                            <mi>b</mi>
+                        </mrow>
+                    </mfenced>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mfenced&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;a&lt;/mi&gt;
+                            &lt;mo&gt;+&lt;/mo&gt;
+                            &lt;mi&gt;b&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mfenced&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <apply>
+                        <plus/>
+                        <ci>a</ci>
+                        <ci>b</ci>
+                    </apply>
+                </list>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;apply&gt;
+                        &lt;plus/&gt;
+                        &lt;ci&gt;a&lt;/ci&gt;
+                        &lt;ci&gt;b&lt;/ci&gt;
+                    &lt;/apply&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    <!--    mfenced4pres.xml neither -->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>mfenced4pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfenced>
+                        <mrow>
+                            <mi>a</mi>
+                            <mo>+</mo>
+                            <mi>b</mi>
+                        </mrow>
+                    </mfenced>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mfenced&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;a&lt;/mi&gt;
+                            &lt;mo&gt;+&lt;/mo&gt;
+                            &lt;mi&gt;b&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mfenced&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <plus/>
+                    <ci>a</ci>
+                    <ci>b</ci>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;plus/&gt;
+                    &lt;ci&gt;a&lt;/ci&gt;
+                    &lt;ci&gt;b&lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    nan1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>nan1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mfrac>
+                            <mn>0</mn>
+                            <mn>0</mn>
+                        </mfrac>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                        <mi>NaN</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mfrac&gt;
+                            &lt;mn&gt;0&lt;/mn&gt;
+                            &lt;mn&gt;0&lt;/mn&gt;
+                        &lt;/mfrac&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;=&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;NaN&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <eq/>
+                    <apply>
+                        <divide/>
+                        <cn>0</cn>
+                        <cn>0</cn>
+                    </apply>
+                    <notanumber/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;eq/&gt;
+                    &lt;apply&gt;
+                        &lt;divide/&gt;
+                        &lt;cn&gt;0&lt;/cn&gt;
+                        &lt;cn&gt;0&lt;/cn&gt;
+                    &lt;/apply&gt;
+                    &lt;notanumber/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    naturalnumber1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>naturalnumber1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mn>1729</mn>
+                    </mrow>
+                    <mo>&#8712;</mo>
+                    <mrow>
+                        <mi mathvariant="double-struck">N</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt;1729&lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8712;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi mathvariant="double-struck"&gt;N&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <in/>
+                    <cn>1729</cn>
+                    <naturalnumbers/>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;in/&gt;
+                    &lt;cn&gt;1729&lt;/cn&gt;
+                    &lt;naturalnumbers/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    neqpres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>neqpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mi> a </mi>
+                    </mrow>
+                    <mo>&#8800;</mo>
+                    <mrow>
+                        <mi> b </mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8800;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <neq/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;neq/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    opfirstnobracketspres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>opfirstnobracketspres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>-</mo>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;-&lt;/mo&gt;
+                    &lt;mi&gt;x&lt;/mi&gt;
+                    &lt;mo&gt;+&lt;/mo&gt;
+                    &lt;mn&gt;2&lt;/mn&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <plus/>
+                    <apply>
+                        <minus/>
+                        <ci>x</ci>
+                    </apply>
+                    <cn>2</cn>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;plus/&gt;
+                    &lt;apply&gt;
+                        &lt;minus/&gt;
+                        &lt;ci&gt;x&lt;/ci&gt;
+                    &lt;/apply&gt;
+                    &lt;cn&gt;2&lt;/cn&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    pi1pres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>pi1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mi>&#960;</mi>
+                    </mrow>
+                    <mo>&#8771;</mo>
+                    <mrow>
+                        <mfrac>
+                            <mn>22</mn>
+                            <mn> 7</mn>
+                        </mfrac>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;&#960;&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8771;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mfrac&gt;
+                            &lt;mn&gt;22&lt;/mn&gt;
+                            &lt;mn&gt; 7&lt;/mn&gt;
+                        &lt;/mfrac&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <approx/>
+                    <ci>&#960;</ci>
+                    <apply>
+                        <divide/>
+                        <cn>22</cn>
+                        <cn> 7</cn>
+                    </apply>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;approx/&gt;
+                    &lt;ci&gt;&#960;&lt;/ci&gt;
+                    &lt;apply&gt;
+                        &lt;divide/&gt;
+                        &lt;cn&gt;22&lt;/cn&gt;
+                        &lt;cn&gt; 7&lt;/cn&gt;
+                    &lt;/apply&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    pres_token_elements_1.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>pres_token_elements_1.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi> x </mi>
+                <mo> + </mo>
+                <mrow>
+                  <mi> a </mi>
+                  <mo> / </mo>
+                  <mi mathsize="small" > b </mi>
+                </mrow>
+              </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                &lt;mi&gt; x &lt;/mi&gt;
+                &lt;mo&gt; + &lt;/mo&gt;
+                &lt;mrow&gt;
+                  &lt;mi&gt; a &lt;/mi&gt;
+                  &lt;mo&gt; / &lt;/mo&gt;
+                  &lt;mi mathsize="small" &gt; b &lt;/mi&gt;
+                &lt;/mrow&gt;
+              &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <plus/>
+                    <ci> x </ci>
+                    <apply>
+                        <divide/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                    </apply>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;plus/&gt;
+                    &lt;ci&gt; x &lt;/ci&gt;
+                    &lt;apply&gt;
+                        &lt;divide/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                    &lt;/apply&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+
+<!--primes1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>primes1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mn>17</mn>
+                    </mrow>
+                    <mo>&#8712;</mo>
+                    <mrow>
+                        <mi mathvariant="double-struck">P</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt;17&lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8712;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi mathvariant="double-struck"&gt;P&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <in/>
+                    <cn>17</cn>
+                    <primes/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;in/&gt;
+                    &lt;cn&gt;17&lt;/cn&gt;
+                    &lt;primes/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--quadformpres4.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>quadformpres4.xml</p>
+             <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                 <mi>x</mi>
+                 <mo>=</mo>
+                 <mfrac>
+                  <mrow>
+                   <mrow>
+                    <mo>-</mo>
+                    <mi>b</mi>
+                   </mrow>
+                   <mo>&PlusMinus;</mo>
+                   <msqrt>
+                    <mrow>
+                     <msup>
+                      <mi>b</mi>
+                      <mn>2</mn>
+                     </msup>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>a</mi>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>c</mi>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                  <mrow>
+                   <mn>2</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <mi>a</mi>
+                  </mrow>
+                 </mfrac>
+                </mrow>
+              </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                 &lt;mi&gt;x&lt;/mi&gt;
+                 &lt;mo&gt;=&lt;/mo&gt;
+                 &lt;mfrac&gt;
+                  &lt;mrow&gt;
+                   &lt;mrow&gt;
+                    &lt;mo&gt;-&lt;/mo&gt;
+                    &lt;mi&gt;b&lt;/mi&gt;
+                   &lt;/mrow&gt;
+                   &lt;mo&gt;&PlusMinus;&lt;/mo&gt;
+                   &lt;msqrt&gt;
+                    &lt;mrow&gt;
+                     &lt;msup&gt;
+                      &lt;mi&gt;b&lt;/mi&gt;
+                      &lt;mn&gt;2&lt;/mn&gt;
+                     &lt;/msup&gt;
+                     &lt;mo&gt;-&lt;/mo&gt;
+                     &lt;mrow&gt;
+                      &lt;mn&gt;4&lt;/mn&gt;
+                      &lt;mo&gt;&InvisibleTimes;&lt;/mo&gt;
+                      &lt;mi&gt;a&lt;/mi&gt;
+                      &lt;mo&gt;&InvisibleTimes;&lt;/mo&gt;
+                      &lt;mi&gt;c&lt;/mi&gt;
+                     &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                   &lt;/msqrt&gt;
+                  &lt;/mrow&gt;
+                  &lt;mrow&gt;
+                   &lt;mn&gt;2&lt;/mn&gt;
+                   &lt;mo&gt;&InvisibleTimes;&lt;/mo&gt;
+                   &lt;mi&gt;a&lt;/mi&gt;
+                  &lt;/mrow&gt;
+                 &lt;/mfrac&gt;
+                &lt;/mrow&gt;
+              &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                  <eq/>
+                  <ci>x</ci>
+                  <apply>
+                      <divide/>
+                      <apply>
+                          <plus/>
+                          <apply>
+                              <minus/>
+                              <ci>b</ci>
+                          </apply>
+                          <apply>
+                              <root/>
+                              <apply>
+                                  <minus/>
+                                  <apply>
+                                      <power/>
+                                      <ci>b</ci>
+                                      <cn>2</cn>
+                                  </apply>
+                                  <apply>
+                                      <times/>
+                                      <cn>4</cn>
+                                      <ci>a</ci>
+                                      <ci>c</ci>
+                                  </apply>
+                              </apply>
+                          </apply>
+                      </apply>
+                      <apply>
+                          <times/>
+                          <cn>2</cn>
+                          <ci>a</ci>
+                      </apply>
+                  </apply>
+              </apply>
+          </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;apply&gt;
+                  &lt;eq/&gt;
+                  &lt;ci&gt;x&lt;/ci&gt;
+                  &lt;apply&gt;
+                      &lt;divide/&gt;
+                      &lt;apply&gt;
+                          &lt;plus/&gt;
+                          &lt;apply&gt;
+                              &lt;minus/&gt;
+                              &lt;ci&gt;b&lt;/ci&gt;
+                          &lt;/apply&gt;
+                          &lt;apply&gt;
+                              &lt;root/&gt;
+                              &lt;apply&gt;
+                                  &lt;minus/&gt;
+                                  &lt;apply&gt;
+                                      &lt;power/&gt;
+                                      &lt;ci&gt;b&lt;/ci&gt;
+                                      &lt;cn&gt;2&lt;/cn&gt;
+                                  &lt;/apply&gt;
+                                  &lt;apply&gt;
+                                      &lt;times/&gt;
+                                      &lt;cn&gt;4&lt;/cn&gt;
+                                      &lt;ci&gt;a&lt;/ci&gt;
+                                      &lt;ci&gt;c&lt;/ci&gt;
+                                  &lt;/apply&gt;
+                              &lt;/apply&gt;
+                          &lt;/apply&gt;
+                      &lt;/apply&gt;
+                      &lt;apply&gt;
+                          &lt;times/&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                          &lt;ci&gt;a&lt;/ci&gt;
+                      &lt;/apply&gt;
+                  &lt;/apply&gt;
+              &lt;/apply&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    quotient1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>quotient1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>&#8970;</mo>
+                    <mfrac>
+                        <mi> a </mi>
+                        <mi> b </mi>
+                    </mfrac>
+                    <mo>&#8971;</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;&#8970;&lt;/mo&gt;
+                    &lt;mfrac&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mfrac&gt;
+                    &lt;mo&gt;&#8971;&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <floor/>
+                    <apply>
+                        <divide/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                    </apply>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;floor/&gt;
+                    &lt;apply&gt;
+                        &lt;divide/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                    &lt;/apply&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    rationals1pres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>rationals1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mfrac>
+                            <mn> 22</mn>
+                            <mn> 7</mn>
+                        </mfrac>
+                    </mrow>
+                    <mo>&#8712;</mo>
+                    <mrow>
+                        <mi mathvariant="double-struck">Q</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mfrac&gt;
+                            &lt;mn&gt; 22&lt;/mn&gt;
+                            &lt;mn&gt; 7&lt;/mn&gt;
+                        &lt;/mfrac&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8712;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi mathvariant="double-struck"&gt;Q&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <in/>
+                    <apply>
+                        <divide/>
+                        <cn> 22</cn>
+                        <cn> 7</cn>
+                    </apply>
+                    <rationals/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;in/&gt;
+                    &lt;apply&gt;
+                        &lt;divide/&gt;
+                        &lt;cn&gt; 22&lt;/cn&gt;
+                        &lt;cn&gt; 7&lt;/cn&gt;
+                    &lt;/apply&gt;
+                    &lt;rationals/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    reals1pres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>reals1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mn> 44.997 </mn>
+                    </mrow>
+                    <mo>&#8712;</mo>
+                    <mrow>
+                        <mi mathvariant="double-struck">R</mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt; 44.997 &lt;/mn&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;&#8712;&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <in/>
+                    <cn> 44.997 </cn>
+                    <reals/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;in/&gt;
+                    &lt;cn&gt; 44.997 &lt;/cn&gt;
+                    &lt;reals/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    rem1pres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>rem1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mi> a </mi>
+                    </mrow>
+                    <mo>mod</mo>
+                    <mrow>
+                        <mi> b </mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;mod&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <rem/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;rem/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    
+<!--    set1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>set1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>{</mo>
+                    <mo>}</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;{&lt;/mo&gt;
+                    &lt;mo&gt;}&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <set/>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;set/&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+
+<!--    set2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>set2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>{</mo>
+                    <mrow>
+                        <mi> b </mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mi> c </mi>
+                        </mrow>
+                    </mrow>
+                    <mo>}</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;{&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;,&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; c &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;}&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <set>
+                    <ci> b </ci>
+                    <ci> a </ci>
+                    <ci> c </ci>
+                </set>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;set&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; c &lt;/ci&gt;
+                &lt;/set&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+
+<!--    set3pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>set3pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mo>{</mo>
+                  <mrow>
+                      <mi> b </mi>
+                  </mrow>
+                  <mo>,</mo>
+                  <mrow>
+                      <mrow>
+                          <mi> a </mi>
+                      </mrow>
+                      <mo>,</mo>
+                      <mrow>
+                          <mrow>
+                              <mi> c </mi>
+                          </mrow>
+                          <mo>,</mo>
+                          <mrow>
+                              <mn> 6 </mn>
+                          </mrow>
+                      </mrow>
+                  </mrow>
+                  <mo>}</mo>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mo&gt;{&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt; b &lt;/mi&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;,&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt; a &lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;,&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt; c &lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;,&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mn&gt; 6 &lt;/mn&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;}&lt;/mo&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <set>
+                    <ci> b </ci>
+                    <ci> a </ci>
+                    <ci> c </ci>
+                    <cn> 6 </cn>
+                </set>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;set&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; c &lt;/ci&gt;
+                    &lt;cn&gt; 6 &lt;/cn&gt;
+                &lt;/set&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+<!--    simplebracketpres.xml neither -->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>simplebracketpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mi>a</mi>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mi&gt;a&lt;/mi&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <ci>a</ci>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;ci&gt;a&lt;/ci&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    <!--    simplebracketpres.xml list-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>simplebracketpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mi>a</mi>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mi&gt;a&lt;/mi&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list>
+                    <ci>a</ci>
+                </list>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list&gt;
+                    &lt;ci&gt;a&lt;/ci&gt;
+                &lt;/list&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    sinpres.xml-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>sinpres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi> sin </mi>
+                <mo> &#x2061; </mo>
+                <mi> x </mi>
+              </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                &lt;mi&gt; sin &lt;/mi&gt;
+                &lt;mo&gt; &#x2061; &lt;/mo&gt;
+                &lt;mi&gt; x &lt;/mi&gt;
+              &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <sin/>
+                    <ci> x </ci>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;sin/&gt;
+                    &lt;ci&gt; x &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+
+    
+<!--    true1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>true1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                  <mrow>
+                      <mrow>
+                          <mi>true</mi>
+                      </mrow>
+                      <mo>&#8744;</mo>
+                      <mrow>
+                          <mi>P</mi>
+                      </mrow>
+                  </mrow>
+                  <mo>=</mo>
+                  <mrow>
+                      <mi>true</mi>
+                  </mrow>
+              </mrow>
+          </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mrow&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;true&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                      &lt;mo&gt;&#8744;&lt;/mo&gt;
+                      &lt;mrow&gt;
+                          &lt;mi&gt;P&lt;/mi&gt;
+                      &lt;/mrow&gt;
+                  &lt;/mrow&gt;
+                  &lt;mo&gt;=&lt;/mo&gt;
+                  &lt;mrow&gt;
+                      &lt;mi&gt;true&lt;/mi&gt;
+                  &lt;/mrow&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <eq/>
+                    <apply>
+                        <or/>
+                        <true/>
+                        <ci>P</ci>
+                    </apply>
+                    <true/>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;eq/&gt;
+                    &lt;apply&gt;
+                        &lt;or/&gt;
+                        &lt;true/&gt;
+                        &lt;ci&gt;P&lt;/ci&gt;
+                    &lt;/apply&gt;
+                    &lt;true/&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+    
+<!--    vectorproduct1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>vectorproduct1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mrow>
+                            <mi> A </mi>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mi> B </mi>
+                        </mrow>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8290;</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> b </mi>
+                            </mrow>
+                            <mo>&#8290;</mo>
+                            <mrow>
+                                <mrow>
+                                    <mi>sin</mi>
+                                    <mo>&#8289;</mo>
+                                    <mi> &#952; </mi>
+                                </mrow>
+                                <mo>&#8290;</mo>
+                                <mrow>
+                                    <mi> N </mi>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; A &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; B &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;=&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8290;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; b &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;sin&lt;/mi&gt;
+                                    &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                    &lt;mi&gt; &#952; &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt; N &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <eq/>
+                    <apply>
+                        <vectorproduct/>
+                        <ci> A </ci>
+                        <ci> B </ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                        <apply>
+                            <sin/>
+                            <ci> &#952; </ci>
+                        </apply>
+                        <ci> N </ci>
+                    </apply>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;eq/&gt;
+                    &lt;apply&gt;
+                        &lt;vectorproduct/&gt;
+                        &lt;ci&gt; A &lt;/ci&gt;
+                        &lt;ci&gt; B &lt;/ci&gt;
+                    &lt;/apply&gt;
+                    &lt;apply&gt;
+                        &lt;times/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                        &lt;apply&gt;
+                            &lt;sin/&gt;
+                            &lt;ci&gt; &#952; &lt;/ci&gt;
+                        &lt;/apply&gt;
+                        &lt;ci&gt; N &lt;/ci&gt;
+                    &lt;/apply&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    vsimplebracketspres.xml list-->
+    
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>vsimplebracketspres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo>
+                    <mo>)</mo>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mo&gt;(&lt;/mo&gt;
+                    &lt;mo&gt;)&lt;/mo&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>Yes</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <list/>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;list/&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    x=2pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>x=2pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi> x </mi>
+                    <mo> = </mo>
+                    <mn> 2 </mn>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mi&gt; x &lt;/mi&gt;
+                    &lt;mo&gt; = &lt;/mo&gt;
+                    &lt;mn&gt; 2 &lt;/mn&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <eq/>
+                    <ci> x </ci>
+                    <cn> 2 </cn>
+                </apply>
+            </math>
+            
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;eq/&gt;
+                    &lt;ci&gt; x &lt;/ci&gt;
+                    &lt;cn&gt; 2 &lt;/cn&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+<!--    xor1pres.xml-->
+    <tr>
+      <td>
+        <pre>
+          <src xmlns="">
+            <p>xor1pres.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mi> a </mi>
+                    </mrow>
+                    <mo>xor</mo>
+                    <mrow>
+                        <mi> b </mi>
+                    </mrow>
+                </mrow>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;mrow&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                    &lt;mo&gt;xor&lt;/mo&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt; b &lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/mrow&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+      <td>No</td>
+      <td>internal tree</td>
+      <td>
+        <pre>
+          <src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <xor/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                </apply>
+            </math>
+
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                    &lt;xor/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                &lt;/apply&gt;
+            &lt;/math&gt;
+          </src>
+        </pre>
+      </td>
+    </tr>
+    
+  </table>
+</body>
+
+</html>

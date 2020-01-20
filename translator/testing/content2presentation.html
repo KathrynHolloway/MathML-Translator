@@ -1,0 +1,4414 @@
+<!DOCTYPE html>
+<html lang="en" >  <!--xmlns="http://www.w3.org/1998/Math/MathML"-->
+<head>
+  <meta charset="UTF-8">
+  <title> Testing | Cont2Pres </title>
+  <link rel="stylesheet" type="text/css" href="styling.css" />
+</head>
+<body>
+  <div class="nav">
+    <ul>
+        <li><a>Testing</a></li>
+      <li><a href="content2presentation.html">Content to Presentation</a></li>
+      <li><a href="presentation2content.html">Presentation to Content</a></li>
+    </ul>
+  </div>
+
+  <h1>Content to Presentation </h1>
+
+  <table>
+    <tr>
+      <th>Input</th>
+      <th>Internal Tree</th>
+      <th>Output</th>
+    </tr>
+    <tr>
+<!--       abs1cont -->
+      <td>
+        <pre><src xmlns="">
+          <p>abs1cont.xml</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <abs/>
+                <apply>
+                  <divide/>
+                  <ci> H </ci>
+                  <ci> K </ci>
+                </apply>
+              </apply>
+            </math>
+          &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                &lt;apply&gt;
+                  &lt;abs/&gt;
+                  &lt;apply&gt;
+                    &lt;divide/&gt;
+                    &lt;ci&gt; H &lt;/ci&gt;
+                    &lt;ci&gt; K &lt;/ci&gt;
+                  &lt;/apply&gt;
+                &lt;/apply&gt;
+              &lt;/math&gt;
+          </src></pre>
+      </td>
+
+      <td>Maria Anders</td>
+      <td>
+        <pre><src xmlns="">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced open="|" close="|" separators="">
+                        <mfrac>
+                            <mi> H </mi>
+                            <mi> K </mi>
+                        </mfrac>
+                    </mfenced>
+                </mrow>
+            </math>
+          &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+              &lt;mrow&gt;
+                  &lt;mfenced open="|" close="|" separators=""&gt;
+                      &lt;mfrac&gt;
+                          &lt;mi&gt; H &lt;/mi&gt;
+                          &lt;mi&gt; K &lt;/mi&gt;
+                      &lt;/mfrac&gt;
+                  &lt;/mfenced&gt;
+              &lt;/mrow&gt;
+          &lt;/math&gt;
+        </src></pre>
+      </td>
+    </tr>
+
+
+<!--    abs2cont-->
+    <tr>
+        <td>
+            <pre><src xmlns="">
+            <p>abs2cont.xml</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <apply>
+                    <abs/>
+                    <apply>
+                      <plus/>
+                      <ci> x </ci>
+                      <ci> y </ci>
+                      <ci> z </ci>
+                    </apply>
+                  </apply>
+                </math>
+            &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                  &lt;apply&gt;
+                    &lt;abs/&gt;
+                    &lt;apply&gt;
+                      &lt;plus/&gt;
+                      &lt;ci&gt; x &lt;/ci&gt;
+                      &lt;ci&gt; y &lt;/ci&gt;
+                      &lt;ci&gt; z &lt;/ci&gt;
+                    &lt;/apply&gt;
+                  &lt;/apply&gt;
+                &lt;/math&gt;
+            </src></pre>
+        </td>
+
+      <td>Francisco Chang</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfenced open="|" close="|" separators="">
+                            <mrow>
+                                <mi> x </mi>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow>
+                                <mrow>
+                                    <mi> y </mi>
+                                </mrow>
+                                <mo>+</mo>
+                                <mrow>
+                                    <mi> z </mi>
+                                </mrow>
+                            </mrow>
+                        </mfenced>
+                    </mrow>
+                </math>
+                    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                  &lt;mrow&gt;
+                      &lt;mfenced open="|" close="|" separators=""&gt;
+                          &lt;mrow&gt;
+                              &lt;mi&gt; x &lt;/mi&gt;
+                          &lt;/mrow&gt;
+                          &lt;mo&gt;+&lt;/mo&gt;
+                          &lt;mrow&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt; y &lt;/mi&gt;
+                              &lt;/mrow&gt;
+                              &lt;mo&gt;+&lt;/mo&gt;
+                              &lt;mrow&gt;
+                                  &lt;mi&gt; z &lt;/mi&gt;
+                              &lt;/mrow&gt;
+                          &lt;/mrow&gt;
+                      &lt;/mfenced&gt;
+                  &lt;/mrow&gt;
+              &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--     addcont -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>addcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <plus/>
+                        <ci> x </ci>
+                        <ci> y </ci>
+                        <ci> z </ci>
+                    </apply>
+                 </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;plus/&gt;
+                        &lt;ci&gt; x &lt;/ci&gt;
+                        &lt;ci&gt; y &lt;/ci&gt;
+                        &lt;ci&gt; z &lt;/ci&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+
+      <td>Roland Mendel</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> x </mi>
+                        </mrow>
+                        <mo>+</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> y </mi>
+                            </mrow>
+                            <mo>+</mo>
+                            <mrow>
+                                <mi> z </mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; x &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;+&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; y &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;+&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; z &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+
+    </tr>
+
+<!--      and1cont-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns = "">
+                  <p>and1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <implies/>
+                        <apply>
+                          <eq/>
+                          <ci>A</ci>
+                          <ci>B</ci>
+                        </apply>
+                        <apply>
+                          <eq/>
+                          <apply>
+                            <and/>
+                            <ci>A</ci>
+                            <ci>C</ci>
+                          </apply>
+                          <apply>
+                            <and/>
+                            <ci>B</ci>
+                            <ci>C</ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;implies/&gt;
+                        &lt;apply&gt;
+                          &lt;eq/&gt;
+                          &lt;ci&gt;A&lt;/ci&gt;
+                          &lt;ci&gt;B&lt;/ci&gt;
+                        &lt;/apply&gt;
+                        &lt;apply&gt;
+                          &lt;eq/&gt;
+                          &lt;apply&gt;
+                            &lt;and/&gt;
+                            &lt;ci&gt;A&lt;/ci&gt;
+                            &lt;ci&gt;C&lt;/ci&gt;
+                          &lt;/apply&gt;
+                          &lt;apply&gt;
+                            &lt;and/&gt;
+                            &lt;ci&gt;B&lt;/ci&gt;
+                            &lt;ci&gt;C&lt;/ci&gt;
+                          &lt;/apply&gt;
+                        &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+
+      </td>
+
+      <td>Helen Bennett</td>
+
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mrow>
+                                <mi>A</mi>
+                            </mrow>
+                            <mo>=</mo>
+                            <mrow>
+                                <mi>B</mi>
+                            </mrow>
+                        </mrow>
+                        <mo>&#8658;</mo>
+                        <mrow>
+                            <mrow>
+                                <mrow>
+                                    <mi>A</mi>
+                                </mrow>
+                                <mo>&#8743;</mo>
+                                <mrow>
+                                    <mi>C</mi>
+                                </mrow>
+                            </mrow>
+                            <mo>=</mo>
+                            <mrow>
+                                <mrow>
+                                    <mi>B</mi>
+                                </mrow>
+                                <mo>&#8743;</mo>
+                                <mrow>
+                                    <mi>C</mi>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;A&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;=&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;B&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8658;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;A&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8743;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;C&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;=&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;B&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8743;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;C&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--approx1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>approx1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <approx/>
+                        <ci> a </ci>
+                        <cn type="constant"> &pi; </cn>
+                    </apply>
+                 </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;approx/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;cn type="constant"&gt; &pi; &lt;/cn&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Yoshi Tannamuri</td>
+
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8771;</mo>
+                        <mrow>
+                            <mn> &#960; </mn>
+                        </mrow>
+                    </mrow>
+                </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8771;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt; &#960; &lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--arg1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>arg1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <arg/>
+                        <apply>
+                          <plus />
+                          <ci> x </ci>
+                          <apply>
+                            <times/>
+                            <cn> &ImaginaryI; </cn>
+                            <ci> y </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;arg/&gt;
+                        &lt;apply&gt;
+                          &lt;plus /&gt;
+                          &lt;ci&gt; x &lt;/ci&gt;
+                          &lt;apply&gt;
+                            &lt;times/&gt;
+                            &lt;cn&gt; &ImaginaryI; &lt;/cn&gt;
+                            &lt;ci&gt; y &lt;/ci&gt;
+                          &lt;/apply&gt;
+                        &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>arg</mi>
+                        </mrow>
+                        <mo>&#8289;</mo>
+                        <mrow>
+                            <mfenced open="(" close=")" separators="">
+                                <mrow>
+                                    <mi> x </mi>
+                                </mrow>
+                                <mo>+</mo>
+                                <mrow>
+                                    <mrow>
+                                        <mn> &#8520; </mn>
+                                    </mrow>
+                                    <mo>&#8290;</mo>
+                                    <mrow>
+                                        <mi> y </mi>
+                                    </mrow>
+                                </mrow>
+                            </mfenced>
+                        </mrow>
+                    </mrow>
+                </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;arg&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfenced open="(" close=")" separators=""&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt; x &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;+&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mn&gt; &#8520; &lt;/mn&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt; y &lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mfenced&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--card1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>card1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <card/>
+                          <ci> A </ci>
+                        </apply>
+                        <cn> 5 </cn>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;card/&gt;
+                          &lt;ci&gt; A &lt;/ci&gt;
+                        &lt;/apply&gt;
+                        &lt;cn&gt; 5 &lt;/cn&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mfenced open="|" close="|" separators="">
+                                <mi> A </mi>
+                            </mfenced>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mn> 5 </mn>
+                        </mrow>
+                    </mrow>
+                </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mfenced open="|" close="|" separators=""&gt;
+                                &lt;mi&gt; A &lt;/mi&gt;
+                            &lt;/mfenced&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt; 5 &lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--cartesianproduct1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns = "">
+                  <p>cartesianproduct1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <cartesianproduct/>
+                        <ci> A </ci>
+                        <ci> B </ci>
+                      </apply>
+                  </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;cartesianproduct/&gt;
+                        &lt;ci&gt; A &lt;/ci&gt;
+                        &lt;ci&gt; B &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> A </mi>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mi> B </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; A &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; B &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--cartesianproduct2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>cartesianproduct2cont.xml</p>
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <cartesianproduct/>
+                        <reals/>
+                        <reals/>
+                        <reals/>
+                      </apply>
+                    </math>
+                   &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;cartesianproduct/&gt;
+                        &lt;reals/&gt;
+                        &lt;reals/&gt;
+                        &lt;reals/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi mathvariant="double-struck">R</mi>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mrow>
+                                <mi mathvariant="double-struck">R</mi>
+                            </mrow>
+                            <mo>&#215;</mo>
+                            <mrow>
+                                <mi mathvariant="double-struck">R</mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#215;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      complexes1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>complexes1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <ci>a</ci>
+                        <complexes/>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;ci&gt;a&lt;/ci&gt;
+                        &lt;complexes/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>a</mi>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">C</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;a&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;C&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--cos1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>cos1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <cos/>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <times/>
+                              <cn>2</cn>
+                              <ci>x</ci>
+                            </apply>
+                            <apply>
+                              <divide/>
+                              <cn>&pi;</cn>
+                              <cn>2</cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;minus/&gt;
+                        &lt;apply&gt;
+                          &lt;cos/&gt;
+                          &lt;apply&gt;
+                            &lt;plus/&gt;
+                            &lt;apply&gt;
+                              &lt;times/&gt;
+                              &lt;cn&gt;2&lt;/cn&gt;
+                              &lt;ci&gt;x&lt;/ci&gt;
+                            &lt;/apply&gt;
+                            &lt;apply&gt;
+                              &lt;divide/&gt;
+                              &lt;cn&gt;&pi;&lt;/cn&gt;
+                              &lt;cn&gt;2&lt;/cn&gt;
+                            &lt;/apply&gt;
+                          &lt;/apply&gt;
+                        &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mi>cos</mi>
+                        <mo>&#8289;</mo>
+                        <mo>(</mo>
+                        <mrow>
+                            <mrow>
+                                <mn>2</mn>
+                            </mrow>
+                            <mo>&#8290;</mo>
+                            <mrow>
+                                <mi>x</mi>
+                            </mrow>
+                        </mrow>
+                        <mo>+</mo>
+                        <mrow>
+                            <mfrac>
+                                <mn>&#960;</mn>
+                                <mn>2</mn>
+                            </mfrac>
+                        </mrow>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;-&lt;/mo&gt;
+                        &lt;mi&gt;cos&lt;/mi&gt;
+                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mn&gt;2&lt;/mn&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;x&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;+&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfrac&gt;
+                                &lt;mn&gt;&#960;&lt;/mn&gt;
+                                &lt;mn&gt;2&lt;/mn&gt;
+                            &lt;/mfrac&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--demo1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>demo1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                          <neq/>
+                          <apply>
+                              <quotient/>
+                              <ci> a </ci>
+                              <ci> b </ci>
+                          </apply>
+                          <set>
+                              <ci> b </ci>
+                              <ci> a </ci>
+                              <ci> c </ci>
+                          </set>
+                          <naturalnumbers/>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                          &lt;neq/&gt;
+                          &lt;apply&gt;
+                              &lt;quotient/&gt;
+                              &lt;ci&gt; a &lt;/ci&gt;
+                              &lt;ci&gt; b &lt;/ci&gt;
+                          &lt;/apply&gt;
+                          &lt;set&gt;
+                              &lt;ci&gt; b &lt;/ci&gt;
+                              &lt;ci&gt; a &lt;/ci&gt;
+                              &lt;ci&gt; c &lt;/ci&gt;
+                          &lt;/set&gt;
+                          &lt;naturalnumbers/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mo>&#8970;</mo>
+                            <mfrac>
+                                <mi> a </mi>
+                                <mi> b </mi>
+                            </mfrac>
+                            <mo>&#8971;</mo>
+                        </mrow>
+                        <mo>&#8800;</mo>
+                        <mrow>
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <mi> b </mi>
+                                </mrow>
+                                <mo>,</mo>
+                                <mrow>
+                                    <mrow>
+                                        <mi> a </mi>
+                                    </mrow>
+                                    <mo>,</mo>
+                                    <mrow>
+                                        <mi> c </mi>
+                                    </mrow>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                            <mo>&#8800;</mo>
+                            <mrow>
+                                <mi mathvariant="double-struck">N</mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mo&gt;&#8970;&lt;/mo&gt;
+                            &lt;mfrac&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                                &lt;mi&gt; b &lt;/mi&gt;
+                            &lt;/mfrac&gt;
+                            &lt;mo&gt;&#8971;&lt;/mo&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8800;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mo&gt;{&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt; b &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;,&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt; a &lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;,&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt; c &lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;}&lt;/mo&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8800;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi mathvariant="double-struck"&gt;N&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      demo2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>demo2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                          <neq/>
+                          <imaginaryi/>
+                          <list>
+                              <ci>x</ci>
+                              <cn>7</cn>
+                          </list>
+                          <apply>
+                            <cartesianproduct/>
+                            <reals/>
+                            <reals/>
+                            <reals/>
+                          </apply>
+                      </apply>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                          &lt;neq/&gt;
+                          &lt;imaginaryi/&gt;
+                          &lt;list&gt;
+                              &lt;ci&gt;x&lt;/ci&gt;
+                              &lt;cn&gt;7&lt;/cn&gt;
+                          &lt;/list&gt;
+                          &lt;apply&gt;
+                            &lt;cartesianproduct/&gt;
+                            &lt;reals/&gt;
+                            &lt;reals/&gt;
+                            &lt;reals/&gt;
+                          &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mrow>
+                                <mi>i</mi>
+                            </mrow>
+                            <mo>&#8800;</mo>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mi>x</mi>
+                                    </mrow>
+                                    <mo>,</mo>
+                                    <mrow>
+                                        <mn>7</mn>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mo>&#8800;</mo>
+                                <mrow>
+                                    <mrow>
+                                        <mi mathvariant="double-struck">R</mi>
+                                    </mrow>
+                                    <mo>&#215;</mo>
+                                    <mrow>
+                                        <mrow>
+                                            <mi mathvariant="double-struck">R</mi>
+                                        </mrow>
+                                        <mo>&#215;</mo>
+                                        <mrow>
+                                            <mi mathvariant="double-struck">R</mi>
+                                        </mrow>
+                                    </mrow>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;i&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8800;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mo&gt;(&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt;x&lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;,&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mn&gt;7&lt;/mn&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;)&lt;/mo&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8800;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;&#215;&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                                        &lt;/mrow&gt;
+                                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                                        &lt;/mrow&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      doubleangleformula1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>doubleangleformula1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <eq/>
+                        <apply>
+                            <sin/>
+                            <apply>
+                                <times/>
+                                <cn>2</cn>
+                                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <cn>2</cn>
+                            <apply>
+                                <sin/>
+                                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                            </apply>
+                            <apply>
+                                <cos/>
+                                <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <cn>2</cn>
+                                <apply>
+                                    <tan/>
+                                    <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                                </apply>
+                            </apply>
+                            <apply>
+                                <plus/>
+                                <cn>1</cn>
+                                <apply>
+                                    <power/>
+                                    <apply>
+                                        <tan/>
+                                        <ci>&#x3b8;<!--GREEK SMALL LETTER THETA--></ci>
+                                    </apply>
+                                    <cn>2</cn>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                 </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                            &lt;sin/&gt;
+                            &lt;apply&gt;
+                                &lt;times/&gt;
+                                &lt;cn&gt;2&lt;/cn&gt;
+                                &lt;ci&gt;&#x3b8;&lt;!--GREEK SMALL LETTER THETA--&gt;&lt;/ci&gt;
+                            &lt;/apply&gt;
+                        &lt;/apply&gt;
+                        &lt;apply&gt;
+                            &lt;times/&gt;
+                            &lt;cn&gt;2&lt;/cn&gt;
+                            &lt;apply&gt;
+                                &lt;sin/&gt;
+                                &lt;ci&gt;&#x3b8;&lt;!--GREEK SMALL LETTER THETA--&gt;&lt;/ci&gt;
+                            &lt;/apply&gt;
+                            &lt;apply&gt;
+                                &lt;cos/&gt;
+                                &lt;ci&gt;&#x3b8;&lt;!--GREEK SMALL LETTER THETA--&gt;&lt;/ci&gt;
+                            &lt;/apply&gt;
+                        &lt;/apply&gt;
+                        &lt;apply&gt;
+                            &lt;divide/&gt;
+                            &lt;apply&gt;
+                                &lt;times/&gt;
+                                &lt;cn&gt;2&lt;/cn&gt;
+                                &lt;apply&gt;
+                                    &lt;tan/&gt;
+                                    &lt;ci&gt;&#x3b8;&lt;!--GREEK SMALL LETTER THETA--&gt;&lt;/ci&gt;
+                                &lt;/apply&gt;
+                            &lt;/apply&gt;
+                            &lt;apply&gt;
+                                &lt;plus/&gt;
+                                &lt;cn&gt;1&lt;/cn&gt;
+                                &lt;apply&gt;
+                                    &lt;power/&gt;
+                                    &lt;apply&gt;
+                                        &lt;tan/&gt;
+                                        &lt;ci&gt;&#x3b8;&lt;!--GREEK SMALL LETTER THETA--&gt;&lt;/ci&gt;
+                                    &lt;/apply&gt;
+                                    &lt;cn&gt;2&lt;/cn&gt;
+                                &lt;/apply&gt;
+                            &lt;/apply&gt;
+                        &lt;/apply&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mrow>
+                                <mi>sin</mi>
+                                <mo>&#8289;</mo>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mn>2</mn>
+                                </mrow>
+                                <mo>&#8290;</mo>
+                                <mrow>
+                                    <mi>&#952;</mi>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>=</mo>
+                            <mrow>
+                                <mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                    <mo>&#8290;</mo>
+                                    <mrow>
+                                        <mrow>
+                                            <mi>sin</mi>
+                                            <mo>&#8289;</mo>
+                                            <mo>(</mo>
+                                            <mi>&#952;</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>&#8290;</mo>
+                                        <mrow>
+                                            <mi>cos</mi>
+                                            <mo>&#8289;</mo>
+                                            <mo>(</mo>
+                                            <mi>&#952;</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mrow>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mfrac>
+                                        <mrow>
+                                            <mrow>
+                                                <mn>2</mn>
+                                            </mrow>
+                                            <mo>&#8290;</mo>
+                                            <mrow>
+                                                <mi>tan</mi>
+                                                <mo>&#8289;</mo>
+                                                <mo>(</mo>
+                                                <mi>&#952;</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mrow>
+                                            <mrow>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>+</mo>
+                                            <mrow>
+                                                <msup>
+                                                    <mrow>
+                                                        <mi>tan</mi>
+                                                        <mo>&#8289;</mo>
+                                                        <mo>(</mo>
+                                                        <mi>&#952;</mi>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mn>2</mn>
+                                                </msup>
+                                            </mrow>
+                                        </mrow>
+                                    </mfrac>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;sin&lt;/mi&gt;
+                                &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                &lt;mo&gt;(&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mn&gt;2&lt;/mn&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;&#952;&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;)&lt;/mo&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;=&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mn&gt;2&lt;/mn&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mi&gt;sin&lt;/mi&gt;
+                                            &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                            &lt;mo&gt;(&lt;/mo&gt;
+                                            &lt;mi&gt;&#952;&lt;/mi&gt;
+                                            &lt;mo&gt;)&lt;/mo&gt;
+                                        &lt;/mrow&gt;
+                                        &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mi&gt;cos&lt;/mi&gt;
+                                            &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                            &lt;mo&gt;(&lt;/mo&gt;
+                                            &lt;mi&gt;&#952;&lt;/mi&gt;
+                                            &lt;mo&gt;)&lt;/mo&gt;
+                                        &lt;/mrow&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;=&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mfrac&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mrow&gt;
+                                                &lt;mn&gt;2&lt;/mn&gt;
+                                            &lt;/mrow&gt;
+                                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                            &lt;mrow&gt;
+                                                &lt;mi&gt;tan&lt;/mi&gt;
+                                                &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                                &lt;mo&gt;(&lt;/mo&gt;
+                                                &lt;mi&gt;&#952;&lt;/mi&gt;
+                                                &lt;mo&gt;)&lt;/mo&gt;
+                                            &lt;/mrow&gt;
+                                        &lt;/mrow&gt;
+                                        &lt;mrow&gt;
+                                            &lt;mrow&gt;
+                                                &lt;mn&gt;1&lt;/mn&gt;
+                                            &lt;/mrow&gt;
+                                            &lt;mo&gt;+&lt;/mo&gt;
+                                            &lt;mrow&gt;
+                                                &lt;msup&gt;
+                                                    &lt;mrow&gt;
+                                                        &lt;mi&gt;tan&lt;/mi&gt;
+                                                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                                        &lt;mo&gt;(&lt;/mo&gt;
+                                                        &lt;mi&gt;&#952;&lt;/mi&gt;
+                                                        &lt;mo&gt;)&lt;/mo&gt;
+                                                    &lt;/mrow&gt;
+                                                    &lt;mn&gt;2&lt;/mn&gt;
+                                                &lt;/msup&gt;
+                                            &lt;/mrow&gt;
+                                        &lt;/mrow&gt;
+                                    &lt;/mfrac&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      emptyset1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>emptyset1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <neq/>
+                        <integers/>
+                        <emptyset/>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;neq/&gt;
+                        &lt;integers/&gt;
+                        &lt;emptyset/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi mathvariant="double-struck">Z</mi>
+                        </mrow>
+                        <mo>&#8800;</mo>
+                        <mrow>
+                            <mi>&#8709;</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;Z&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8800;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;&#8709;&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--equivalentcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>equivalentcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <equivalent/>
+                        <ci> a </ci>
+                        <apply>
+                          <not/>
+                          <apply>
+                            <not/>
+                            <ci> a </ci>
+                          </apply>
+                        </apply>
+                    </apply>
+                 </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;equivalent/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;apply&gt;
+                          &lt;not/&gt;
+                          &lt;apply&gt;
+                            &lt;not/&gt;
+                            &lt;ci&gt; a &lt;/ci&gt;
+                          &lt;/apply&gt;
+                        &lt;/apply&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8801;</mo>
+                        <mrow>
+                            <mo>&#172;</mo>
+                            <mrow>
+                                <mo>&#172;</mo>
+                                <mi> a </mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8801;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mo&gt;&#172;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mo&gt;&#172;&lt;/mo&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      eulergramma1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>eulergramma1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <eulergamma/>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;eulergamma/&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>&#947;</mi>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;&#947;&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      exponentiale1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>exponentiale1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <ln/>
+                          <exponentiale/>
+                        </apply>
+                        <cn>1</cn>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;ln/&gt;
+                          &lt;exponentiale/&gt;
+                        &lt;/apply&gt;
+                        &lt;cn&gt;1&lt;/cn&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>ln</mi>
+                            <mo>&#8289;</mo>
+                            <mo>(</mo>
+                            <mi>e</mi>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mn>1</mn>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;ln&lt;/mi&gt;
+                            &lt;mo&gt;&#8289;&lt;/mo&gt;
+                            &lt;mo&gt;(&lt;/mo&gt;
+                            &lt;mi&gt;e&lt;/mi&gt;
+                            &lt;mo&gt;)&lt;/mo&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;1&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      factotrialcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>factotrialcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <factorial/>
+                        <cn> 3 </cn>
+                    </apply>
+                 </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;factorial/&gt;
+                        &lt;cn&gt; 3 &lt;/cn&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn> 3 </mn>
+                        <mo>!</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mn&gt; 3 &lt;/mn&gt;
+                        &lt;mo&gt;!&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      factorofcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>factorofcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <factorof/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                     </apply>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;factorof/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                     &lt;/apply&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#65372;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#65372;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      false1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>false1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <and/>
+                          <false/>
+                          <ci type = "logical">P</ci>
+                        </apply>
+                        <false/>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;and/&gt;
+                          &lt;false/&gt;
+                          &lt;ci type = "logical"&gt;P&lt;/ci&gt;
+                        &lt;/apply&gt;
+                        &lt;false/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mrow>
+                                <mi>false</mi>
+                            </mrow>
+                            <mo>&#8743;</mo>
+                            <mrow>
+                                <mi>P</mi>
+                            </mrow>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mi>false</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;false&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8743;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;P&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;false&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      floor1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>floor1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <floor/>
+                        <ci> a </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;floor/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>&#8970;</mo>
+                        <mi> a </mi>
+                        <mo>&#8971;</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;&#8970;&lt;/mo&gt;
+                        &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;mo&gt;&#8971;&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--  gcd1cont.xml    -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>gcd1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <gcd/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                        <ci> c </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;gcd/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                        &lt;ci&gt; c &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>gcd</mi>
+                        </mrow>
+                        <mo>&#8289;</mo>
+                        <mrow>
+                            <mfenced open="(" close=")" separators=",">
+                                <mi> a </mi>
+                                <mi> b </mi>
+                                <mi> c </mi>
+                            </mfenced>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;gcd&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfenced open="(" close=")" separators=","&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                                &lt;mi&gt; b &lt;/mi&gt;
+                                &lt;mi&gt; c &lt;/mi&gt;
+                            &lt;/mfenced&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--geqcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns=""></src>
+              <p>geqcont.xml</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <apply>
+                    <geq/>
+                    <ci> a </ci>
+                    <ci> b </ci>
+                  </apply>
+                </math>
+
+              &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                  &lt;apply&gt;
+                    &lt;geq/&gt;
+                    &lt;ci&gt; a &lt;/ci&gt;
+                    &lt;ci&gt; b &lt;/ci&gt;
+                  &lt;/apply&gt;
+                &lt;/math&gt;
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8805;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8805;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      gtcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>gtcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <gt/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;gt/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&gt;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&gt;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      imaginaryi1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>imaginaryi1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <power/>
+                          <imaginaryi/>
+                          <cn>2</cn>
+                        </apply>
+                        <cn>-1</cn>
+                      </apply>
+                    </math>
+
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;power/&gt;
+                          &lt;imaginaryi/&gt;
+                          &lt;cn&gt;2&lt;/cn&gt;
+                        &lt;/apply&gt;
+                        &lt;cn&gt;-1&lt;/cn&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mi>i</mi>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mn>-1</mn>
+                        </mrow>
+                    </mrow>
+                </math>
+
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;msup&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt;i&lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mn&gt;2&lt;/mn&gt;
+                            &lt;/msup&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;-1&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--implies1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>implies1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <implies/>
+                        <ci> A </ci>
+                        <ci> B </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;implies/&gt;
+                        &lt;ci&gt; A &lt;/ci&gt;
+                        &lt;ci&gt; B &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> A </mi>
+                        </mrow>
+                        <mo>&#8658;</mo>
+                        <mrow>
+                            <mi> B </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; A &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8658;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; B &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      infinity1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>infinity1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <infinity/>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;infinity/&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>&#8734;</mi>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;&#8734;&lt;/mi&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      integers1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>integers1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <cn type="integer"> 42 </cn>
+                        <integers/>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;cn type="integer"&gt; 42 &lt;/cn&gt;
+                        &lt;integers/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn> 42 </mn>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">Z</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt; 42 &lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;Z&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      interval1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>interval1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <interval>
+                        <ci>x</ci>
+                        <cn>1</cn>
+                    </interval>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;interval&gt;
+                        &lt;ci&gt;x&lt;/ci&gt;
+                        &lt;cn&gt;1&lt;/cn&gt;
+                    &lt;/interval&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>[</mo>
+                        <mrow>
+                            <mi>x</mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mn>1</mn>
+                        </mrow>
+                        <mo>]</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;[&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;1&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;]&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      interval2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>interval2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <interval closure="open">
+                            <ci>a</ci>
+                            <ci>b</ci>
+                        </interval>
+                    </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                        &lt;interval closure="open"&gt;
+                            &lt;ci&gt;a&lt;/ci&gt;
+                            &lt;ci&gt;b&lt;/ci&gt;
+                        &lt;/interval&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mrow>
+                            <mi>a</mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mi>b</mi>
+                        </mrow>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;a&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;b&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      interval3cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>interval3cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <interval closure="open-closed">
+                        <cn>0</cn>
+                        <cn>1</cn>
+                    </interval>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;interval closure="open-closed"&gt;
+                        &lt;cn&gt;0&lt;/cn&gt;
+                        &lt;cn&gt;1&lt;/cn&gt;
+                    &lt;/interval&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mrow>
+                            <mn>0</mn>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mn>1</mn>
+                        </mrow>
+                        <mo>]</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;0&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;1&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;]&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      lcm1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>lcm1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <lcm/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                        <ci> c </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;lcm/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                        &lt;ci&gt; c &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>lcm</mi>
+                        </mrow>
+                        <mo>&#8289;</mo>
+                        <mrow>
+                            <mfenced open="(" close=")" separators=",">
+                                <mi> a </mi>
+                                <mi> b </mi>
+                                <mi> c </mi>
+                            </mfenced>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;lcm&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfenced open="(" close=")" separators=","&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                                &lt;mi&gt; b &lt;/mi&gt;
+                                &lt;mi&gt; c &lt;/mi&gt;
+                            &lt;/mfenced&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      leqcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>leqcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <leq/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;leq/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8804;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8804;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      leq2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>leq2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <leq/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                        <ci> c </ci>
+                    </apply>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;leq/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                        &lt;ci&gt; c &lt;/ci&gt;
+                    &lt;/apply&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8804;</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> b </mi>
+                            </mrow>
+                            <mo>&#8804;</mo>
+                            <mrow>
+                                <mi> c </mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8804;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; b &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8804;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; c &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--list1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>list1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <list>
+                      </list>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;list&gt;
+                      &lt;/list&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      list2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>list2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <list>
+                          <ci>x</ci>
+                          <cn>7</cn>
+                      </list>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;list&gt;
+                          &lt;ci&gt;x&lt;/ci&gt;
+                          &lt;cn&gt;7&lt;/cn&gt;
+                      &lt;/list&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mrow>
+                            <mi>x</mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mn>7</mn>
+                        </mrow>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;7&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      list3cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>list3cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <list>
+                          <cn>7</cn>
+                          <ci>x</ci>
+                          <cn>5</cn>
+                      </list>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;list&gt;
+                          &lt;cn&gt;7&lt;/cn&gt;
+                          &lt;ci&gt;x&lt;/ci&gt;
+                          &lt;cn&gt;5&lt;/cn&gt;
+                      &lt;/list&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mrow>
+                            <mn>7</mn>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mrow>
+                                <mi>x</mi>
+                            </mrow>
+                            <mo>,</mo>
+                            <mrow>
+                                <mn>5</mn>
+                            </mrow>
+                        </mrow>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;7&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;x&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;,&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mn&gt;5&lt;/mn&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      ltcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>ltcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <lt/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;lt/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&lt;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&lt;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      multiaddcont.xml-->
+<!--    <tr>-->
+<!--      <td>-->
+<!--          <pre>-->
+<!--              <src xmlns="">-->
+<!--                  <p>multiaddcont.xml</p>-->
+<!--                  <math xmlns="http://www.w3.org/1998/Math/MathML">-->
+<!--                    <apply>-->
+<!--                        <plus/>-->
+<!--                        <ci type="real"> x </ci>-->
+<!--                        <ci type="integer"> x </ci>-->
+<!--                        <ci type="rational"> x </ci>-->
+<!--                        <ci type="complex-cartesian"> y </ci>-->
+<!--                        <ci type="complex-polar"> &theta; </ci>-->
+<!--                        <ci type="vector"> v </ci>-->
+<!--                        <ci type="constant"> &pi; </ci>-->
+<!--                        <ci> &ExponentialE; </ci>-->
+<!--                        <ci> &ee; </ci>-->
+<!--                        <ci> &ImaginaryI; </ci>-->
+<!--                        <ci> &ii; </ci>-->
+<!--                        <ci> &gamma; </ci>-->
+<!--                        <ci> &infin; </ci>-->
+<!--                    </apply>-->
+<!--                </math>-->
+
+<!--                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;-->
+<!--                    &lt;apply&gt;-->
+<!--                        &lt;plus/&gt;-->
+<!--                        &lt;ci type="real"&gt; x &lt;/ci&gt;-->
+<!--                        &lt;ci type="integer"&gt; x &lt;/ci&gt;-->
+<!--                        &lt;ci type="rational"&gt; x &lt;/ci&gt;-->
+<!--                        &lt;ci type="complex-cartesian"&gt; y &lt;/ci&gt;-->
+<!--                        &lt;ci type="complex-polar"&gt; &theta; &lt;/ci&gt;-->
+<!--                        &lt;ci type="vector"&gt; v &lt;/ci&gt;-->
+<!--                        &lt;ci type="constant"&gt; &pi; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &ExponentialE; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &ee; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &ImaginaryI; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &ii; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &gamma; &lt;/ci&gt;-->
+<!--                        &lt;ci&gt; &infin; &lt;/ci&gt;-->
+<!--                    &lt;/apply&gt;-->
+<!--                &lt;/math&gt;-->
+<!--              </src>-->
+<!--          </pre>-->
+<!--      </td>-->
+<!--      <td>Giovanni Rovelli</td>-->
+<!--      <td>Italy</td>-->
+<!--    </tr>-->
+<!-- nan1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>nan1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <divide/>
+                          <cn>0</cn>
+                          <cn>0</cn>
+                        </apply>
+                        <notanumber/>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;divide/&gt;
+                          &lt;cn&gt;0&lt;/cn&gt;
+                          &lt;cn&gt;0&lt;/cn&gt;
+                        &lt;/apply&gt;
+                        &lt;notanumber/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mfrac>
+                                <mn>0</mn>
+                                <mn>0</mn>
+                            </mfrac>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mi>NaN</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mfrac&gt;
+                                &lt;mn&gt;0&lt;/mn&gt;
+                                &lt;mn&gt;0&lt;/mn&gt;
+                            &lt;/mfrac&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;NaN&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      naturalnumber1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>naturalnumber1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <cn type="integer">1729</cn>
+                        <naturalnumbers/>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;cn type="integer"&gt;1729&lt;/cn&gt;
+                        &lt;naturalnumbers/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>1729</mn>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">N</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;1729&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;N&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--neqcont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>neqcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <neq/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;neq/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>&#8800;</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8800;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+
+<!--      pi1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>pi1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <approx/>
+                        <pi/>
+                        <apply>
+                            <divide/>
+                            <cn>22</cn>
+                            <cn> 7</cn>
+                        </apply>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;approx/&gt;
+                        &lt;pi/&gt;
+                        &lt;apply&gt;
+                            &lt;divide/&gt;
+                            &lt;cn&gt;22&lt;/cn&gt;
+                            &lt;cn&gt; 7&lt;/cn&gt;
+                        &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>&#960;</mi>
+                        </mrow>
+                        <mo>&#8771;</mo>
+                        <mrow>
+                            <mfrac>
+                                <mn>22</mn>
+                                <mn> 7</mn>
+                            </mfrac>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;&#960;&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8771;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfrac&gt;
+                                &lt;mn&gt;22&lt;/mn&gt;
+                                &lt;mn&gt; 7&lt;/mn&gt;
+                            &lt;/mfrac&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--primes1cont.xml      -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>primes1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <cn type="integer">17</cn>
+                        <primes/>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;cn type="integer"&gt;17&lt;/cn&gt;
+                        &lt;primes/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>17</mn>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">P</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;17&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;P&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--     quadformcont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xlns="">
+                  <p>quadformcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                     <apply>
+                      <eq/>
+                      <ci>x</ci>
+                      <apply>
+                       <divide/>
+                       <apply>
+                         <plus/>
+                         <apply>
+                          <minus/>
+                          <ci>b</ci>
+                         </apply>
+                         <apply>
+                          <root/>
+                          <apply>
+                           <minus/>
+                           <apply>
+                            <power/>
+                            <ci>b</ci>
+                            <cn>2</cn>
+                           </apply>
+                           <apply>
+                            <times/>
+                            <cn>4</cn>
+                            <ci>a</ci>
+                            <ci>c</ci>
+                           </apply>
+                          </apply>
+                         </apply>
+                        </apply>
+                        <apply>
+                         <times/>
+                         <cn>2</cn>
+                         <ci>a</ci>
+                        </apply>
+                       </apply>
+                     </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                     &lt;apply&gt;
+                      &lt;eq/&gt;
+                      &lt;ci&gt;x&lt;/ci&gt;
+                      &lt;apply&gt;
+                       &lt;divide/&gt;
+                       &lt;apply&gt;
+                         &lt;plus/&gt;
+                         &lt;apply&gt;
+                          &lt;minus/&gt;
+                          &lt;ci&gt;b&lt;/ci&gt;
+                         &lt;/apply&gt;
+                         &lt;apply&gt;
+                          &lt;root/&gt;
+                          &lt;apply&gt;
+                           &lt;minus/&gt;
+                           &lt;apply&gt;
+                            &lt;power/&gt;
+                            &lt;ci&gt;b&lt;/ci&gt;
+                            &lt;cn&gt;2&lt;/cn&gt;
+                           &lt;/apply&gt;
+                           &lt;apply&gt;
+                                &lt;times/&gt;
+                                &lt;cn&gt;4&lt;/cn&gt;
+                                &lt;ci&gt;a&lt;/ci&gt;
+                                &lt;ci&gt;c&lt;/ci&gt;
+                               &lt;/apply&gt;
+                              &lt;/apply&gt;
+                             &lt;/apply&gt;
+                            &lt;/apply&gt;
+                            &lt;apply&gt;
+                             &lt;times/&gt;
+                             &lt;cn&gt;2&lt;/cn&gt;
+                             &lt;ci&gt;a&lt;/ci&gt;
+                            &lt;/apply&gt;
+                           &lt;/apply&gt;
+                         &lt;/apply&gt;
+                        &lt;/math&gt;
+
+
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi>x</mi>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mfrac>
+                                <mrow>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mi>b</mi>
+                                    </mrow>
+                                    <mo>+</mo>
+                                    <mrow>
+                                        <msqrt>
+                                            <mrow>
+                                                <msup>
+                                                    <mi>b</mi>
+                                                    <mn>2</mn>
+                                                </msup>
+                                            </mrow>
+                                            <mo>-</mo>
+                                            <mrow>
+                                                <mrow>
+                                                    <mn>4</mn>
+                                                </mrow>
+                                                <mo>&#8290;</mo>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mi>a</mi>
+                                                    </mrow>
+                                                    <mo>&#8290;</mo>
+                                                    <mrow>
+                                                        <mi>c</mi>
+                                                    </mrow>
+                                                </mrow>
+                                            </mrow>
+                                        </msqrt>
+                                    </mrow>
+                                </mrow>
+                                <mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                    <mo>&#8290;</mo>
+                                    <mrow>
+                                        <mi>a</mi>
+                                    </mrow>
+                                </mrow>
+                            </mfrac>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;x&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mfrac&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mo&gt;-&lt;/mo&gt;
+                                        &lt;mi&gt;b&lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;+&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;msqrt&gt;
+                                            &lt;mrow&gt;
+                                                &lt;msup&gt;
+                                                    &lt;mi&gt;b&lt;/mi&gt;
+                                                    &lt;mn&gt;2&lt;/mn&gt;
+                                                &lt;/msup&gt;
+                                            &lt;/mrow&gt;
+                                            &lt;mo&gt;-&lt;/mo&gt;
+                                            &lt;mrow&gt;
+                                                &lt;mrow&gt;
+                                                    &lt;mn&gt;4&lt;/mn&gt;
+                                                &lt;/mrow&gt;
+                                                &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                                &lt;mrow&gt;
+                                                    &lt;mrow&gt;
+                                                        &lt;mi&gt;a&lt;/mi&gt;
+                                                    &lt;/mrow&gt;
+                                                    &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                                    &lt;mrow&gt;
+                                                        &lt;mi&gt;c&lt;/mi&gt;
+                                                    &lt;/mrow&gt;
+                                                &lt;/mrow&gt;
+                                            &lt;/mrow&gt;
+                                        &lt;/msqrt&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mn&gt;2&lt;/mn&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt;a&lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mfrac&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--  quotient1cont.xml    -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>quotient1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <quotient/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;quotient/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>&#8970;</mo>
+                        <mfrac>
+                            <mi> a </mi>
+                            <mi> b </mi>
+                        </mfrac>
+                        <mo>&#8971;</mo>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;&#8970;&lt;/mo&gt;
+                        &lt;mfrac&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mfrac&gt;
+                        &lt;mo&gt;&#8971;&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--  rationals1cont.xml    -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>rationals1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <apply>
+                            <divide/>
+                            <cn> 22</cn>
+                            <cn> 7</cn>
+                        </apply>
+                        <rationals/>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;apply&gt;
+                            &lt;divide/&gt;
+                            &lt;cn&gt; 22&lt;/cn&gt;
+                            &lt;cn&gt; 7&lt;/cn&gt;
+                        &lt;/apply&gt;
+                        &lt;rationals/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mfrac>
+                                <mn> 22</mn>
+                                <mn> 7</mn>
+                            </mfrac>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">Q</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mfrac&gt;
+                                &lt;mn&gt; 22&lt;/mn&gt;
+                                &lt;mn&gt; 7&lt;/mn&gt;
+                            &lt;/mfrac&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;Q&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--     reals1cont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>reals1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <in/>
+                        <cn type="real"> 44.997 </cn>
+                        <reals/>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;in/&gt;
+                        &lt;cn type="real"&gt; 44.997 &lt;/cn&gt;
+                        &lt;reals/&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn> 44.997 </mn>
+                        </mrow>
+                        <mo>&#8712;</mo>
+                        <mrow>
+                            <mi mathvariant="double-struck">R</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt; 44.997 &lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8712;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi mathvariant="double-struck"&gt;R&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--      rem1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>rem1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <rem/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;rem/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>mod</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;mod&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--  set1cont.xml    -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>set1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <set>
+                      </set>
+                    </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;set&gt;
+                      &lt;/set&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mo>}</mo>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;{&lt;/mo&gt;
+                        &lt;mo&gt;}&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--      set2cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xlns="">
+                  <p>set2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <set>
+                          <ci> b </ci>
+                          <ci> a </ci>
+                          <ci> c </ci>
+                      </set>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;set&gt;
+                          &lt;ci&gt; b &lt;/ci&gt;
+                          &lt;ci&gt; a &lt;/ci&gt;
+                          &lt;ci&gt; c &lt;/ci&gt;
+                      &lt;/set&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> a </mi>
+                            </mrow>
+                            <mo>,</mo>
+                            <mrow>
+                                <mi> c </mi>
+                            </mrow>
+                        </mrow>
+                        <mo>}</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;{&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;,&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; c &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;}&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--   set3cont.xml   -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>set3cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <set>
+                          <ci> b </ci>
+                          <ci> a </ci>
+                          <ci> c </ci>
+                          <cn> 6 </cn>
+                
+                      </set>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;set&gt;
+                          &lt;ci&gt; b &lt;/ci&gt;
+                          &lt;ci&gt; a &lt;/ci&gt;
+                          &lt;ci&gt; c &lt;/ci&gt;
+                          &lt;cn&gt; 6 &lt;/cn&gt;
+                
+                      &lt;/set&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                        <mo>,</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> a </mi>
+                            </mrow>
+                            <mo>,</mo>
+                            <mrow>
+                                <mrow>
+                                    <mi> c </mi>
+                                </mrow>
+                                <mo>,</mo>
+                                <mrow>
+                                    <mn> 6 </mn>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                        <mo>}</mo>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mo&gt;{&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;,&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;,&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt; c &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;,&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mn&gt; 6 &lt;/mn&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;}&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--   sinxcont.xml   -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>sinxcont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <sin/>
+                        <ci> x </ci>
+                    </apply>
+                 </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;apply&gt;
+                        &lt;sin/&gt;
+                        &lt;ci&gt; x &lt;/ci&gt;
+                    &lt;/apply&gt;
+                 &lt;/math&gt;
+
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>sin</mi>
+                        <mo>&#8289;</mo>
+                        <mo>(</mo>
+                        <mi> x </mi>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mi&gt;sin&lt;/mi&gt;
+                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                        &lt;mo&gt;(&lt;/mo&gt;
+                        &lt;mi&gt; x &lt;/mi&gt;
+                        &lt;mo&gt;)&lt;/mo&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--     times1cont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>times1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                     <apply>
+                         <times/>
+                         <cn>4</cn>
+                         <ci>a</ci>
+                         <ci>h</ci>
+                     </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                     &lt;apply&gt;
+                         &lt;times/&gt;
+                         &lt;cn&gt;4&lt;/cn&gt;
+                         &lt;ci&gt;a&lt;/ci&gt;
+                         &lt;ci&gt;h&lt;/ci&gt;
+                     &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>4</mn>
+                        </mrow>
+                        <mo>&#8290;</mo>
+                        <mrow>
+                            <mrow>
+                                <mi>a</mi>
+                            </mrow>
+                            <mo>&#8290;</mo>
+                            <mrow>
+                                <mi>h</mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;4&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#8290;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;a&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;h&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--    times2cont.xml  -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>times2cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                     <apply>
+                         <times/>
+                         <cn>4</cn>
+                         <cn>7</cn>
+                         <ci>z</ci>
+                     </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                     &lt;apply&gt;
+                         &lt;times/&gt;
+                         &lt;cn&gt;4&lt;/cn&gt;
+                         &lt;cn&gt;7&lt;/cn&gt;
+                         &lt;ci&gt;z&lt;/ci&gt;
+                     &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>4</mn>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mrow>
+                                <mn>7</mn>
+                            </mrow>
+                            <mo>&#8290;</mo>
+                            <mrow>
+                                <mi>z</mi>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;4&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mn&gt;7&lt;/mn&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;z&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+      
+<!--     times3cont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xlns="">
+                  <p>times3cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                     <apply>
+                         <times/>
+                         <cn>4</cn>
+                         <cn>7</cn>
+                         <cn>30</cn>
+                     </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                     &lt;apply&gt;
+                         &lt;times/&gt;
+                         &lt;cn&gt;4&lt;/cn&gt;
+                         &lt;cn&gt;7&lt;/cn&gt;
+                         &lt;cn&gt;30&lt;/cn&gt;
+                     &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>4</mn>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mrow>
+                                <mn>7</mn>
+                            </mrow>
+                            <mo>&#215;</mo>
+                            <mrow>
+                                <mn>30</mn>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;4&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mn&gt;7&lt;/mn&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#215;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mn&gt;30&lt;/mn&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--      times4cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns=""></src>
+              <p>times4cont.xml</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                 <apply>
+                     <times/>
+                     <cn>4</cn>
+                     <cn>28</cn>
+                 </apply>
+                </math>
+
+              &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                 &lt;apply&gt;
+                     &lt;times/&gt;
+                     &lt;cn&gt;4&lt;/cn&gt;
+                     &lt;cn&gt;28&lt;/cn&gt;
+                 &lt;/apply&gt;
+                &lt;/math&gt;
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mn>4</mn>
+                        </mrow>
+                        <mo>&#215;</mo>
+                        <mrow>
+                            <mn>28</mn>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;4&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;&#215;&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mn&gt;28&lt;/mn&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--     true1cont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>true1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                      <apply> 
+                        <eq/> 
+                        <apply> 
+                          <or/> 
+                          <true/> 
+                          <ci type = "logical">P</ci> 
+                        </apply> 
+                        <true/> 
+                      </apply> 
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt; 
+                        &lt;eq/&gt; 
+                        &lt;apply&gt; 
+                          &lt;or/&gt; 
+                          &lt;true/&gt; 
+                          &lt;ci type = "logical"&gt;P&lt;/ci&gt; 
+                        &lt;/apply&gt; 
+                        &lt;true/&gt; 
+                      &lt;/apply&gt; 
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mrow>
+                                <mi>true</mi>
+                            </mrow>
+                            <mo>&#8744;</mo>
+                            <mrow>
+                                <mi>P</mi>
+                            </mrow>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mi>true</mi>
+                        </mrow>
+                    </mrow>
+                </math>
+                  
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;true&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8744;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt;P&lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt;true&lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--      vectorproduct1cont.xml-->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>vectorproduct1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <eq/>
+                        <apply>
+                          <vectorproduct/>
+                          <ci type="vector"> A </ci>
+                          <ci type="vector"> B </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> a </ci>
+                          <ci> b </ci>
+                          <apply>
+                            <sin/>
+                            <ci> &theta; </ci>
+                          </apply>
+                          <ci type="vector"> N </ci>
+                        </apply>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;eq/&gt;
+                        &lt;apply&gt;
+                          &lt;vectorproduct/&gt;
+                          &lt;ci type="vector"&gt; A &lt;/ci&gt;
+                          &lt;ci type="vector"&gt; B &lt;/ci&gt;
+                        &lt;/apply&gt;
+                        &lt;apply&gt;
+                          &lt;times/&gt;
+                          &lt;ci&gt; a &lt;/ci&gt;
+                          &lt;ci&gt; b &lt;/ci&gt;
+                          &lt;apply&gt;
+                            &lt;sin/&gt;
+                            &lt;ci&gt; &theta; &lt;/ci&gt;
+                          &lt;/apply&gt;
+                          &lt;ci type="vector"&gt; N &lt;/ci&gt;
+                        &lt;/apply&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mrow>
+                                <mi> A </mi>
+                            </mrow>
+                            <mo>&#215;</mo>
+                            <mrow>
+                                <mi> B </mi>
+                            </mrow>
+                        </mrow>
+                        <mo>=</mo>
+                        <mrow>
+                            <mrow>
+                                <mi> a </mi>
+                            </mrow>
+                            <mo>&#8290;</mo>
+                            <mrow>
+                                <mrow>
+                                    <mi> b </mi>
+                                </mrow>
+                                <mo>&#8290;</mo>
+                                <mrow>
+                                    <mrow>
+                                        <mi>sin</mi>
+                                        <mo>&#8289;</mo>
+                                        <mo>(</mo>
+                                        <mi> &#952; </mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>&#8290;</mo>
+                                    <mrow>
+                                        <mi> N </mi>
+                                    </mrow>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; A &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#215;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; B &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;=&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mrow&gt;
+                                &lt;mi&gt; a &lt;/mi&gt;
+                            &lt;/mrow&gt;
+                            &lt;mo&gt;&#8290;&lt;/mo&gt;
+                            &lt;mrow&gt;
+                                &lt;mrow&gt;
+                                    &lt;mi&gt; b &lt;/mi&gt;
+                                &lt;/mrow&gt;
+                                &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                &lt;mrow&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt;sin&lt;/mi&gt;
+                                        &lt;mo&gt;&#8289;&lt;/mo&gt;
+                                        &lt;mo&gt;(&lt;/mo&gt;
+                                        &lt;mi&gt; &#952; &lt;/mi&gt;
+                                        &lt;mo&gt;)&lt;/mo&gt;
+                                    &lt;/mrow&gt;
+                                    &lt;mo&gt;&#8290;&lt;/mo&gt;
+                                    &lt;mrow&gt;
+                                        &lt;mi&gt; N &lt;/mi&gt;
+                                    &lt;/mrow&gt;
+                                &lt;/mrow&gt;
+                            &lt;/mrow&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+<!--     xor1cont.xml -->
+    <tr>
+      <td>
+          <pre>
+              <src xmlns="">
+                  <p>xor1cont.xml</p>
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <apply>
+                        <xor/>
+                        <ci> a </ci>
+                        <ci> b </ci>
+                      </apply>
+                    </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                      &lt;apply&gt;
+                        &lt;xor/&gt;
+                        &lt;ci&gt; a &lt;/ci&gt;
+                        &lt;ci&gt; b &lt;/ci&gt;
+                      &lt;/apply&gt;
+                    &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+      <td>Giovanni Rovelli</td>
+      <td>
+          <pre>
+              <src xmlns="">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mrow>
+                            <mi> a </mi>
+                        </mrow>
+                        <mo>xor</mo>
+                        <mrow>
+                            <mi> b </mi>
+                        </mrow>
+                    </mrow>
+                </math>
+
+                  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+                    &lt;mrow&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; a &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                        &lt;mo&gt;xor&lt;/mo&gt;
+                        &lt;mrow&gt;
+                            &lt;mi&gt; b &lt;/mi&gt;
+                        &lt;/mrow&gt;
+                    &lt;/mrow&gt;
+                &lt;/math&gt;
+              </src>
+          </pre>
+      </td>
+    </tr>
+      
+<!--    <tr>-->
+<!--      <td>Magazzini Alimentari Riuniti</td>-->
+<!--      <td>Giovanni Rovelli</td>-->
+<!--      <td>Italy</td>-->
+<!--    </tr>-->
+  </table>
+
+</body>
+
+</html>
