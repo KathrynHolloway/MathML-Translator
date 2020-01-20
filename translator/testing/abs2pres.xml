@@ -1,0 +1,22 @@
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mfenced open="|" close="|" separators="">
+            <mrow>
+                <mrow>
+                <mi> x </mi>
+            </mrow>
+            <mo>+</mo>
+            <mrow>
+                <mrow>
+                    <mi> y </mi>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                    <mi> z </mi>
+                </mrow>
+            </mrow>
+            </mrow>
+        </mfenced>
+    </mrow>
+</math>
