@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Implementation | Elements </title>
+  <link rel="stylesheet" type="text/css" href="styling.css" />
+</head>
+<body>
+  <div class="nav">
+    <ul>
+        <li><a>Testing</a></li>
+      <li><a href="content2presentation.html">cont2pres</a></li>
+      <li><a href="presentation2content.html">pres2cont</a></li>
+      <li><a href="implementedelements.html">Implemented Elements</a></li>
+    </ul>
+  </div>
+
+  <p>This page details the elements implemented from each variation of MathML,
+      including how the Content ML elements have been defined visually.</p>
+  <hr/>
+  <h1>Presentation </h1>
+
+  <p>Elements implemented for inputting Presentation MathML.</p>
+
+  <table>
+    <tr>
+      <th>Element</th>
+      <th>Description</th>
+    </tr>
+
+
+    <tr>
+      <td>mi</td>
+      <td>identifier</td>
+    </tr>
+      <tr>
+          <td>mn</td>
+          <td>number</td>
+      </tr>
+      <tr>
+          <td>mo</td>
+          <td>operator fence or separator</td>
+      </tr>
+      <tr>
+          <td>mrow</td>
+          <td>groups any number of sub-expressions horizontally</td>
+      </tr>
+      <tr>
+          <td>mfrac</td>
+          <td>forms a fraction from two sub-expressions</td>
+      </tr>
+      <tr>
+          <td>msqrt</td>
+          <td>froms a square root (radical wihtout an index)</td>
+      </tr>
+      <tr>
+          <td>msup</td>
+          <td>attach a superscript to a base</td>
+      </tr>
+  </table>
+
+  <h1>Content </h1>
+
+  <p>Elements implemented for inputting Content MathML.</p>
+
+  <table>
+    <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Notation example</th>
+    </tr>
+
+      <tr>
+          <td>apply</td>
+          <td>function application</td>
+          <td>n/a</td>
+      </tr>
+      <tr>
+          <td>cn</td>
+          <td>numbers</td>
+          <td>n/a</td>
+
+      </tr>
+      <tr>
+          <td>interval</td>
+          <td>represents mathematical intervals</td>
+          <td> (,)  (,]  [,)  [,]</td>
+      </tr>
+      <tr>
+          <td>quotient</td>
+          <td>takes the quotient of two sub-expression</td>
+          <td>&#x230a; a/b &#x230b;</td>
+      </tr>
+      <tr>
+          <td>factorial</td>
+          <td>aplies the factorial function to a sub-expression</td>
+          <td>a!</td>
+      </tr>
+      <tr>
+          <td>divide</td>
+          <td>division operator</td>
+          <td>a/b</td>
+      </tr>
+      <tr>
+          <td>minus</td>
+          <td>both a unary and binary minus operator</td>
+          <td> -7 or x-y</td>
+      </tr>
+      <tr>
+          <td>plus</td>
+          <td>addition operator</td>
+          <td>x+y</td>
+      </tr>
+      <tr>
+          <td>power</td>
+          <td>the first argument is raised to the power of the second argument</td>
+          <td>x<sup>2</sup></td>
+      </tr>
+      <tr>
+          <td>rem</td>
+          <td>modulus operator</td>
+          <td> a mod b</td>
+      </tr>
+      <tr>
+          <td>times</td>
+          <td>n-ary operator for multiplication</td>
+          <td> ab or a &#xd7; b</td>
+      </tr>
+      <tr>
+          <td>root</td>
+          <td>root of an element</td>
+          <td>&radic; x</td>
+      </tr>
+      <tr>
+          <td>gcd</td>
+          <td>greatest common divisor of its arguments</td>
+          <td>gcd(a,b,c)</td>
+      </tr>
+      <tr>
+          <td>and</td>
+          <td>logical and</td>
+          <td>A &#8743; B</td>
+      </tr>
+      <tr>
+          <td>or</td>
+          <td>logical or</td>
+          <td>A &#8744; B</td>
+      </tr>
+      <tr>
+          <td>xor</td>
+          <td>exclusive or</td>
+          <td>xor</td>
+      </tr>
+      <tr>
+          <td>not</td>
+          <td>logical not</td>
+          <td>&#172;a</td>
+      </tr>
+      <tr>
+          <td>implies</td>
+          <td>logical implies function</td>
+          <td>A &#x21d2; B</td>
+      </tr>
+      <tr>
+          <td>abs</td>
+          <td>absolute value</td>
+          <td>|x|</td>
+      </tr>
+      <tr>
+          <td>arg</td>
+          <td>argument</td>
+          <td>arg(...)</td>
+      </tr>
+      <tr>
+          <td>lcm</td>
+          <td>lowest common multiple</td>
+          <td>lcm(a,b,c)</td>
+      </tr>
+      <tr>
+          <td>floor</td>
+          <td>floor of an argument</td>
+          <td>&#x230a; a &#x230b;</td>
+      </tr>
+      <tr>
+          <td>eq</td>
+          <td>equality relation</td>
+          <td>=</td>
+      </tr>
+      <tr>
+          <td>neq</td>
+          <td>not equals</td>
+          <td>≠</td>
+      </tr>
+      <tr>
+          <td>gt</td>
+          <td>greater than relation</td>
+          <td>&gt;</td>
+      </tr>
+      <tr>
+          <td>lt</td>
+          <td>less than</td>
+          <td>&lt;</td>
+      </tr>
+      <tr>
+          <td>geq</td>
+          <td>greater than or equal to</td>
+          <td>≥</td>
+      </tr>
+      <tr>
+          <td>leq</td>
+          <td>less than or equal to</td>
+          <td>≤</td>
+      </tr>
+      <tr>
+          <td>equivalent</td>
+          <td>logical equivalency</td>
+          <td>&#8801;</td>
+      </tr>
+      <tr>
+          <td>approx</td>
+          <td>approximate equality of arguments</td>
+          <td>&#x2243;</td>
+      </tr>
+      <tr>
+          <td>factorof</td>
+          <td>argument one is a factor of argument two</td>
+          <td>a|b</td>
+      </tr>
+      <tr>
+          <td>set</td>
+          <td>mathematical set of arguments</td>
+          <td>{a,b,c}</td>
+      </tr>
+
+      <tr>
+          <td>list</td>
+          <td>mathematical list of arguments</td>
+          <td>(a,b,c)</td>
+      </tr>
+      <tr>
+          <td>in</td>
+          <td>set inclusion</td>
+          <td>∈</td>
+      </tr>
+      <tr>
+          <td>card</td>
+          <td>cardinality of an argument</td>
+          <td>|A|</td>
+      </tr>
+      <tr>
+          <td>cartesianproduct</td>
+          <td>cartesian product of sets</td>
+          <td>A &#xd7; B</td>
+      </tr>
+      <tr>
+          <td>sin</td>
+          <td>trigonimetric sin function</td>
+          <td>sin x</td>
+      </tr>
+
+      <tr>
+          <td>cos</td>
+          <td>trigonimetric cos function</td>
+          <td>cos x</td>
+      </tr>
+
+      <tr>
+          <td>tan</td>
+          <td>trigonimetric tan function</td>
+          <td>tan x</td>
+      </tr>
+      <tr>
+          <td>ln</td>
+          <td>natural logarithm</td>
+          <td>ln a</td>
+      </tr>
+      <tr>
+          <td>vectorproduct</td>
+          <td>vector product</td>
+          <td>A &#xd7; B</td>
+      </tr>
+      <tr>
+          <td>integers</td>
+          <td>set of integers</td>
+          <td>&#x2124;</td>
+      </tr>
+      <tr>
+          <td>reals</td>
+          <td>set of reals</td>
+          <td>&#8477; </td>
+      </tr>
+      <tr>
+          <td>rationals</td>
+          <td>set of rationals</td>
+          <td>&#x211a;</td>
+      </tr>
+      <tr>
+          <td>naturalnumbers</td>
+          <td>set of natural numbers</td>
+          <td>&#x2115;</td>
+      </tr>
+      <tr>
+          <td>complexes</td>
+          <td>set of complexes</td>
+          <td>	&#x2102;</td>
+      </tr>
+      <tr>
+          <td>primes</td>
+          <td>set of primes</td>
+          <td>&#x2119;</td>
+      </tr>
+      <tr>
+          <td>exponentiale</td>
+          <td>the base of the natural logarithm</td>
+          <td>e</td>
+      </tr>
+      <tr>
+          <td>imaginaryi</td>
+          <td>square root of -1</td>
+          <td>i</td>
+      </tr>
+      <tr>
+          <td>notanumber</td>
+          <td>not a number</td>
+          <td>NaN</td>
+      </tr>
+      <tr>
+          <td>true</td>
+          <td>boolean value true</td>
+          <td>true</td>
+      </tr>
+
+      <tr>
+          <td>false</td>
+          <td>boolean value false</td>
+          <td>false</td>
+      </tr>
+      <tr>
+          <td>emptyset</td>
+          <td>the empty set</td>
+          <td>&#8709;</td>
+      </tr>
+      <tr>
+          <td>pi</td>
+          <td>mathematical pi</td>
+          <td>&#960;</td>
+      </tr>
+      <tr>
+          <td>eulergamma</td>
+          <td>gamma constant</td>
+          <td>&#x3b3;</td>
+      </tr>
+      <tr>
+          <td>infinity</td>
+          <td>infinity</td>
+          <td>&#x221e;</td>
+      </tr>
+
+  </table>
+
+</body>
+
+</html>
+
