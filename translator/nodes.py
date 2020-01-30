@@ -241,13 +241,14 @@ class Operator(Node):
         #ambiguous elements
         elif name == "ambiguous":
             #multiplication sign -> times, cartesian product, vectorproduct
-            answer = input("Is \"" + self.get_child().get_name() + "\" best described as 1 or 2?"
-                                                                 " \n1)Set \n2)Vector\n"
+            answer = input("Is \"" + self.get_child().get_name() + "\" best described as 1, 2 or 3?"
+                                                                 " \n1)Set \n2)Vector\n3)Number \n"
                                                                  "Please enter the correct corresponding"
                                                                  " number: ")
             answerdict = {
                 "1": "cartesianproduct",
-                "2": "vectorproduct"
+                "2": "vectorproduct",
+                "3":"times"
             }
             apply = etree.SubElement(parent,"apply")
             op = etree.SubElement(apply, answerdict.get(answer))
