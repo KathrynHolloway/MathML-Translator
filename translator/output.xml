@@ -3,10 +3,9 @@
     <apply>
         <eq/>
         <apply>
-            <divide/>
-            <cn>0</cn>
-            <cn>0</cn>
+            <card/>
+            <ci> A </ci>
         </apply>
-        <notanumber/>
+        <cn> 5 </cn>
     </apply>
 </math>
