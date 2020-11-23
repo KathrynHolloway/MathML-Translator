@@ -6,9 +6,9 @@ app.py -h | --help
 
 """
 from docopt import docopt
-from parsing import doc_parse, make_contentml_tree, make_presml_tree
-from nodes import Node
-from xmlout import contxmlout, presxmlout
+from src.parsing import doc_parse, make_contentml_tree, make_presml_tree
+from src.nodes import Node
+from src.xmlout import contxmlout, presxmlout
 import os
 import warnings
 
