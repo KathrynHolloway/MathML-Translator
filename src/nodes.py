@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod #note that the later is a decorator
 from lxml import etree
-from xmlout import translatecname, translatepname
+from src.xmlout import translatecname, translatepname
 import html
 
 class Node(ABC):

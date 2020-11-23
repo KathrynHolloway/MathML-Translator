@@ -1,6 +1,6 @@
 from lxml import etree
-from optimisepresml import optimise
-import nodes
+from src.optimisepresml import optimise
+import src.nodes
 
 
 '''for now, print the xml as a string instead of writing to an actual file?'''

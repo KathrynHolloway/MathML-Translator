@@ -1,5 +1,5 @@
 from lxml import etree
-from nodes import *
+from src.nodes import *
 import html
 #
 # def docparse(file_location):
